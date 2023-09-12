@@ -49,7 +49,9 @@
                     </h1>
                 </div>
                 <div class="flex-shrink-0 mt-3 mt-sm-0 ms-sm-3" a>
-                    <input type="text" value="{{ $role_id }}" id="role_id" hidden>
+                    @if (isset($role_id))
+                        <input type="text" value="{{ $role_id }}" id="role_id" hidden>
+                    @endif
                     <a href="#" class="btn btn-sm btn-primary" onclick="assign()"><i class="fa fa-plus"></i> Assign
                         Permission</a>
                     @include('modals/roles/modal')

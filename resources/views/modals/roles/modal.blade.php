@@ -50,10 +50,13 @@
                         <div class="form-floating mb-4">
                             <div class="row">
                                 <div class="col-md-10 po_add_item">
-                                    <input type="text" value="{{ $role_id }}" id="r_id" name="r_id" hidden>
+                                    @if (isset($role_id))
+                                        <input type="text" value="{{ $role_id }}" id="r_id" name="r_id"
+                                            hidden>
+                                    @endif
                                     <select multiple class="js-select2 form-select" style="width: 120% !important"
-                                        id="permission_ids" name="permission_ids[]" data-container="#mdlAssignPermission"
-                                        data-placeholder="Select permissions">
+                                        id="permission_ids" name="permission_ids[]"
+                                        data-container="#mdlAssignPermission" data-placeholder="Select permissions">
                                     </select>
                                 </div>
                             </div>
