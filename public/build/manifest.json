@@ -1,0 +1,204 @@
+{
+  "resources/fonts/fontawesome/fa-brands-400.ttf": {
+    "file": "assets/fa-brands-400-20c4a58b.ttf",
+    "src": "resources/fonts/fontawesome/fa-brands-400.ttf"
+  },
+  "resources/fonts/fontawesome/fa-brands-400.woff2": {
+    "file": "assets/fa-brands-400-74833209.woff2",
+    "src": "resources/fonts/fontawesome/fa-brands-400.woff2"
+  },
+  "resources/fonts/fontawesome/fa-regular-400.ttf": {
+    "file": "assets/fa-regular-400-528d022d.ttf",
+    "src": "resources/fonts/fontawesome/fa-regular-400.ttf"
+  },
+  "resources/fonts/fontawesome/fa-regular-400.woff2": {
+    "file": "assets/fa-regular-400-8e7e5ea1.woff2",
+    "src": "resources/fonts/fontawesome/fa-regular-400.woff2"
+  },
+  "resources/fonts/fontawesome/fa-solid-900.ttf": {
+    "file": "assets/fa-solid-900-67a65763.ttf",
+    "src": "resources/fonts/fontawesome/fa-solid-900.ttf"
+  },
+  "resources/fonts/fontawesome/fa-solid-900.woff2": {
+    "file": "assets/fa-solid-900-7152a693.woff2",
+    "src": "resources/fonts/fontawesome/fa-solid-900.woff2"
+  },
+  "resources/fonts/inter/inter-v12-latin-300.woff2": {
+    "file": "assets/inter-v12-latin-300-6b2cee46.woff2",
+    "src": "resources/fonts/inter/inter-v12-latin-300.woff2"
+  },
+  "resources/fonts/inter/inter-v12-latin-500.woff2": {
+    "file": "assets/inter-v12-latin-500-d5333670.woff2",
+    "src": "resources/fonts/inter/inter-v12-latin-500.woff2"
+  },
+  "resources/fonts/inter/inter-v12-latin-600.woff2": {
+    "file": "assets/inter-v12-latin-600-048d136d.woff2",
+    "src": "resources/fonts/inter/inter-v12-latin-600.woff2"
+  },
+  "resources/fonts/inter/inter-v12-latin-700.woff2": {
+    "file": "assets/inter-v12-latin-700-ced2d8e0.woff2",
+    "src": "resources/fonts/inter/inter-v12-latin-700.woff2"
+  },
+  "resources/fonts/inter/inter-v12-latin-800.woff2": {
+    "file": "assets/inter-v12-latin-800-a51ac27d.woff2",
+    "src": "resources/fonts/inter/inter-v12-latin-800.woff2"
+  },
+  "resources/fonts/inter/inter-v12-latin-900.woff2": {
+    "file": "assets/inter-v12-latin-900-f2db7f82.woff2",
+    "src": "resources/fonts/inter/inter-v12-latin-900.woff2"
+  },
+  "resources/fonts/inter/inter-v12-latin-regular.woff2": {
+    "file": "assets/inter-v12-latin-regular-0364d368.woff2",
+    "src": "resources/fonts/inter/inter-v12-latin-regular.woff2"
+  },
+  "resources/fonts/simple-line-icons/Simple-Line-Icons.eot": {
+    "file": "assets/Simple-Line-Icons-1c823013.eot",
+    "src": "resources/fonts/simple-line-icons/Simple-Line-Icons.eot"
+  },
+  "resources/fonts/simple-line-icons/Simple-Line-Icons.svg": {
+    "file": "assets/Simple-Line-Icons-b381f90a.svg",
+    "src": "resources/fonts/simple-line-icons/Simple-Line-Icons.svg"
+  },
+  "resources/fonts/simple-line-icons/Simple-Line-Icons.ttf": {
+    "file": "assets/Simple-Line-Icons-3f501ddb.ttf",
+    "src": "resources/fonts/simple-line-icons/Simple-Line-Icons.ttf"
+  },
+  "resources/fonts/simple-line-icons/Simple-Line-Icons.woff": {
+    "file": "assets/Simple-Line-Icons-14b825d7.woff",
+    "src": "resources/fonts/simple-line-icons/Simple-Line-Icons.woff"
+  },
+  "resources/fonts/simple-line-icons/Simple-Line-Icons.woff2": {
+    "file": "assets/Simple-Line-Icons-104673f4.woff2",
+    "src": "resources/fonts/simple-line-icons/Simple-Line-Icons.woff2"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-0d91dc04.js",
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  },
+  "resources/js/oneui/app.js": {
+    "file": "assets/app-fe2da55a.js",
+    "isEntry": true,
+    "src": "resources/js/oneui/app.js"
+  },
+  "resources/js/pages/datatables.js": {
+    "file": "assets/datatables-ad71b457.js",
+    "isEntry": true,
+    "src": "resources/js/pages/datatables.js"
+  },
+  "resources/js/pages/file_maintenance/categoriesDatatable.js": {
+    "file": "assets/categoriesDatatable-95a78b7f.js",
+    "isEntry": true,
+    "src": "resources/js/pages/file_maintenance/categoriesDatatable.js"
+  },
+  "resources/js/pages/file_maintenance/customersDatatable.js": {
+    "file": "assets/customersDatatable-cc9a0e3b.js",
+    "isEntry": true,
+    "src": "resources/js/pages/file_maintenance/customersDatatable.js"
+  },
+  "resources/js/pages/file_maintenance/itemsDatatable.js": {
+    "file": "assets/itemsDatatable-29e48745.js",
+    "isEntry": true,
+    "src": "resources/js/pages/file_maintenance/itemsDatatable.js"
+  },
+  "resources/js/pages/file_maintenance/subCategoriesDatatable.js": {
+    "file": "assets/subCategoriesDatatable-32fe9fa2.js",
+    "isEntry": true,
+    "src": "resources/js/pages/file_maintenance/subCategoriesDatatable.js"
+  },
+  "resources/js/pages/file_maintenance/suppliersDatatable.js": {
+    "file": "assets/suppliersDatatable-68c1abcb.js",
+    "isEntry": true,
+    "src": "resources/js/pages/file_maintenance/suppliersDatatable.js"
+  },
+  "resources/js/pages/file_maintenance/unitsDatatable.js": {
+    "file": "assets/unitsDatatable-2bb50593.js",
+    "isEntry": true,
+    "src": "resources/js/pages/file_maintenance/unitsDatatable.js"
+  },
+  "resources/js/pages/file_maintenance/usersDatatable.js": {
+    "file": "assets/usersDatatable-725ad334.js",
+    "isEntry": true,
+    "src": "resources/js/pages/file_maintenance/usersDatatable.js"
+  },
+  "resources/js/pages/file_maintenance/warehouseDatatable.js": {
+    "file": "assets/warehouseDatatable-60a9bb1a.js",
+    "isEntry": true,
+    "src": "resources/js/pages/file_maintenance/warehouseDatatable.js"
+  },
+  "resources/js/pages/payment/incomingPaymentDatatable.js": {
+    "file": "assets/incomingPaymentDatatable-3bb5ca16.js",
+    "isEntry": true,
+    "src": "resources/js/pages/payment/incomingPaymentDatatable.js"
+  },
+  "resources/js/pages/payment/outgoingPaymentDatatable.js": {
+    "file": "assets/outgoingPaymentDatatable-dca7d8eb.js",
+    "isEntry": true,
+    "src": "resources/js/pages/payment/outgoingPaymentDatatable.js"
+  },
+  "resources/js/pages/purchasing/inspectionsDatatable.js": {
+    "file": "assets/inspectionsDatatable-353ea0fa.js",
+    "isEntry": true,
+    "src": "resources/js/pages/purchasing/inspectionsDatatable.js"
+  },
+  "resources/js/pages/purchasing/inventoryDatatable.js": {
+    "file": "assets/inventoryDatatable-09298667.js",
+    "isEntry": true,
+    "src": "resources/js/pages/purchasing/inventoryDatatable.js"
+  },
+  "resources/js/pages/purchasing/purchaseOrdersDatatable.js": {
+    "file": "assets/purchaseOrdersDatatable-c7ad0146.js",
+    "isEntry": true,
+    "src": "resources/js/pages/purchasing/purchaseOrdersDatatable.js"
+  },
+  "resources/js/pages/sales/deliveryDatatable.js": {
+    "file": "assets/deliveryDatatable-f5c7d47a.js",
+    "isEntry": true,
+    "src": "resources/js/pages/sales/deliveryDatatable.js"
+  },
+  "resources/js/pages/sales/orderSlipsDatatable.js": {
+    "file": "assets/orderSlipsDatatable-090f66e4.js",
+    "isEntry": true,
+    "src": "resources/js/pages/sales/orderSlipsDatatable.js"
+  },
+  "resources/js/pages/sales/salesInvoiceDatatable.js": {
+    "file": "assets/salesInvoiceDatatable-bfbfcc44.js",
+    "isEntry": true,
+    "src": "resources/js/pages/sales/salesInvoiceDatatable.js"
+  },
+  "resources/js/pages/sales/salesOrdersDatatable.js": {
+    "file": "assets/salesOrdersDatatable-c6b44909.js",
+    "isEntry": true,
+    "src": "resources/js/pages/sales/salesOrdersDatatable.js"
+  },
+  "resources/sass/main.scss": {
+    "file": "assets/main-5f28902e.css",
+    "isEntry": true,
+    "src": "resources/sass/main.scss"
+  },
+  "resources/sass/oneui/themes/amethyst.scss": {
+    "file": "assets/amethyst-d85f66d8.css",
+    "isEntry": true,
+    "src": "resources/sass/oneui/themes/amethyst.scss"
+  },
+  "resources/sass/oneui/themes/city.scss": {
+    "file": "assets/city-7720995c.css",
+    "isEntry": true,
+    "src": "resources/sass/oneui/themes/city.scss"
+  },
+  "resources/sass/oneui/themes/flat.scss": {
+    "file": "assets/flat-b51a8cf8.css",
+    "isEntry": true,
+    "src": "resources/sass/oneui/themes/flat.scss"
+  },
+  "resources/sass/oneui/themes/modern.scss": {
+    "file": "assets/modern-e13447c3.css",
+    "isEntry": true,
+    "src": "resources/sass/oneui/themes/modern.scss"
+  },
+  "resources/sass/oneui/themes/smooth.scss": {
+    "file": "assets/smooth-ab8416d9.css",
+    "isEntry": true,
+    "src": "resources/sass/oneui/themes/smooth.scss"
+  }
+}
