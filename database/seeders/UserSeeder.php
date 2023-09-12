@@ -17,7 +17,6 @@ class UserSeeder extends Seeder
             'name' => 'Dale John Tayag',
             'email' => 'tayagdale@gmail.com',
             'username' => 'tayagdale',
-            'role' => 1,
             'password' => 'qweqwe123'
             // Add more columns and values as needed
         ]);

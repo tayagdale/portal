@@ -55,9 +55,17 @@ class pgRoles {
                     data: 'id',
                     render: function (data, type, row) {
                         var old_role_name = row['description'];
+                        var role_id = row['id'];
+
+                        if (data == 1 || data == 2 || data == 3) {
+                            return `Default Role`
+                        }
                         return `
                                 <div class="text-center">
                                     <div class="btn-group">
+                                    <a type="button" href="/admin/roles/assign/${role_id}"  class="btn btn-sm btn-alt-success " data-bs-toggle="tooltip" title="Assign Permission">
+                                        <i class="fa fa-fw fa-user-gear"></i>
+                                    </a>
                                     <button type="button" onclick="update(${data},'${old_role_name}')" class="btn btn-sm btn-alt-info " data-bs-toggle="tooltip" title="Update Brand">
                                         <i class="fa fa-fw fa-pencil-alt"></i>
                                     </button>
@@ -75,6 +83,43 @@ class pgRoles {
             responsive: true,
             "order": [[1, "desc"]],
         });
+
+
+        jQuery('.js-dataTable-assign').DataTable({
+            ajax: {
+                url: `/admin/permissions/get_current/${$('#role_id').val()}`
+            },
+            columns: [
+                {
+                    data: 'permission_name',
+                },
+                {
+                    data: 'id',
+                    render: function (data, type, row) {
+                        return `
+                    <div class="text-center">
+                      <div class="btn-group">
+                        <button  type="button" onclick="unassignPermission(${data})" class="btn btn-sm btn-alt-warning" data-bs-toggle="tooltip" title="Deactivate Role">
+                          <i class="fa fa-fw fa-ban"></i>
+                        </button>
+                      </div>
+                    </div>`
+
+
+                    }
+                },
+            ],
+            pageLength: 10,
+            lengthMenu: [[5, 10, 15, 20], [5, 10, 15, 20]],
+            autoWidth: false,
+            buttons: [
+                'reload',
+                'add'
+            ],
+            dom: "<'row'<'col-sm-12'<'text-center  py-2 mb-2'B>>>" +
+                "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>"
+        });
+
 
     }
 

@@ -200,7 +200,7 @@
                 <!-- Side Navigation -->
                 <div class="content-side">
                     <ul class="nav-main">
-                        @if (auth()->check() && auth()->user()->role == 1)
+                        @checkPermission('checkPermission(auth()->user()->id, 1)')
                             <li class="nav-main-item">
                                 <a class="nav-main-link{{ request()->is('admin/dashboard') || request()->is('/') ? ' active' : '' }}"
                                     href="/admin/dashboard">
@@ -208,10 +208,14 @@
                                     <span class="nav-main-link-name">Dashboard</span>
                                 </a>
                             </li>
-                        @endif
-
-                        @if ((auth()->check() && auth()->user()->role == 2) || auth()->user()->role == 1)
+                        @endcheckPermission
+                        @checkPermission(
+                            'checkPermission(auth()->user()->id, 2) || checkPermission(auth()->user()->id, 3) ||
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        checkPermission(auth()->user()->id, 4)'
+                        )
                             <li class="nav-main-heading">Purchasing</li>
+                        @endcheckPermission
+                        @checkPermission('checkPermission(auth()->user()->id, 2)')
                             <li class="nav-main-item open">
                                 <a class="nav-main-link{{ request()->is('admin/purchase_order') ? ' active' : '' }}"
                                     href="/admin/purchase_order">
@@ -219,6 +223,8 @@
                                     <span class="nav-main-link-name">Purchase Order</span>
                                 </a>
                             </li>
+                        @endcheckPermission
+                        @checkPermission('checkPermission(auth()->user()->id, 3)')
                             <li class="nav-main-item open">
                                 <a class="nav-main-link{{ request()->is('admin/inspection') ? ' active' : '' }}"
                                     href="/admin/inspection">
@@ -226,6 +232,8 @@
                                     <span class="nav-main-link-name">Inspection</span>
                                 </a>
                             </li>
+                        @endcheckPermission
+                        @checkPermission('checkPermission(auth()->user()->id, 4)')
                             <li class="nav-main-item open">
                                 <a class="nav-main-link{{ request()->is('admin/inventory') ? ' active' : '' }}"
                                     href="/admin/inventory">
@@ -233,9 +241,13 @@
                                     <span class="nav-main-link-name">Inventory</span>
                                 </a>
                             </li>
-                        @endif
-                        @if ((auth()->check() && auth()->user()->role == 3) || auth()->user()->role == 1)
+                        @endcheckPermission
+                        @checkPermission(
+                            'checkPermission(auth()->user()->id, 5) || checkPermission(auth()->user()->id, 6) || checkPermission(auth()->user()->id, 7) || checkPermission(auth()->user()->id, 8)'
+                        )
                             <li class="nav-main-heading">Sales</li>
+                        @endcheckPermission
+                        @checkPermission('checkPermission(auth()->user()->id, 5)')
                             <li class="nav-main-item open">
                                 <a class="nav-main-link{{ request()->is('admin/order_slip') ? ' active' : '' }}"
                                     href="/admin/order_slip">
@@ -243,6 +255,8 @@
                                     <span class="nav-main-link-name">Order Slip</span>
                                 </a>
                             </li>
+                        @endcheckPermission
+                        @checkPermission('checkPermission(auth()->user()->id, 6)')
                             <li class="nav-main-item open">
                                 <a class="nav-main-link{{ request()->is('admin/sales_order') ? ' active' : '' }}"
                                     href="/admin/sales_order">
@@ -250,6 +264,8 @@
                                     <span class="nav-main-link-name">Sales Order</span>
                                 </a>
                             </li>
+                        @endcheckPermission
+                        @checkPermission('checkPermission(auth()->user()->id, 7)')
                             <li class="nav-main-item open">
                                 <a class="nav-main-link{{ request()->is('admin/delivery') ? ' active' : '' }}"
                                     href="/admin/delivery">
@@ -257,6 +273,8 @@
                                     <span class="nav-main-link-name">Delivery</span>
                                 </a>
                             </li>
+                        @endcheckPermission
+                        @checkPermission('checkPermission(auth()->user()->id, 8)')
                             <li class="nav-main-item open">
                                 <a class="nav-main-link{{ request()->is('admin/sales_invoice') ? ' active' : '' }}"
                                     href="/admin/sales_invoice">
@@ -264,9 +282,11 @@
                                     <span class="nav-main-link-name">Sales Invoice</span>
                                 </a>
                             </li>
-                        @endif
-                        @if (auth()->check() && auth()->user()->role == 1)
+                        @endcheckPermission
+                        @checkPermission('checkPermission(auth()->user()->id, 9) || checkPermission(auth()->user()->id, 10)')
                             <li class="nav-main-heading">Payment</li>
+                        @endcheckPermission
+                        @checkPermission('checkPermission(auth()->user()->id, 9)')
                             <li class="nav-main-item open">
                                 <a class="nav-main-link{{ request()->is('admin/incoming_payment') ? ' active' : '' }}"
                                     href="/admin/incoming_payment">
@@ -274,6 +294,8 @@
                                     <span class="nav-main-link-name">Incoming Payment</span>
                                 </a>
                             </li>
+                        @endcheckPermission
+                        @checkPermission('checkPermission(auth()->user()->id, 10)')
                             <li class="nav-main-item open">
                                 <a class="nav-main-link{{ request()->is('admin/outgoing_payment') ? ' active' : '' }}"
                                     href="/admin/outgoing_payment">
@@ -281,7 +303,13 @@
                                     <span class="nav-main-link-name">Outgoing Payment</span>
                                 </a>
                             </li>
+                        @endcheckPermission
+                        @checkPermission(
+                            'checkPermission(auth()->user()->id, 11) || checkPermission(auth()->user()->id, 12) || checkPermission(auth()->user()->id, 13) || checkPermission(auth()->user()->id, 14) || checkPermission(auth()->user()->id, 15)|| checkPermission(auth()->user()->id, 16)|| checkPermission(auth()->user()->id, 17)|| checkPermission(auth()->user()->id, 18)|| checkPermission(auth()->user()->id, 19)|| checkPermission(auth()->user()->id, 20)'
+                        )
                             <li class="nav-main-heading">File Maintenance</li>
+                        @endcheckPermission
+                        @checkPermission('checkPermission(auth()->user()->id, 11)')
                             <li class="nav-main-item open">
                                 <a class="nav-main-link{{ request()->is('admin/categories') ? ' active' : '' }}"
                                     href="/admin/categories">
@@ -289,6 +317,8 @@
                                     <span class="nav-main-link-name">Categories</span>
                                 </a>
                             </li>
+                        @endcheckPermission
+                        @checkPermission('checkPermission(auth()->user()->id, 12)')
                             <li class="nav-main-item open">
                                 <a class="nav-main-link{{ request()->is('admin/inventory_status') ? ' active' : '' }}"
                                     href="/admin/inventory_status">
@@ -296,6 +326,8 @@
                                     <span class="nav-main-link-name">Inventory Status</span>
                                 </a>
                             </li>
+                        @endcheckPermission
+                        @checkPermission('checkPermission(auth()->user()->id, 13)')
                             <li class="nav-main-item open">
                                 <a class="nav-main-link{{ request()->is('admin/warehouse') ? ' active' : '' }}"
                                     href="/admin/warehouse">
@@ -303,13 +335,15 @@
                                     <span class="nav-main-link-name">Warehouse</span>
                                 </a>
                             </li>
-                            {{-- <li class="nav-main-item open">
+                        @endcheckPermission
+                        {{-- <li class="nav-main-item open">
                             <a class="nav-main-link{{ request()->is('admin/sub_categories') ? ' active' : '' }}"
                                 href="/admin/sub_categories">
                                 <i class="nav-main-link-icon si si-list"></i>
                                 <span class="nav-main-link-name">Sub-Categories</span>
                             </a>
                         </li> --}}
+                        @checkPermission('checkPermission(auth()->user()->id, 14)')
                             <li class="nav-main-item open">
                                 <a class="nav-main-link{{ request()->is('admin/items') ? ' active' : '' }}"
                                     href="/admin/items">
@@ -317,6 +351,8 @@
                                     <span class="nav-main-link-name">Items</span>
                                 </a>
                             </li>
+                        @endcheckPermission
+                        @checkPermission('checkPermission(auth()->user()->id, 15)')
                             <li class="nav-main-item open">
                                 <a class="nav-main-link{{ request()->is('admin/units') ? ' active' : '' }}"
                                     href="/admin/units">
@@ -324,6 +360,8 @@
                                     <span class="nav-main-link-name">Unit of Measure</span>
                                 </a>
                             </li>
+                        @endcheckPermission
+                        @checkPermission('checkPermission(auth()->user()->id, 16)')
                             <li class="nav-main-item open">
                                 <a class="nav-main-link{{ request()->is('admin/customers') ? ' active' : '' }}"
                                     href="/admin/customers">
@@ -331,6 +369,8 @@
                                     <span class="nav-main-link-name">Customers</span>
                                 </a>
                             </li>
+                        @endcheckPermission
+                        @checkPermission('checkPermission(auth()->user()->id, 17)')
                             <li class="nav-main-item open">
                                 <a class="nav-main-link{{ request()->is('admin/suppliers') ? ' active' : '' }}"
                                     href="/admin/suppliers">
@@ -338,6 +378,8 @@
                                     <span class="nav-main-link-name">Suppliers</span>
                                 </a>
                             </li>
+                        @endcheckPermission
+                        @checkPermission('checkPermission(auth()->user()->id, 18)')
                             <li class="nav-main-item open">
                                 <a class="nav-main-link{{ request()->is('admin/roles') ? ' active' : '' }}"
                                     href="/admin/roles">
@@ -345,6 +387,8 @@
                                     <span class="nav-main-link-name">Roles</span>
                                 </a>
                             </li>
+                        @endcheckPermission
+                        @checkPermission('checkPermission(auth()->user()->id, 19)')
                             <li class="nav-main-item open">
                                 <a class="nav-main-link{{ request()->is('admin/permissions') ? ' active' : '' }}"
                                     href="/admin/permissions">
@@ -352,6 +396,8 @@
                                     <span class="nav-main-link-name">Permissions</span>
                                 </a>
                             </li>
+                        @endcheckPermission
+                        @checkPermission('checkPermission(auth()->user()->id, 20)')
                             <li class="nav-main-item open">
                                 <a class="nav-main-link{{ request()->is('admin/users') ? ' active' : '' }}"
                                     href="/admin/users">
@@ -359,7 +405,7 @@
                                     <span class="nav-main-link-name">Users</span>
                                 </a>
                             </li>
-                        @endif
+                        @endcheckPermission
                     </ul>
                 </div>
                 <!-- END Side Navigation -->
@@ -438,17 +484,8 @@
                                     src="{{ asset('media/avatars/avatar10.jpg') }}" alt="">
 
                                 <p class="mt-2 mb-0 fw-medium">{{ Auth::user()->name }}</p>
-                                @php
-                                    $role = 'Admin';
-                                    if (Auth::user()->role == 1) {
-                                        $role = 'Admin';
-                                    } elseif (Auth::user()->role == 2) {
-                                        $role = 'Purchasing';
-                                    } else {
-                                        $role = 'Sales';
-                                    }
-                                @endphp
-                                <p class="mb-0 text-muted fs-sm fw-medium">{{ $role }}</p>
+
+                                <p class="mb-0 text-muted fs-sm fw-medium">@userRole(Auth::user()->id)</p>
                             </div>
                             {{-- <div class="p-2">
                                 <a class="dropdown-item d-flex align-items-center justify-content-between"

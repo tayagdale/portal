@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Permissions;
+use App\Models\PermissionToRole;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PermissionsController extends Controller
 {
@@ -15,6 +17,33 @@ class PermissionsController extends Controller
         $permissions = Permissions::all();
         return response()->json(['success' => true, 'data' => $permissions]);
     }
+
+    public function get_unassigned(string $id)
+    {
+        $unassignedPermissions = DB::table('permissions')
+            ->select('permission_name', 'id')
+            ->whereNotIn('id', function ($query) use ($id) {
+                $query->select('permission_id')
+                    ->from('permission_to_roles')
+                    ->join('permissions', 'permission_to_roles.permission_id', '=', 'permissions.id')
+                    ->where('permission_to_roles.role_id', $id);
+            })
+            ->get();
+        return response()->json(['success' => true, 'data' => $unassignedPermissions]);
+    }
+
+    public function get_current(string $id)
+    {
+
+        $current_permission = DB::table("permission_to_roles")
+            ->select(array('permission_to_roles.*', 'permission_name'))
+            ->leftJoin("permissions", "permission_to_roles.permission_id", "=", "permissions.id")
+            ->where('role_id', $id)
+            ->get();
+        return response()->json(['success' => true, 'data' => $current_permission]);
+    }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -96,5 +125,33 @@ class PermissionsController extends Controller
         $permission->delete();
 
         return response()->json(['message' => 'Permission deleted successfully.']);
+    }
+
+    public function assign_permission(Request $request)
+    {
+        $selectedPermissions = $request->input('permission_ids');
+
+        foreach ($selectedPermissions as $option) {
+            // Your logic here
+            DB::table('permission_to_roles')->insert([
+                'role_id' => $request->input('r_id'),
+                'permission_id' => $option
+            ]);
+        }
+
+        return response()->json(['message' => 'Permission assigned successfully.']);
+    }
+
+    public function unassign_permission(string $id)
+    {
+        $permission = PermissionToRole::find($id);
+
+        if (!$permission) {
+            return response()->json(['error' => 'Permission not found.'], 404);
+        }
+
+        $permission->delete();
+
+        return response()->json(['message' => 'Permission unassigned successfully.']);
     }
 }

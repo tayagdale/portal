@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserToRole extends Model
 {
+    protected $table = 'user_to_roles';
+    protected $primaryKey = 'id';
     use HasFactory;
 }

@@ -27,6 +27,14 @@ class RolesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
+    public function assign(string $role_id)
+    {
+        $data = [
+            'role_id'  => $role_id,
+        ];
+        return view('pages/file_maintenance/assign_permission')->with($data);
+    }
     public function store(Request $request)
     {
         $validatedData = $request->validate([

@@ -39,14 +39,11 @@
                             @endif
                         </div>
                         <div class="form-group form-floating mb-3">
-                            <select class="form-select" id="role" name="role"
+                            <select class="form-select" id="role_id" name="role_id"
                                 aria-label="Floating label select example">
                                 <option value=""></option>
-                                <option value="1">Admin</option>
-                                <option value="2">Purchasing</option>
-                                <option value="3">Sales</option>
                             </select>
-                            <label for="role">Role</label>
+                            <label for="role_id">Role</label>
                         </div>
                         <div class="form-group form-floating mb-3">
                             <input type="password" class="form-control" name="password" value="{{ old('password') }}"

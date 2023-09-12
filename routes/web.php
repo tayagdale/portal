@@ -220,16 +220,21 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::get('/admin/inventory_status/all', 'InventoryStatusController@index');
         Route::put('/admin/inventory_status/{id}', 'InventoryStatusController@update')->name('inventory_status.update');
 
-        //Roles Routes
+        //Permissions Routes
         Route::get('/admin/permissions/all', 'PermissionsController@index');
+        Route::get('/admin/permissions/unassigned/{id}', 'PermissionsController@get_unassigned');
+        Route::get('/admin/permissions/get_current/{id}', 'PermissionsController@get_current');
         Route::post('/admin/permissions', 'PermissionsController@store')->name('permissions.store');
         Route::put('/admin/permissions/{id}', 'PermissionsController@update')->name('permissions.update');
         Route::delete('/admin/permissions/{id}', 'PermissionsController@destroy')->name('permissions.remove');
+        Route::post('/admin/permissions_to_roles', 'PermissionsController@assign_permission');
+        Route::delete('/admin/permissions_to_roles/{id}', 'PermissionsController@unassign_permission');
 
-        //Permissions Routes
+        //Roles Routes
         Route::get('/admin/roles/all', 'RolesController@index');
         Route::post('/admin/roles', 'RolesController@store')->name('roles.store');
         Route::put('/admin/roles/{id}', 'RolesController@update')->name('roles.update');
         Route::delete('/admin/roles/{id}', 'RolesController@destroy')->name('roles.remove');
+        Route::get('admin/roles/assign/{role_id}', 'RolesController@assign')->name('roles.assign');
     });
 });

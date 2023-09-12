@@ -58,16 +58,7 @@ class pgUsers {
                     data: 'username',
                 },
                 {
-                    data: 'role',
-                    render: function (data, type, row) {
-                        if (data == 1) {
-                            return 'Admin'
-                        } else if(data == 2) {
-                            return 'Purchasing'
-                        } else {
-                            return 'Sales'
-                        }
-                    }
+                    data: 'description',
                 },
                 {
                     data: 'created_at',

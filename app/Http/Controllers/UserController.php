@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -12,7 +13,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = DB::table("users")
+            ->select(array('users.*', 'roles.description'))
+            ->leftJoin("user_to_roles", "users.id", "=", "user_to_roles.user_id")
+            ->leftJoin("roles", "user_to_roles.role_id", "=", "roles.id")
+            ->get();
         return response()->json(['success' => true, 'data' => $users]);
     }
 

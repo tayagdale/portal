@@ -112,7 +112,7 @@
     "src": "resources/js/pages/file_maintenance/permissionsDatatable.js"
   },
   "resources/js/pages/file_maintenance/rolesDatatable.js": {
-    "file": "assets/rolesDatatable-786b4be3.js",
+    "file": "assets/rolesDatatable-816a2e67.js",
     "isEntry": true,
     "src": "resources/js/pages/file_maintenance/rolesDatatable.js"
   },
@@ -132,7 +132,7 @@
     "src": "resources/js/pages/file_maintenance/unitsDatatable.js"
   },
   "resources/js/pages/file_maintenance/usersDatatable.js": {
-    "file": "assets/usersDatatable-725ad334.js",
+    "file": "assets/usersDatatable-13bca1f1.js",
     "isEntry": true,
     "src": "resources/js/pages/file_maintenance/usersDatatable.js"
   },
