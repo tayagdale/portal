@@ -172,6 +172,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::view('/admin/suppliers', 'pages/file_maintenance/suppliers');
         Route::view('/admin/users', 'pages/file_maintenance/users');
         Route::view('/admin/warehouse', 'pages/file_maintenance/warehouse');
+        Route::view('/admin/inventory_status', 'pages/file_maintenance/inventory_status');
+        Route::view('/admin/roles', 'pages/file_maintenance/roles');
+        Route::view('/admin/permissions', 'pages/file_maintenance/permissions');
 
         //User Routes
         Route::get('/admin/users/all', 'UserController@index');
@@ -212,5 +215,21 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::post('/admin/warehouse', 'WarehouseController@store')->name('warehouse.store');
         Route::put('/admin/warehouse/{id}', 'WarehouseController@update')->name('warehouse.update');
         Route::delete('/admin/warehouse/{id}', 'WarehouseController@destroy')->name('warehouse.remove');
+
+        //Inventory Status Routes
+        Route::get('/admin/inventory_status/all', 'InventoryStatusController@index');
+        Route::put('/admin/inventory_status/{id}', 'InventoryStatusController@update')->name('inventory_status.update');
+
+        //Roles Routes
+        Route::get('/admin/permissions/all', 'PermissionsController@index');
+        Route::post('/admin/permissions', 'PermissionsController@store')->name('permissions.store');
+        Route::put('/admin/permissions/{id}', 'PermissionsController@update')->name('permissions.update');
+        Route::delete('/admin/permissions/{id}', 'PermissionsController@destroy')->name('permissions.remove');
+
+        //Permissions Routes
+        Route::get('/admin/roles/all', 'RolesController@index');
+        Route::post('/admin/roles', 'RolesController@store')->name('roles.store');
+        Route::put('/admin/roles/{id}', 'RolesController@update')->name('roles.update');
+        Route::delete('/admin/roles/{id}', 'RolesController@destroy')->name('roles.remove');
     });
 });

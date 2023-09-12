@@ -96,10 +96,25 @@
     "isEntry": true,
     "src": "resources/js/pages/file_maintenance/customersDatatable.js"
   },
+  "resources/js/pages/file_maintenance/inventoryStatusDatatable.js": {
+    "file": "assets/inventoryStatusDatatable-03a5d198.js",
+    "isEntry": true,
+    "src": "resources/js/pages/file_maintenance/inventoryStatusDatatable.js"
+  },
   "resources/js/pages/file_maintenance/itemsDatatable.js": {
     "file": "assets/itemsDatatable-29e48745.js",
     "isEntry": true,
     "src": "resources/js/pages/file_maintenance/itemsDatatable.js"
+  },
+  "resources/js/pages/file_maintenance/permissionsDatatable.js": {
+    "file": "assets/permissionsDatatable-85fcbd86.js",
+    "isEntry": true,
+    "src": "resources/js/pages/file_maintenance/permissionsDatatable.js"
+  },
+  "resources/js/pages/file_maintenance/rolesDatatable.js": {
+    "file": "assets/rolesDatatable-786b4be3.js",
+    "isEntry": true,
+    "src": "resources/js/pages/file_maintenance/rolesDatatable.js"
   },
   "resources/js/pages/file_maintenance/subCategoriesDatatable.js": {
     "file": "assets/subCategoriesDatatable-32fe9fa2.js",
@@ -142,7 +157,7 @@
     "src": "resources/js/pages/purchasing/inspectionsDatatable.js"
   },
   "resources/js/pages/purchasing/inventoryDatatable.js": {
-    "file": "assets/inventoryDatatable-09298667.js",
+    "file": "assets/inventoryDatatable-95945a4f.js",
     "isEntry": true,
     "src": "resources/js/pages/purchasing/inventoryDatatable.js"
   },

@@ -68,14 +68,14 @@ class pgPurchaseOrders {
                     }
                 },
                 {
-                    data: 'Iqty',
+                    data: 'inventory_status',
                     render: function (data, type, row) {
-                        if (data < 1) {
-                            return `<span class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill bg-danger-light text-danger">OUT OF STOCK</span>`
-                        } else if (data < 10) {
-                            return `<span class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill bg-warning-light text-warning">LIMITED</span>`
-                        } else {
+                        if (data == "In Stock") {
                             return `<span class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill bg-success-light text-success">IN STOCK</span>`
+                        } else if (data == "Warning") {
+                            return `<span class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill bg-warning-light text-warning">WARNING</span>`
+                        } else {
+                            return `<span class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill bg-danger-light text-danger">OUT OF STOCK</span>`
                         }
                     }
                 },

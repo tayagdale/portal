@@ -200,146 +200,166 @@
                 <!-- Side Navigation -->
                 <div class="content-side">
                     <ul class="nav-main">
-                        @if(auth()->check() && auth()->user()->role == 1)
-                        <li class="nav-main-item">
-                            <a class="nav-main-link{{ request()->is('admin/dashboard') || request()->is('/') ? ' active' : '' }}"
-                                href="/admin/dashboard">
-                                <i class="nav-main-link-icon si si-speedometer"></i>
-                                <span class="nav-main-link-name">Dashboard</span>
-                            </a>
-                        </li>
+                        @if (auth()->check() && auth()->user()->role == 1)
+                            <li class="nav-main-item">
+                                <a class="nav-main-link{{ request()->is('admin/dashboard') || request()->is('/') ? ' active' : '' }}"
+                                    href="/admin/dashboard">
+                                    <i class="nav-main-link-icon si si-speedometer"></i>
+                                    <span class="nav-main-link-name">Dashboard</span>
+                                </a>
+                            </li>
                         @endif
 
-                        @if((auth()->check() && auth()->user()->role == 2) ||  auth()->user()->role == 1)
-                        <li class="nav-main-heading">Purchasing</li>
-                        <li class="nav-main-item open">
-                            <a class="nav-main-link{{ request()->is('admin/purchase_order') ? ' active' : '' }}"
-                                href="/admin/purchase_order">
-                                <i class="nav-main-link-icon fa fa-cart-shopping"></i>
-                                <span class="nav-main-link-name">Purchase Order</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item open">
-                            <a class="nav-main-link{{ request()->is('admin/inspection') ? ' active' : '' }}"
-                                href="/admin/inspection">
-                                <i class="nav-main-link-icon si si-magnifier"></i>
-                                <span class="nav-main-link-name">Inspection</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item open">
-                            <a class="nav-main-link{{ request()->is('admin/inventory') ? ' active' : '' }}"
-                                href="/admin/inventory">
-                                <i class="nav-main-link-icon fa fa-warehouse"></i>
-                                <span class="nav-main-link-name">Inventory</span>
-                            </a>
-                        </li>
+                        @if ((auth()->check() && auth()->user()->role == 2) || auth()->user()->role == 1)
+                            <li class="nav-main-heading">Purchasing</li>
+                            <li class="nav-main-item open">
+                                <a class="nav-main-link{{ request()->is('admin/purchase_order') ? ' active' : '' }}"
+                                    href="/admin/purchase_order">
+                                    <i class="nav-main-link-icon fa fa-cart-shopping"></i>
+                                    <span class="nav-main-link-name">Purchase Order</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item open">
+                                <a class="nav-main-link{{ request()->is('admin/inspection') ? ' active' : '' }}"
+                                    href="/admin/inspection">
+                                    <i class="nav-main-link-icon si si-magnifier"></i>
+                                    <span class="nav-main-link-name">Inspection</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item open">
+                                <a class="nav-main-link{{ request()->is('admin/inventory') ? ' active' : '' }}"
+                                    href="/admin/inventory">
+                                    <i class="nav-main-link-icon fa fa-warehouse"></i>
+                                    <span class="nav-main-link-name">Inventory</span>
+                                </a>
+                            </li>
                         @endif
-                        @if((auth()->check() && auth()->user()->role == 3) ||  auth()->user()->role == 1)
-                        <li class="nav-main-heading">Sales</li>
-                        <li class="nav-main-item open">
-                            <a class="nav-main-link{{ request()->is('admin/order_slip') ? ' active' : '' }}"
-                                href="/admin/order_slip">
-                                <i class="nav-main-link-icon far fa-note-sticky"></i>
-                                <span class="nav-main-link-name">Order Slip</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item open">
-                            <a class="nav-main-link{{ request()->is('admin/sales_order') ? ' active' : '' }}"
-                                href="/admin/sales_order">
-                                <i class="nav-main-link-icon fa fa-cart-shopping"></i>
-                                <span class="nav-main-link-name">Sales Order</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item open">
-                            <a class="nav-main-link{{ request()->is('admin/delivery') ? ' active' : '' }}"
-                                href="/admin/delivery">
-                                <i class="nav-main-link-icon fa fa-cart-shopping"></i>
-                                <span class="nav-main-link-name">Delivery</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item open">
-                            <a class="nav-main-link{{ request()->is('admin/sales_invoice') ? ' active' : '' }}"
-                                href="/admin/sales_invoice">
-                                <i class="nav-main-link-icon fa fa-file-invoice"></i>
-                                <span class="nav-main-link-name">Sales Invoice</span>
-                            </a>
-                        </li>
+                        @if ((auth()->check() && auth()->user()->role == 3) || auth()->user()->role == 1)
+                            <li class="nav-main-heading">Sales</li>
+                            <li class="nav-main-item open">
+                                <a class="nav-main-link{{ request()->is('admin/order_slip') ? ' active' : '' }}"
+                                    href="/admin/order_slip">
+                                    <i class="nav-main-link-icon far fa-note-sticky"></i>
+                                    <span class="nav-main-link-name">Order Slip</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item open">
+                                <a class="nav-main-link{{ request()->is('admin/sales_order') ? ' active' : '' }}"
+                                    href="/admin/sales_order">
+                                    <i class="nav-main-link-icon fa fa-cart-shopping"></i>
+                                    <span class="nav-main-link-name">Sales Order</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item open">
+                                <a class="nav-main-link{{ request()->is('admin/delivery') ? ' active' : '' }}"
+                                    href="/admin/delivery">
+                                    <i class="nav-main-link-icon fa fa-cart-shopping"></i>
+                                    <span class="nav-main-link-name">Delivery</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item open">
+                                <a class="nav-main-link{{ request()->is('admin/sales_invoice') ? ' active' : '' }}"
+                                    href="/admin/sales_invoice">
+                                    <i class="nav-main-link-icon fa fa-file-invoice"></i>
+                                    <span class="nav-main-link-name">Sales Invoice</span>
+                                </a>
+                            </li>
                         @endif
-                        @if(auth()->check() && auth()->user()->role == 1)
-
-                        <li class="nav-main-heading">Payment</li>
-                        <li class="nav-main-item open">
-                            <a class="nav-main-link{{ request()->is('admin/incoming_payment') ? ' active' : '' }}"
-                                href="/admin/incoming_payment">
-                                <i class="nav-main-link-icon fa fa-cart-shopping"></i>
-                                <span class="nav-main-link-name">Incoming Payment</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item open">
-                            <a class="nav-main-link{{ request()->is('admin/outgoing_payment') ? ' active' : '' }}"
-                                href="/admin/outgoing_payment">
-                                <i class="nav-main-link-icon si si-magnifier"></i>
-                                <span class="nav-main-link-name">Outgoing Payment</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-heading">File Maintenance</li>
-                        <li class="nav-main-item open">
-                            <a class="nav-main-link{{ request()->is('admin/categories') ? ' active' : '' }}"
-                                href="/admin/categories">
-                                <i class="nav-main-link-icon si si-list"></i>
-                                <span class="nav-main-link-name">Categories</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item open">
-                            <a class="nav-main-link{{ request()->is('admin/warehouse') ? ' active' : '' }}"
-                                href="/admin/warehouse">
-                                <i class="nav-main-link-icon si si-map"></i>
-                                <span class="nav-main-link-name">Warehouse</span>
-                            </a>
-                        </li>
-                        {{-- <li class="nav-main-item open">
+                        @if (auth()->check() && auth()->user()->role == 1)
+                            <li class="nav-main-heading">Payment</li>
+                            <li class="nav-main-item open">
+                                <a class="nav-main-link{{ request()->is('admin/incoming_payment') ? ' active' : '' }}"
+                                    href="/admin/incoming_payment">
+                                    <i class="nav-main-link-icon fa fa-cart-shopping"></i>
+                                    <span class="nav-main-link-name">Incoming Payment</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item open">
+                                <a class="nav-main-link{{ request()->is('admin/outgoing_payment') ? ' active' : '' }}"
+                                    href="/admin/outgoing_payment">
+                                    <i class="nav-main-link-icon si si-magnifier"></i>
+                                    <span class="nav-main-link-name">Outgoing Payment</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-heading">File Maintenance</li>
+                            <li class="nav-main-item open">
+                                <a class="nav-main-link{{ request()->is('admin/categories') ? ' active' : '' }}"
+                                    href="/admin/categories">
+                                    <i class="nav-main-link-icon si si-list"></i>
+                                    <span class="nav-main-link-name">Categories</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item open">
+                                <a class="nav-main-link{{ request()->is('admin/inventory_status') ? ' active' : '' }}"
+                                    href="/admin/inventory_status">
+                                    <i class="nav-main-link-icon si si-folder"></i>
+                                    <span class="nav-main-link-name">Inventory Status</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item open">
+                                <a class="nav-main-link{{ request()->is('admin/warehouse') ? ' active' : '' }}"
+                                    href="/admin/warehouse">
+                                    <i class="nav-main-link-icon si si-map"></i>
+                                    <span class="nav-main-link-name">Warehouse</span>
+                                </a>
+                            </li>
+                            {{-- <li class="nav-main-item open">
                             <a class="nav-main-link{{ request()->is('admin/sub_categories') ? ' active' : '' }}"
                                 href="/admin/sub_categories">
                                 <i class="nav-main-link-icon si si-list"></i>
                                 <span class="nav-main-link-name">Sub-Categories</span>
                             </a>
                         </li> --}}
-                        <li class="nav-main-item open">
-                            <a class="nav-main-link{{ request()->is('admin/items') ? ' active' : '' }}"
-                                href="/admin/items">
-                                <i class="nav-main-link-icon si si-list"></i>
-                                <span class="nav-main-link-name">Items</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item open">
-                            <a class="nav-main-link{{ request()->is('admin/units') ? ' active' : '' }}"
-                                href="/admin/units">
-                                <i class="nav-main-link-icon si si-list"></i>
-                                <span class="nav-main-link-name">Unit of Measure</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item open">
-                            <a class="nav-main-link{{ request()->is('admin/customers') ? ' active' : '' }}"
-                                href="/admin/customers">
-                                <i class="nav-main-link-icon si si-people"></i>
-                                <span class="nav-main-link-name">Customers</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item open">
-                            <a class="nav-main-link{{ request()->is('admin/suppliers') ? ' active' : '' }}"
-                                href="/admin/suppliers">
-                                <i class="nav-main-link-icon si si-people"></i>
-                                <span class="nav-main-link-name">Suppliers</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item open">
-                            <a class="nav-main-link{{ request()->is('admin/users') ? ' active' : '' }}"
-                                href="/admin/users">
-                                <i class="nav-main-link-icon si si-people"></i>
-                                <span class="nav-main-link-name">Users</span>
-                            </a>
-                        </li>
-                    @endif
+                            <li class="nav-main-item open">
+                                <a class="nav-main-link{{ request()->is('admin/items') ? ' active' : '' }}"
+                                    href="/admin/items">
+                                    <i class="nav-main-link-icon si si-list"></i>
+                                    <span class="nav-main-link-name">Items</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item open">
+                                <a class="nav-main-link{{ request()->is('admin/units') ? ' active' : '' }}"
+                                    href="/admin/units">
+                                    <i class="nav-main-link-icon si si-list"></i>
+                                    <span class="nav-main-link-name">Unit of Measure</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item open">
+                                <a class="nav-main-link{{ request()->is('admin/customers') ? ' active' : '' }}"
+                                    href="/admin/customers">
+                                    <i class="nav-main-link-icon si si-people"></i>
+                                    <span class="nav-main-link-name">Customers</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item open">
+                                <a class="nav-main-link{{ request()->is('admin/suppliers') ? ' active' : '' }}"
+                                    href="/admin/suppliers">
+                                    <i class="nav-main-link-icon si si-people"></i>
+                                    <span class="nav-main-link-name">Suppliers</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item open">
+                                <a class="nav-main-link{{ request()->is('admin/roles') ? ' active' : '' }}"
+                                    href="/admin/roles">
+                                    <i class="nav-main-link-icon si si-people"></i>
+                                    <span class="nav-main-link-name">Roles</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item open">
+                                <a class="nav-main-link{{ request()->is('admin/permissions') ? ' active' : '' }}"
+                                    href="/admin/permissions">
+                                    <i class="nav-main-link-icon si si-people"></i>
+                                    <span class="nav-main-link-name">Permissions</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item open">
+                                <a class="nav-main-link{{ request()->is('admin/users') ? ' active' : '' }}"
+                                    href="/admin/users">
+                                    <i class="nav-main-link-icon si si-people"></i>
+                                    <span class="nav-main-link-name">Users</span>
+                                </a>
+                            </li>
+                        @endif
                     </ul>
                 </div>
                 <!-- END Side Navigation -->
@@ -406,7 +426,7 @@
                                 $full_name = Auth::user()->name;
                                 $name_parts = explode(' ', $full_name);
                                 $firstName = $name_parts[0];
-                              
+                                
                             @endphp
                             <span class="d-none d-sm-inline-block ms-2">{{ $firstName }}</span>
                             <i class="fa fa-fw fa-angle-down d-none d-sm-inline-block ms-1 mt-1"></i>
@@ -418,15 +438,15 @@
                                     src="{{ asset('media/avatars/avatar10.jpg') }}" alt="">
 
                                 <p class="mt-2 mb-0 fw-medium">{{ Auth::user()->name }}</p>
-                                @php 
-                                $role = "Admin";
-                                if (Auth::user()->role == 1){
-                                    $role = "Admin";
-                                } else if (Auth::user()->role == 2){
-                                    $role = "Purchasing";
-                                } else {
-                                    $role = "Sales";
-                                }
+                                @php
+                                    $role = 'Admin';
+                                    if (Auth::user()->role == 1) {
+                                        $role = 'Admin';
+                                    } elseif (Auth::user()->role == 2) {
+                                        $role = 'Purchasing';
+                                    } else {
+                                        $role = 'Sales';
+                                    }
                                 @endphp
                                 <p class="mb-0 text-muted fs-sm fw-medium">{{ $role }}</p>
                             </div>
