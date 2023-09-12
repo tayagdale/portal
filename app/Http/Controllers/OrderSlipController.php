@@ -58,9 +58,16 @@ class OrderSlipController extends Controller
         return view('pages/sales/order_slip_add')->with('os_number', $id);
     }
 
-    public function createDraft()
+    public function createDraft(Request $request)
     {
+        $request->validate([
+            'os_number' => 'required|string|min:3|max:20',
+        ]);
+
+
+
         $order_slips = new OrderSlip();
+        $order_slips->os_number = $request->input('os_number'); // Set encoded_by
         $order_slips->encoded_by = auth()->user()->id; // Set encoded_by
         $order_slips->status = 4; // Set status
         // Set other fields...
@@ -85,7 +92,6 @@ class OrderSlipController extends Controller
     {
         // Validate the input data from the edit form
         $request->validate([
-            'os_number' => 'required|string',
             'customer_id' => 'required|integer',
             'terms' => 'required|integer',
             // Add validation rules for other attributes as needed
@@ -97,7 +103,6 @@ class OrderSlipController extends Controller
             return response()->json(['error' => 'Order slip not found.'], 404);
         }
 
-        $orderSlip->os_number = $request->input('os_number');
         $orderSlip->customer_id = $request->input('customer_id');
         $orderSlip->terms = $request->input('terms');
         $orderSlip->status = 1;

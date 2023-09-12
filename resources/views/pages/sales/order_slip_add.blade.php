@@ -76,7 +76,7 @@
                                         <div class="col-md-3">
                                             <label for="">OS No.</label>
                                             <input type="text" value="{{ $os_number }}" name="os_number"
-                                                id="os_number" class="form-control os_number">
+                                                id="os_number" class="form-control os_number" readonly>
                                         </div>
                                         <div class="col-md-3">
                                             <label for="">Date</label>

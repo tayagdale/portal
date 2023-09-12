@@ -44,14 +44,15 @@
                     </h1>
                 </div>
                 <div class="flex-shrink-0 mt-3 mt-sm-0 ms-sm-3" a>
-                    <a type="submit" class="btn btn-sm btn-primary" href="{{ route('order_slip_add.create') }}"><i
+                    <button  class="btn btn-sm btn-primary" onclick="createDraft()"><i
                             class="fa fa-plus"></i>
-                        Add New Order Slip</a>
+                        Add New Order Slip</button>
                 </div>
             </div>
         </div>
     </div>
     <!-- END Hero -->
+    @include('modals/order_slips/modal')
 
     <!-- Page Content -->
     <div class="content">

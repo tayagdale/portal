@@ -160,6 +160,11 @@ function updateOS(os_number) {
 
 }
 
+function createDraft() {
+    $('#mdlAddOSNumber').modal('show'); // Show the modal
+}
+
+
 function displayErrors(errors) {
     // Loop through the errors and display them in the corresponding divs
     $.each(errors, function (key, value) {

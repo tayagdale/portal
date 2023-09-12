@@ -60,9 +60,15 @@ class PurchaseOrderController extends Controller
         return view('pages/purchasing/purchase_order_add')->with('po_number', $id);
     }
 
-    public function createDraft()
+    public function createDraft(Request $request)
     {
+
+        $request->validate([
+            'po_number' => 'required|string|min:3|max:20',
+        ]);
+
         $purchaseOrder = new PurchaseOrder();
+        $purchaseOrder->po_number = $request->input('po_number'); // Set encoded_by
         $purchaseOrder->encoded_by = auth()->user()->id; // Set encoded_by
         $purchaseOrder->status = 4; // Set status
         // Set other fields...
@@ -86,7 +92,6 @@ class PurchaseOrderController extends Controller
     {
         // Validate the input data from the edit form
         $request->validate([
-            'po_number' => 'required|string',
             'supplier_id' => 'required|integer',
             'terms' => 'required|integer',
             'total_amount' => 'integer',
@@ -99,7 +104,6 @@ class PurchaseOrderController extends Controller
             return response()->json(['error' => 'Purchase order not found.'], 404);
         }
 
-        $purchaseOrder->po_number = $request->input('po_number');
         $purchaseOrder->supplier_id = $request->input('supplier_id');
         $purchaseOrder->terms = $request->input('terms');
         $purchaseOrder->total_amount = $request->input('total_amount');

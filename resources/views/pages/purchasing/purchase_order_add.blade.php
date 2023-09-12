@@ -80,7 +80,7 @@
                                         <div class="col-md-3">
                                             <label for="">PO No.</label>
                                             <input type="text" value="{{ $po_number }}" name="po_number"
-                                                id="po_number" class="form-control po_number" >
+                                                id="po_number" class="form-control po_number" readonly>
                                         </div>
                                         <div class="col-md-3">
                                             <label for="">Date</label>

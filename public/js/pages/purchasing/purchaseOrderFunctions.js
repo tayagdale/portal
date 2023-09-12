@@ -164,6 +164,9 @@ function create() {
     $('#mdlUnit').modal('show'); // Show the modal
 }
 
+function createDraft() {
+    $('#mdlAddPONumber').modal('show'); // Show the modal
+}
 
 
 function update(id, unit_code) {

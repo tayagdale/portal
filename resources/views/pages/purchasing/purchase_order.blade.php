@@ -44,13 +44,14 @@
                 </h1>
             </div>
             <div class="flex-shrink-0 mt-3 mt-sm-0 ms-sm-3" a>
-                <a type="submit" class="btn btn-sm btn-primary" href="{{ route('purchase_order_add.create') }}"><i class="fa fa-plus"></i>
-                    Add New PO</a>
+                <button class="btn btn-sm btn-primary" onclick="createDraft()"><i class="fa fa-plus"></i>
+                    Add New PO</button>
             </div>
         </div>
     </div>
 </div>
 <!-- END Hero -->
+@include('modals/purchase_orders/modal')
 
 <!-- Page Content -->
 <div class="content">
