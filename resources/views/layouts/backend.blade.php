@@ -211,7 +211,7 @@
                         @endcheckPermission
                         @checkPermission(
                             'checkPermission(auth()->user()->id, 2) || checkPermission(auth()->user()->id, 3) ||
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        checkPermission(auth()->user()->id, 4)'
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        checkPermission(auth()->user()->id, 4)'
                         )
                             <li class="nav-main-heading">Purchasing</li>
                         @endcheckPermission
@@ -381,28 +381,37 @@
                         @endcheckPermission
                         @checkPermission('checkPermission(auth()->user()->id, 18)')
                             <li class="nav-main-item open">
-                                <a class="nav-main-link{{ request()->is('admin/roles') ? ' active' : '' }}"
-                                    href="/admin/roles">
+                                <a class="nav-main-link{{ request()->is('admin/users') ? ' active' : '' }}"
+                                    href="/admin/users">
                                     <i class="nav-main-link-icon si si-people"></i>
-                                    <span class="nav-main-link-name">Roles</span>
+                                    <span class="nav-main-link-name">Users</span>
                                 </a>
                             </li>
                         @endcheckPermission
                         @checkPermission('checkPermission(auth()->user()->id, 19)')
                             <li class="nav-main-item open">
-                                <a class="nav-main-link{{ request()->is('admin/permissions') ? ' active' : '' }}"
-                                    href="/admin/permissions">
-                                    <i class="nav-main-link-icon si si-people"></i>
-                                    <span class="nav-main-link-name">Permissions</span>
+                                <a class="nav-main-link{{ request()->is('admin/roles') ? ' active' : '' }}"
+                                    href="/admin/roles">
+                                    <i class="nav-main-link-icon si si-user"></i>
+                                    <span class="nav-main-link-name">Roles</span>
                                 </a>
                             </li>
                         @endcheckPermission
                         @checkPermission('checkPermission(auth()->user()->id, 20)')
                             <li class="nav-main-item open">
-                                <a class="nav-main-link{{ request()->is('admin/users') ? ' active' : '' }}"
-                                    href="/admin/users">
-                                    <i class="nav-main-link-icon si si-people"></i>
-                                    <span class="nav-main-link-name">Users</span>
+                                <a class="nav-main-link{{ request()->is('admin/permissions') ? ' active' : '' }}"
+                                    href="/admin/permissions">
+                                    <i class="nav-main-link-icon si si-list"></i>
+                                    <span class="nav-main-link-name">Permissions</span>
+                                </a>
+                            </li>
+                        @endcheckPermission
+                        @checkPermission('checkPermission(auth()->user()->id, 21)')
+                            <li class="nav-main-item open">
+                                <a class="nav-main-link{{ request()->is('admin/tax') ? ' active' : '' }}"
+                                    href="/admin/tax">
+                                    <i class="nav-main-link-icon si si-tag"></i>
+                                    <span class="nav-main-link-name">Tax</span>
                                 </a>
                             </li>
                         @endcheckPermission

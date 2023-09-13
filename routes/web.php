@@ -175,6 +175,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::view('/admin/inventory_status', 'pages/file_maintenance/inventory_status');
         Route::view('/admin/roles', 'pages/file_maintenance/roles');
         Route::view('/admin/permissions', 'pages/file_maintenance/permissions');
+        Route::view('/admin/tax', 'pages/file_maintenance/tax');
 
         //User Routes
         Route::get('/admin/users/all', 'UserController@index');
@@ -236,5 +237,10 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::put('/admin/roles/{id}', 'RolesController@update')->name('roles.update');
         Route::delete('/admin/roles/{id}', 'RolesController@destroy')->name('roles.remove');
         Route::get('admin/roles/assign/{role_id}', 'RolesController@assign')->name('roles.assign');
+
+
+        //Taxes Routes
+        Route::get('/admin/taxes/all', 'TaxController@index');
+        Route::put('/admin/taxes/{id}', 'TaxController@update')->name('tax.update');
     });
 });

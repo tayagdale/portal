@@ -34,6 +34,7 @@ export default defineConfig({
                 'resources/js/pages/file_maintenance/inventoryStatusDatatable.js',
                 'resources/js/pages/file_maintenance/rolesDatatable.js',
                 'resources/js/pages/file_maintenance/permissionsDatatable.js',
+                'resources/js/pages/file_maintenance/taxesDatatable.js',
             ],
             refresh: true,
         }),

@@ -126,6 +126,11 @@
     "isEntry": true,
     "src": "resources/js/pages/file_maintenance/suppliersDatatable.js"
   },
+  "resources/js/pages/file_maintenance/taxesDatatable.js": {
+    "file": "assets/taxesDatatable-3202e913.js",
+    "isEntry": true,
+    "src": "resources/js/pages/file_maintenance/taxesDatatable.js"
+  },
   "resources/js/pages/file_maintenance/unitsDatatable.js": {
     "file": "assets/unitsDatatable-2bb50593.js",
     "isEntry": true,
