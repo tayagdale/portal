@@ -41,6 +41,7 @@ function create() {
     $('#dr_numberError').text('');
     requestType = 'POST'; // Set the request type for adding
     getDeliveries();
+    getTaxes();
     $('#mdlAddSalesInvoice').modal('show'); // Show the modal
 }
 
@@ -65,6 +66,26 @@ function getDeliveries() {
             document.getElementById("dr_number").innerHTML = html;
         })
 }
+
+
+function getTaxes() {
+    var apiGetSupp = "/admin/taxes/all";
+
+    fetch(apiGetSupp, {
+        method: "get"
+    })
+        .then(response => response.json())
+        .then(data => {
+            let taxes = data.data;
+            let html = '';
+            html += "<option value='' disabled selected>Select Tax</option>";
+            for (var i = 0; i < taxes.length; i++) {
+                html += "<option value=" + taxes[i].id + ">" + taxes[i].code + "</option>"
+            }
+            document.getElementById("tax_id").innerHTML = html;
+        })
+}
+
 
 
 function viewSalesInvoiceDetails(si_number) {

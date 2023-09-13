@@ -108,7 +108,7 @@ class DeliveryController extends Controller
         $deliveryDetails = DB::table("delivery_details")
             ->select(array('delivery_details.*', 'units.unit_code', 'items.brand_name'))
             ->leftJoin("items", "delivery_details.item_id", "=", "items.id")
-            ->leftJoin("units", "items.unit_id", "=", "units.id")
+            ->leftJoin("units", "delivery_details.unit_id", "=", "units.id")
             ->where('dr_number', $dr_number)
             ->get();
 

@@ -51,6 +51,7 @@ class SalesInvoiceController extends Controller
 
         $request->validate([
             'si_number' => 'required|string|min:3|max:20',
+            'tax_id' => 'required|integer',
             // Add validation rules for other attributes as needed
         ]);
 
@@ -63,6 +64,7 @@ class SalesInvoiceController extends Controller
 
         $sales_invoice = new SalesInvoice();
         $sales_invoice->si_number = $request->input('si_number');
+        $sales_invoice->tax = $request->input('tax_id');
         $sales_invoice->dr_number = $delivery->dr_number;
         $sales_invoice->so_number = $delivery->so_number;
         $sales_invoice->os_number = $delivery->os_number;
@@ -112,12 +114,13 @@ class SalesInvoiceController extends Controller
         $salesInvoiceDetails = DB::table("sales_invoice_details")
             ->select(array('sales_invoice_details.*', 'units.unit_code', 'items.brand_name'))
             ->leftJoin("items", "sales_invoice_details.item_id", "=", "items.id")
-            ->leftJoin("units", "items.unit_id", "=", "units.id")
+            ->leftJoin("units", "sales_invoice_details.unit_id", "=", "units.id")
             ->where('si_number', $si_number)
             ->get();
 
         $sales_invoice = DB::table("sales_invoice")
-            ->select(array('sales_invoice.*', 'customers.address', 'customers.description', 'customers.customer_code'))
+            ->select(array('sales_invoice.*', 'taxes.code as tax_code', 'taxes.rate as tax_rate', 'customers.address', 'customers.description', 'customers.customer_code'))
+            ->leftJoin("taxes", "sales_invoice.tax", "=", "taxes.id")
             ->leftJoin("customers", "sales_invoice.customer_id", "=", "customers.id")
             ->where('si_number', $si_number)
             ->get();

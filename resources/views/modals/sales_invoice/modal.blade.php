@@ -25,6 +25,12 @@
                             </select>
                             <label for="dr_number">Delivery No.</label>
                         </div>
+                        <div class="form-floating mb-4">
+                            <select class="form-select" id="tax_id" name="tax_id"
+                                aria-label="Floating label select example">
+                            </select>
+                            <label for="tax_id">Tax</label>
+                        </div>
                     </form>
                 </div>
                 <div class="block-content block-content-full text-end bg-body">

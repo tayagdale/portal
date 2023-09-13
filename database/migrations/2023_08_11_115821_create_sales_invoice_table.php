@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('so_number');
             $table->string('os_number');
             $table->integer('customer_id');
+            $table->integer('tax');
             $table->timestamp('date')->useCurrent();
             $table->integer('terms');
             $table->integer('encoded_by');

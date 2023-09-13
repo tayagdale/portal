@@ -131,6 +131,38 @@
             text-align: center;
         }
 
+        .vatExTax {
+            position: absolute;
+            right: 79px;
+            top: 1020px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .vatExAmount {
+            position: absolute;
+            right: 79px;
+            top: 1074px;
+            width: 100%;
+            text-align: center;
+        }
+
+
+        .vatIncTax {
+            position: absolute;
+            right: 79px;
+            top: 1094px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .vatIncAmount {
+            position: absolute;
+            right: 79px;
+            top: 1074px;
+            width: 100%;
+            text-align: center;
+        }
 
         .total_div {
             /* margin-top: 518px !important; */
@@ -150,8 +182,8 @@
                 /* print-color-adjust: exact !important; */
                 /* Firefox 97+, Safari 15.4+ */
                 /* background-image: url('{{ asset('media/photos/sales_invoice.jpg') }}');
-                background-size: contain;
-                background-repeat: no-repeat; */
+                    background-size: contain;
+                    background-repeat: no-repeat; */
                 border: none !important;
             }
 
@@ -258,6 +290,40 @@
             }
 
 
+            .vatExTax {
+                position: absolute;
+                right: -70px;
+                top: 800px;
+                width: 100%;
+                text-align: center;
+            }
+
+            .vatExAmount {
+                position: absolute;
+                right: -79px;
+                top: 860px;
+                width: 100%;
+                text-align: center;
+            }
+
+
+            .vatIncTax {
+                position: absolute;
+                right: -70px;
+                top: 880px;
+                width: 100%;
+                text-align: center;
+            }
+
+            .vatIncAmount {
+                position: absolute;
+                right: -79px;
+                top: 860px;
+                width: 100%;
+                text-align: center;
+            }
+
+
             .total_div {
                 /* margin-top: 518px !important; */
                 position: absolute;
@@ -345,6 +411,10 @@
                                     $decodedSI = json_decode($si, true);
                                 @endphp
                                 @foreach ($decodedSI as $sales_invoice)
+                                    @php
+                                        $tax_code = $sales_invoice['tax_code'];
+                                        $tax_rate = $sales_invoice['tax_rate'];
+                                    @endphp
                                     {{ $sales_invoice['customer_code'] }}
                                     <p>{{ $sales_invoice['description'] }}</p>
 
@@ -439,11 +509,48 @@
                         <div class="col-2"></div>
                         <div class="col-2"></div>
                         <div class="col-6">
-                            @foreach ($decodedSI as $sales_invoice)
-                                {{ $total_amount }}
-                            @endforeach
+
+                            {{ $total_amount }}
+
                         </div>
                     </div>
+                    @if ($tax_code == 'VatEx')
+                        <div class="row vatExAmount">
+                            <div class="col-2"></div>
+                            <div class="col-2"></div>
+                            <div class="col-2"></div>
+                            <div class="col-6">
+                                {{ $total_amount * 0.88 }}
+                            </div>
+                        </div>
+                        <div class="row vatExTax">
+                            <div class="col-2"></div>
+                            <div class="col-2"></div>
+                            <div class="col-2"></div>
+                            <div class="col-6">
+                                {{ $tax_rate }}%
+                            </div>
+                        </div>
+                    @endif
+                    @if ($tax_code == 'VatInc')
+                        <div class="row vatIncAmount">
+                            <div class="col-2"></div>
+                            <div class="col-2"></div>
+                            <div class="col-2"></div>
+                            <div class="col-6">
+                                {{ $total_amount * 1.12 }}
+                            </div>
+                        </div>
+                        <div class="row vatIncTax">
+                            <div class="col-2"></div>
+                            <div class="col-2"></div>
+                            <div class="col-2"></div>
+                            <div class="col-6">
+                                {{ $tax_rate }}%
+                            </div>
+                        </div>
+                    @endif
+
                     <div class="row total_div">
                         <div class="col-2"></div>
                         <div class="col-2"></div>

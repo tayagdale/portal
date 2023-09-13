@@ -112,7 +112,7 @@ class SalesOrderController extends Controller
         $salesOrderDetails = DB::table("sales_order_details")
             ->select(array('sales_order_details.*', 'units.unit_code', 'items.brand_name'))
             ->leftJoin("items", "sales_order_details.item_id", "=", "items.id")
-            ->leftJoin("units", "items.unit_id", "=", "units.id")
+            ->leftJoin("units", "sales_order_details.unit_id", "=", "units.id")
             ->where('so_number', $so_number)
             ->get();
 
