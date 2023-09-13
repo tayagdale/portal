@@ -43,6 +43,24 @@ class OrderSlipDetailController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    // public function store(Request $request)
+    // {
+    //     $validatedData = $request->validate([
+    //         'os_number' => 'required|string|min:3|max:20',
+    //         'qty' => 'required|integer',
+    //         'unit_id' => 'required|integer',
+    //         'item_id' => 'required|integer',
+    //         // Add validation rules for other attributes as needed
+    //     ]);
+
+
+    //     $order_slip_detail = OrderSlipDetail::create($validatedData);
+
+    //     $neworder_slip_detail = OrderSlipDetail::find($order_slip_detail->id);
+
+    //     return response()->json(['success' => true, 'data' => $neworder_slip_detail]);
+    // }
+
     public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -53,13 +71,24 @@ class OrderSlipDetailController extends Controller
             // Add validation rules for other attributes as needed
         ]);
 
+        // Check if an OrderSlipDetail with the same os_number and item_id already exists
+        $order_slip_detail = OrderSlipDetail::where('os_number', $validatedData['os_number'])
+            ->where('item_id', $validatedData['item_id'])
+            ->where('unit_id', $validatedData['unit_id'])
+            ->first();
 
-        $order_slip_detail = OrderSlipDetail::create($validatedData);
+        if ($order_slip_detail) {
+            // If it exists, update the qty
+            $order_slip_detail->qty += $validatedData['qty'];
+            $order_slip_detail->save();
+        } else {
+            // If it doesn't exist, create a new record
+            $order_slip_detail = OrderSlipDetail::create($validatedData);
+        }
 
-        $neworder_slip_detail = OrderSlipDetail::find($order_slip_detail->id);
-
-        return response()->json(['success' => true, 'data' => $neworder_slip_detail]);
+        return response()->json(['success' => true, 'data' => $order_slip_detail]);
     }
+
 
     /**
      * Display the specified resource.

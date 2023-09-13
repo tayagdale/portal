@@ -56,12 +56,25 @@ class PurchaseOrderDetailController extends Controller
             // Add validation rules for other attributes as needed
         ]);
 
+        // Check if an PurchaseOrderDetail with the same os_number and item_id already exists
+        $purchase_order_detail = PurchaseOrderDetail::where('po_number', $validatedData['po_number'])
+            ->where('item_id', $validatedData['item_id'])
+            ->where('unit_id', $validatedData['unit_id'])
+            ->where('unit_price', $validatedData['unit_price'])
+            ->first();
 
-        $purchase_order_detail = PurchaseOrderDetail::create($validatedData);
+        if ($purchase_order_detail) {
+            // If it exists, update the qty
+            $purchase_order_detail->qty += $validatedData['qty'];
+            $purchase_order_detail->total_amount = $purchase_order_detail->qty *  $purchase_order_detail->unit_price;
+            $purchase_order_detail->save();
+        } else {
+            // If it doesn't exist, create a new record
+            $purchase_order_detail = PurchaseOrderDetail::create($validatedData);
+        }
 
-        $newpurchase_order_detail = PurchaseOrderDetail::find($purchase_order_detail->id);
 
-        return response()->json(['success' => true, 'data' => $newpurchase_order_detail]);
+        return response()->json(['success' => true, 'data' => $purchase_order_detail]);
     }
 
     /**
