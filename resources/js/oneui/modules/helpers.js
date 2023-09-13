@@ -44,6 +44,7 @@ export default class Helpers {
       'jq-datepicker': () => this.jqDatepicker(),
       'jq-masked-inputs': () => this.jqMaskedInputs(),
       'jq-select2': () => this.jqSelect2(),
+      'custom-jq-select2': () => this.custom_jqSelect2(),
       'jq-notify': (options) => this.jqNotify(options),
       'jq-easy-pie-chart': () => this.jqEasyPieChart(),
       'jq-maxlength': () => this.jqMaxlength(),
@@ -762,6 +763,59 @@ export default class Helpers {
         dropdownParent: document.querySelector(el.data('container') || '#page-container'),
       });
     });
+  }
+
+  static custom_jqSelect2() {
+    // Init Select2 (with .js-select2 class)
+
+    jQuery('.custom-js-select2:not(.custom-js-select2-enabled)').each((index, element) => {
+      let el = jQuery(element);
+
+      // Add .js-select2-enabled class to tag it as activated and init it
+      el.addClass('custom-js-select2-enabled').select2({
+        placeholder: el.data('placeholder') || false,
+        dropdownParent: document.querySelector(el.data('container') || '#page-container'),
+        matcher: (params, data) => {
+          // If there are no search terms, return all of the data
+          if (jQuery.trim(params.term) === '') {
+            return data;
+          }
+
+          // Do not display the item if there is no 'text' property
+          if (typeof data.text === 'undefined') {
+            return null;
+          }
+
+          // `params.term` should be the term that is used for searching
+          // `data.text` is the text that is displayed for the data object
+          // `data.element` is the element node for the data object
+          if (params.term && data.text && (data.text.toUpperCase().indexOf(params.term.toUpperCase()) > -1 ||
+            (jQuery(data.element).data('generic-name') && jQuery(data.element).data('generic-name').toUpperCase().indexOf(params.term.toUpperCase()) > -1))) {
+            return data;
+          }
+          // Return `null` if the term should not be displayed
+          return null;
+        }
+      });
+    });
+    // jQuery('.custom-js-select2:not(.custom-js-select2-enabled)').each((index, element) => {
+    //   let el = jQuery(element);
+
+    //   // Add .js-select2-enabled class to tag it as activated and init it
+    //   el.addClass('custom-js-select2-enabled').select2({
+    //     placeholder: el.data('placeholder') || false,
+    //     dropdownParent: document.querySelector(el.data('container') || '#page-container'),
+    //     matcher: (params, data) => {
+    //       console.log(params);
+    //       // Check if params.term and data.text exist before using toUpperCase
+    //       if (params.term && data.text && (data.text.toUpperCase().indexOf(params.term.toUpperCase()) > -1 ||
+    //         (jQuery(data.element).data('generic-name') && jQuery(data.element).data('generic-name').toUpperCase().indexOf(params.term.toUpperCase()) > -1))) {
+    //         return data;
+    //       }
+    //       return null;
+    //     },
+    //   });
+    // });
   }
 
   /*

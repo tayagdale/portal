@@ -16,7 +16,7 @@
                         <div class="form-floating mb-4">
                             <div class="row">
                                 <div class="col-md-10 os_add_item">
-                                    <select class="js-select2 form-select" style="width: 100% !important" id="item_id"
+                                    <select class="custom-js-select2 form-select" style="width: 100% !important" id="item_id"
                                         name="item_id" data-container="#mdlAddOSItem" data-placeholder="Select Item">
                                         <option value=""></option>
                                     </select>
@@ -114,8 +114,8 @@
                 <div class="block-content fs-sm">
                     <form id="frmAddOSNumber" action="{{ route('order_slip_add.create') }}">
                         <div class="form-floating mb-4">
-                            <input type="text" class="form-control" id="os_number"
-                                name="os_number" placeholder="PO Number" autofocus required>
+                            <input type="text" class="form-control" id="os_number" name="os_number"
+                                placeholder="PO Number" autofocus required>
                             <label for="os_number">OS Number</label>
                             <p class="mb-0" id="os_numberError"></p>
                         </div>

@@ -290,15 +290,16 @@ function getItems() {
     })
         .then(response => response.json())
         .then(data => {
-            let suppliers = data.data;
+            let items = data.data;
             let html = '';
             html += "<option value='' disabled selected>Select an item</option>";
-            for (var i = 0; i < suppliers.length; i++) {
-                html += "<option value=" + suppliers[i].id + ">" + suppliers[i].brand_name + "</option>"
+            for (var i = 0; i < items.length; i++) {
+                html += `<option data-generic-name=${items[i].generic_name} value=` + items[i].id + ">" + items[i].brand_name + "</option>"
             }
             document.getElementById("item_id").innerHTML = html;
         })
 }
+
 
 
 
