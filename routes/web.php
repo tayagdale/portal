@@ -40,6 +40,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         /**
          * Login Routes
          */
+        Route::view('/', 'login');
         Route::get('admin/login', 'LoginController@show')->name('login.show');
         Route::post('admin/login', 'LoginController@login')->name('login.perform');
     });
