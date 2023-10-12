@@ -121,7 +121,7 @@ class PurchaseOrderController extends Controller
         $purchaseOrderDetails = DB::table("purchase_order_details")
             ->select(array('purchase_order_details.*', 'units.unit_code', 'items.brand_name'))
             ->leftJoin("items", "purchase_order_details.item_id", "=", "items.id")
-            ->leftJoin("units", "items.unit_id", "=", "units.id")
+            ->leftJoin("units", "purchase_order_details.unit_id", "=", "units.id")
             ->where('po_number', $po_number)
             ->get();
 
@@ -146,7 +146,7 @@ class PurchaseOrderController extends Controller
             ->select(DB::raw('inspection_details.qty as total_qty, purchase_order_details.*, purchase_order_details.unit_price * inspection_details.qty as unit_total_amount, units.unit_code, items.brand_name'))
             // ->select(array('purchase_order_details.*',  'units.unit_code', 'items.brand_name'))
             ->leftJoin("items", "purchase_order_details.item_id", "=", "items.id")
-            ->leftJoin("units", "items.unit_id", "=", "units.id")
+            ->leftJoin("units", "purchase_order_details.unit_id", "=", "units.id")
             ->leftJoin("inspection_details", "purchase_order_details.po_number", "=", "inspection_details.po_number")
             ->distinct()
             ->where('purchase_order_details.po_number', $po_number)
