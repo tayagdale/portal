@@ -56,24 +56,6 @@
         </div>
         <!-- END Quick Overview -->
 
-        <!-- Orders Overview -->
-        <div class="block block-rounded">
-            <div class="block-header block-header-default">
-                <h3 class="block-title">Orders Overview</h3>
-                <div class="block-options">
-                    <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle"
-                        data-action-mode="demo">
-                        <i class="si si-refresh"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="block-content block-content-full">
-                <!-- Chart.js is initialized in js/pages/be_pages_ecom_dashboard.min.js which was auto compiled from _js/pages/be_pages_ecom_dashboard.js) -->
-                <!-- For more info and examples you can check out http://www.chartjs.org/docs/ -->
-                <div style="height: 400px;"><canvas id="js-chartjs-overview"></canvas></div>
-            </div>
-        </div>
-        <!-- END Orders Overview -->
 
         <!-- Top Products and Latest Orders -->
         <div class="row items-push">
