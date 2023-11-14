@@ -211,7 +211,7 @@
                         @endcheckPermission
                         @checkPermission(
                             'checkPermission(auth()->user()->id, 2) || checkPermission(auth()->user()->id, 3) ||
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        checkPermission(auth()->user()->id, 4)'
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        checkPermission(auth()->user()->id, 4)'
                         )
                             <li class="nav-main-heading">Purchasing</li>
                         @endcheckPermission
@@ -361,6 +361,15 @@
                                 </a>
                             </li>
                         @endcheckPermission
+                        @checkPermission('checkPermission(auth()->user()->id, 22)')
+                            <li class="nav-main-item open">
+                                <a class="nav-main-link{{ request()->is('admin/terms') ? ' active' : '' }}"
+                                    href="/admin/terms">
+                                    <i class="nav-main-link-icon si si-list"></i>
+                                    <span class="nav-main-link-name">Terms</span>
+                                </a>
+                            </li>
+                        @endcheckPermission
                         @checkPermission('checkPermission(auth()->user()->id, 16)')
                             <li class="nav-main-item open">
                                 <a class="nav-main-link{{ request()->is('admin/customers') ? ' active' : '' }}"
@@ -481,7 +490,7 @@
                                 $full_name = Auth::user()->name;
                                 $name_parts = explode(' ', $full_name);
                                 $firstName = $name_parts[0];
-                                
+
                             @endphp
                             <span class="d-none d-sm-inline-block ms-2">{{ $firstName }}</span>
                             <i class="fa fa-fw fa-angle-down d-none d-sm-inline-block ms-1 mt-1"></i>

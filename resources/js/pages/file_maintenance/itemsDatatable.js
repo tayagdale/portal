@@ -73,10 +73,12 @@ class pgItems {
                     data: 'id',
                     render: function (data, type, row) {
                         var old_brand_name = row['brand_name'];
+                        var old_generic_name = row['generic_name'];
+                        var old_category = row['category_id'];
                         return `
                                 <div class="text-center">
                                     <div class="btn-group">
-                                    <button type="button" onclick="update(${data},'${old_brand_name}')" class="btn btn-sm btn-alt-info " data-bs-toggle="tooltip" title="Update Brand">
+                                    <button type="button" onclick="update(${data},'${old_brand_name}','${old_generic_name}','${old_category}')" class="btn btn-sm btn-alt-info " data-bs-toggle="tooltip" title="Update Brand">
                                         <i class="fa fa-fw fa-pencil-alt"></i>
                                     </button>
                                     <button type="button" onclick="remove(${data})" class="btn btn-sm btn-alt-warning" data-bs-toggle="tooltip" title="Delete Brand">
@@ -91,7 +93,7 @@ class pgItems {
             lengthMenu: [[5, 10, 15, 20], [5, 10, 15, 20]],
             autoWidth: false,
             responsive: true,
-            "order": [[1, "desc"]],
+            "order": [[1, "asc"]],
         });
 
     }

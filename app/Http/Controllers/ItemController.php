@@ -42,8 +42,8 @@ class ItemController extends Controller
     {
         $validatedData = $request->validate([
             'category_id' => 'required|integer',
-            'generic_name' => 'required|string|min:3|max:255',
-            'brand_name' => 'required|string|min:3|max:255',
+            'generic_name' => 'required|string|min:3|max:255|unique:items,generic_name',
+            'brand_name' => 'required|string|min:3|max:255|unique:items,brand_name',
             'encoded_by' => 'required|integer',
             // Add validation rules for other attributes as needed
         ]);

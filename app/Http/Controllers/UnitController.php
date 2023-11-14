@@ -30,7 +30,7 @@ class UnitController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'unit_code' => 'required|string|min:3|max:20',
+            'unit_code' => 'required|string|min:3|max:20|unique:units,unit_code',
             'encoded_by' => 'required|integer',
             // Add validation rules for other attributes as needed
         ]);

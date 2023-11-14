@@ -79,6 +79,22 @@ class pgPurchaseOrders {
                         }
                     }
                 },
+                {
+                    data: 'inventory_id',
+                    render: function (data, type, row) {
+                        var old_brand_name = row['brand_name'];
+                        var old_generic_name = row['generic_name'];
+                        var old_category = row['category_id'];
+                        return `
+                                <div class="text-center">
+                                    <div class="btn-group">
+                                    <button type="button" onclick="view_inventory(${data})" class="btn btn-sm btn-alt-info " data-bs-toggle="tooltip" title="View Inventory">
+                                        <i class="fa fa-fw fa-magnifying-glass"></i>
+                                    </button>
+                                    </div> 
+                                </div> `
+                    }
+                },
             ],
             pageLength: 10,
             lengthMenu: [[5, 10, 15, 20], [5, 10, 15, 20]],
@@ -91,6 +107,30 @@ class pgPurchaseOrders {
                 "orderable": false
             },
             ]
+        });
+
+
+        jQuery('.inventory_table').DataTable({
+            ajax: `/admin/inventory_details/data/item/2`,
+            columns: [
+                {
+                    data: 'po_number',
+                },
+                {
+                    data: 'lot_no',
+                },
+                {
+                    data: 'Iqty',
+                },
+                {
+                    data: 'expiration_date',
+                },
+            ],
+            pageLength: 10,
+            lengthMenu: [[5, 10, 15, 20], [5, 10, 15, 20]],
+            autoWidth: false,
+            responsive: true,
+            "order": [[2, "desc"]],
         });
 
     }

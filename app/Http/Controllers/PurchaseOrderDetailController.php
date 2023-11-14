@@ -52,6 +52,7 @@ class PurchaseOrderDetailController extends Controller
             'unit_id' => 'required|integer',
             'unit_price' => 'required|numeric',
             'total_amount' => 'required|numeric',
+            'remarks' => 'required|string|min:3|max:255',
             'item_id' => 'required|integer',
             // Add validation rules for other attributes as needed
         ]);

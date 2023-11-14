@@ -25,7 +25,7 @@ class RegisterController extends Controller
         $user = User::create($request->validated());
 
         $user_to_role = new UserToRole();
-        $user_to_role->role_id = $request->input('role_id');
+        $user_to_role->role_id = $request->input('role');
         $user_to_role->user_id = $user->id;
         $user_to_role->save();
 

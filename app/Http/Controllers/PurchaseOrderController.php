@@ -56,8 +56,17 @@ class PurchaseOrderController extends Controller
      */
     public function show(string $id)
     {
+        $purchaseOrders = DB::table("purchase_orders")
+            ->select(array('*'))
+            ->where('po_number', $id)
+            ->first();
 
-        return view('pages/purchasing/purchase_order_add')->with('po_number', $id);
+        $data = [
+            'terms'  => $purchaseOrders->terms,
+            'supplier_id'  => $purchaseOrders->supplier_id,
+            'po_number'  => $id,
+        ];
+        return view('pages/purchasing/purchase_order_add')->with($data);
     }
 
     public function createDraft(Request $request)

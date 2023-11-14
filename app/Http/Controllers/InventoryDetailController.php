@@ -31,6 +31,16 @@ class InventoryDetailController extends Controller
             ->get();
         return response()->json(['success' => true, 'data' => $inventory_details]);
     }
+
+    public function get_inventory_by_item_id(string $id)
+    {
+        $inventory_details = DB::table("inventory_details")
+            ->select(array('po_number', 'lot_no', 'expiration_date', DB::raw('SUM(inventory_details.qty) AS Iqty')))
+            ->where('item_id', $id)
+            ->groupBy('inventory_details.lot_no')
+            ->get();
+        return response()->json(['success' => true, 'data' => $inventory_details]);
+    }
     /**
      * Show the form for creating a new resource.
      */

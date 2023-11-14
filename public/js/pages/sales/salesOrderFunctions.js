@@ -66,6 +66,47 @@ function add_item() {
     $("#mdlAddSOItems").modal('show');
 }
 
+function delete_item(id) {
+    var salesOrderDetailId = id; // Get the item ID from the edit button's data attribute
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                type: 'DELETE',
+                url: `/admin/sales_order_details/${salesOrderDetailId}`,
+                dataType: 'json',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function (response) {
+                    // Assuming your DataTable has an ID of 'petsTable'
+                    reloadDatatable('js-dataTable-sales_order_details');
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+
+                },
+                error: function (xhr, status, error) {
+                    // Handle the error if the Ajax request fails
+                    console.log(error);
+                }
+            });
+        }
+    })
+
+
+}
+
+
 $("#mdlAddSOItems").on('shown.bs.modal', function () {
     var url = `/admin/inventory_details/data/${$('#os_number').val()}`;
     reloadDatatableWithUrl('item_table', url);
@@ -74,19 +115,30 @@ $("#mdlAddSOItems").on('shown.bs.modal', function () {
 
 function addToSalesOrder(buttonElement, INVTYID, ITEM_ID, ITEM_BRAND_NAME, ITEM_UOM, QTY, LOTNo, EXP_DATE) {
 
-
-    var salePriceValue = $(buttonElement).closest('tr').find('td').eq(3).find('input.custom-input').val(); // Change the index (0) as needed
+    var requiredQTY = parseInt($("#total_os_qty").text());
+    var qtyToAdd = parseInt($(buttonElement).closest('tr').find('td').eq(3).find('input.qty_to_add').val()); // Change the index (0) as needed
+    var salePriceValue = $(buttonElement).closest('tr').find('td').eq(4).find('input.custom-input').val(); // Change the index (0) as needed
 
     var dateOnly = new Date(EXP_DATE).toISOString().slice(0, 10);
-    console.log(INVTYID);
-    console.log(ITEM_ID);
-    console.log(ITEM_BRAND_NAME);
-    console.log(ITEM_UOM);
+    // console.log(INVTYID);
+    // console.log(ITEM_ID);
+    // console.log(ITEM_BRAND_NAME);
+    // console.log(ITEM_UOM);
     console.log(QTY);
-    console.log(LOTNo);
-    console.log(dateOnly);
+    // console.log(LOTNo);
+    // console.log(dateOnly);
+    console.log(qtyToAdd);
+    console.log(salePriceValue);
 
-    if (!salePriceValue)
+    if (!qtyToAdd) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Warning',
+            text: 'QTY required!',
+            showConfirmButton: true,
+        })
+    }
+    else if (!salePriceValue)
         Swal.fire({
             icon: 'warning',
             title: 'Warning',
@@ -94,33 +146,53 @@ function addToSalesOrder(buttonElement, INVTYID, ITEM_ID, ITEM_BRAND_NAME, ITEM_
             showConfirmButton: true,
         })
     else {
-        $.ajax({
-            url: "/admin/sales_order_details",
-            type: "POST",
-            contentType: "application/x-www-form-urlencoded",
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            data: $.param({ 'so_number': $("#so_number").val(), 'os_number': $("#os_number").val(), 'invty_id': INVTYID, 'item_id': ITEM_ID, 'qty': QTY, 'unit_id': ITEM_UOM, 'lot_no': LOTNo, 'expiration_date': dateOnly, 'unit_price': salePriceValue }),
-            cache: false,
-            processData: false,
-            success: function (data) {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Success',
-                    text: 'Item has been added to sales order.',
-                    showConfirmButton: true,
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        reloadDatatable('js-dataTable-sales_order_details');
-                        $("#mdlAddSOItems").modal('hide');
-                    }
-                })
+        console.log(qtyToAdd <= QTY);
+        if (qtyToAdd > requiredQTY) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Warning',
+                text: 'Quantity to be added must not exceed required quantity to be delivered',
+                showConfirmButton: true,
+            })
+        }
+        else if (qtyToAdd >= QTY) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Warning',
+                text: 'Insufficient Stocks',
+                showConfirmButton: true,
+            })
+        } else {
+            $.ajax({
+                url: "/admin/sales_order_details",
+                type: "POST",
+                contentType: "application/x-www-form-urlencoded",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: $.param({ 'so_number': $("#so_number").val(), 'os_number': $("#os_number").val(), 'invty_id': INVTYID, 'item_id': ITEM_ID, 'qty': qtyToAdd, 'unit_id': ITEM_UOM, 'lot_no': LOTNo, 'expiration_date': dateOnly, 'unit_price': salePriceValue }),
+                cache: false,
+                processData: false,
+                success: function (data) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: 'Item has been added to sales order.',
+                        showConfirmButton: true,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            reloadDatatable('js-dataTable-sales_order_details');
+                            $("#mdlAddSOItems").modal('hide');
+                        }
+                    })
 
-            },
-            error: function (e) {
-            }
-        });
+                },
+                error: function (e) {
+                }
+            });
+
+        }
+
 
     }
 

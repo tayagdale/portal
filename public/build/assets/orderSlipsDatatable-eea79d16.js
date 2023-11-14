@@ -8,11 +8,11 @@ class l{static initDataTables(){jQuery.extend(jQuery.fn.DataTable.ext.classes,{s
                             <i class="fa fa-fw fa-trash-alt"></i>
                           </button>
                         </div> 
-                      </div> `}}],columnDefs:[{defaultContent:"-",targets:"_all",orderable:!1}],bPaginate:!1,bInfo:!1,autoWidth:!1,responsive:!0,ordering:!1,searching:!1}),jQuery(".js-dataTable-os").DataTable({ajax:"/admin/order_slips/all",columns:[{data:"date",render:function(a,e,t){return moment(a).format("MM-DD-YYYY")}},{data:"os_number"},{data:"customer"},{data:"status",render:function(a,e,t){return getStatus(t.status)}},{data:"id",render:function(a,e,t){return`
-                          <div class="text-center">
-                            <div class="btn-group">
-                              <button type="submit" onclick="updateOS('${t.os_number}')" class="btn btn-sm btn-alt-info" data-bs-toggle="tooltip" title="Update">
-                                <i class="fa fa-fw fa-pencil-alt"></i>
-                              </button>
-                            </div> 
-                          </div> `}}],pageLength:10,lengthMenu:[[5,10,15,20],[5,10,15,20]],autoWidth:!1,responsive:!0,order:[[1,"desc"]],columnDefs:[{defaultContent:"-",targets:"_all",orderable:!1},{targets:3,render:$.fn.dataTable.render.number(",",".",2,"P")}]})}static init(){this.initDataTables()}}One.onLoad(()=>l.init());
+                      </div> `}}],columnDefs:[{defaultContent:"-",targets:"_all",orderable:!1}],bPaginate:!1,bInfo:!1,autoWidth:!1,responsive:!0,ordering:!1,searching:!1}),jQuery(".js-dataTable-os").DataTable({ajax:"/admin/order_slips/all",columns:[{data:"date",render:function(a,e,t){return moment(a).format("MM-DD-YYYY")}},{data:"os_number"},{data:"customer"},{data:"status",render:function(a,e,t){return getStatus(t.status)}},{data:"id",render:function(a,e,t){return t.status==2?"No Actions Available":`
+                            <div class="text-center">
+                              <div class="btn-group">
+                                <button type="submit" onclick="updateOS('${t.os_number}')" class="btn btn-sm btn-alt-info" data-bs-toggle="tooltip" title="Update">
+                                  <i class="fa fa-fw fa-pencil-alt"></i>
+                                </button>
+                              </div> 
+                            </div> `}}],pageLength:10,lengthMenu:[[5,10,15,20],[5,10,15,20]],autoWidth:!1,responsive:!0,order:[[1,"desc"]],columnDefs:[{defaultContent:"-",targets:"_all",orderable:!1},{targets:3,render:$.fn.dataTable.render.number(",",".",2,"P")}]})}static init(){this.initDataTables()}}One.onLoad(()=>l.init());

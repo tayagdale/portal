@@ -84,7 +84,7 @@
                                         </div>
                                         <div class="col-md-3">
                                             <label for="">Date</label>
-                                            <input type="text" value="{{ now()->format('Y-m-d') }}" name="date"
+                                            <input type="text" value="{{ now()->format('m/d/Y') }}" name="date"
                                                 id="date" class="form-control" readonly>
                                             <input type="hidden" name="podate" id="podate" class="form-control"
                                                 readonly>
@@ -96,7 +96,6 @@
                                             <div class="d-flex">
                                                 <select class="form-select supplier_id" id="supplier_id" name="supplier_id"
                                                     data-placeholder="Select Supplier">
-                                                    <option value=""></option>
                                                 </select>
                                                 <a href="javascript:void(0);" onclick="create_supplier()"
                                                     style="margin-left: 10px;" class="btn btn-outline-primary"><i
@@ -111,8 +110,6 @@
                                             <select class="form-select" name="terms" id="terms" style="width: 100%;"
                                                 data-placeholder="Select Terms">
                                                 <option value=""></option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
                                             </select>
                                             <p class="mb-0" id="termsError"></p>
                                         </div>

@@ -70,10 +70,11 @@ class pgWarehouse {
                     data: 'id',
                     render: function (data, type, row) {
                         var old_warehouse_name = row['warehouse_name'];
+                        var old_warehouse_location = row['warehouse_location'];
                         return `
                                 <div class="text-center">
                                     <div class="btn-group">
-                                    <button type="button" onclick="update(${data},'${old_warehouse_name}')" class="btn btn-sm btn-alt-info " data-bs-toggle="tooltip" title="Update Warehouse">
+                                    <button type="button" onclick="update(${data},'${old_warehouse_name}','${old_warehouse_location}')" class="btn btn-sm btn-alt-info " data-bs-toggle="tooltip" title="Update Warehouse">
                                         <i class="fa fa-fw fa-pencil-alt"></i>
                                     </button>
                                     <button type="button" onclick="remove(${data})" class="btn btn-sm btn-alt-warning" data-bs-toggle="tooltip" title="Delete Warehouse">

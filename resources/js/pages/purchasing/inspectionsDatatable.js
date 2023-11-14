@@ -144,21 +144,30 @@ class pgPurchaseOrders {
                 {
                     data: 'inspection_status',
                     render: function (data, type, row) {
-                        return getStatus(row.status);
+                        if (row['pod_qty'] == 0) {
+                            return '<span class="badge bg-danger">CLOSED</span>';
+                        } else {
+                            return '<span class="badge bg-success">OPEN</span>';
+                        }
                     }
                 },
                 {
                     data: 'inspection_number',
                     render: function (data, type, row) {
                         var po_number = row.po_number;
-                        return `
-                        <div class="text-center">
-                          <div class="btn-group">
-                            <a href="/admin/inspections/${data}/${po_number}" class="btn btn-sm btn-alt-success " data-bs-toggle="tooltip" title="Inpect Items">
-                              <i class="fa fa-fw fa-magnifying-glass"></i>
-                            </a>
-                          </div> 
-                        </div> `
+                        if (row['pod_qty'] == 0) {
+                            return 'All Items Delivered';
+                        } else {
+                            return `
+                            <div class="text-center">
+                              <div class="btn-group">
+                                <a href="/admin/inspections/${data}/${po_number}" class="btn btn-sm btn-alt-success " data-bs-toggle="tooltip" title="Inpect Items">
+                                  <i class="fa fa-fw fa-magnifying-glass"></i>
+                                </a>
+                              </div> 
+                            </div> `
+                        }
+                
                     }
                 },
             ],

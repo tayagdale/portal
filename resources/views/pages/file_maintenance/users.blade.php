@@ -26,6 +26,7 @@
     <script src="{{ asset('js/plugins/jquery-validation/additional-methods.js') }}"></script>
     <script src="{{ url('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js') }}"></script>
     <script src="{{ url('https://cdn.jsdelivr.net/npm/sweetalert2@11') }}"></script>
+    <script src="{{ asset('js/pages/functions.js') }}"></script>
     <script src="{{ asset('js/pages/file_maintenance/userFunctions.js') }}"></script>
 
 
@@ -70,6 +71,7 @@
                                     <th>Username</th>
                                     <th>Role</th>
                                     <th>Created at</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                         </table>

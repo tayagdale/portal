@@ -13,7 +13,7 @@ class InventoryController extends Controller
     public function index()
     {
         $inventory = DB::table("inventory_details")
-            ->select(array('*', 'items.brand_name as item_brand_name', 'unit_code', 'items.generic_name', DB::raw('SUM(inventory_details.qty) AS Iqty'), DB::raw('     CASE
+            ->select(array('*', 'inventory_details.item_id as inventory_id', 'items.brand_name as item_brand_name', 'unit_code', 'items.generic_name', DB::raw('SUM(inventory_details.qty) AS Iqty'), DB::raw('     CASE
                 WHEN SUM(inventory_details.qty) >= (SELECT status_value FROM inventory_statuses WHERE status_name = "In-stock") OR SUM(inventory_details.qty) > (SELECT status_value FROM inventory_statuses WHERE status_name = "Warning") THEN "In Stock"
                 WHEN SUM(inventory_details.qty) <= (SELECT status_value FROM inventory_statuses WHERE status_name = "Warning") AND SUM(inventory_details.qty) > (SELECT status_value FROM inventory_statuses WHERE status_name = "Out of Stock") THEN "Warning"
                 ELSE "Out of Stock"
@@ -23,7 +23,7 @@ class InventoryController extends Controller
             ->leftJoin("units", "units.id", "=", "purchase_order_details.unit_id")
             ->orderBy('items.brand_name', 'desc')
             ->distinct()
-            ->groupBy('purchase_order_details.unit_id')
+            ->groupBy('inventory_details.item_id')
             ->get();
         return response()->json(['success' => true, 'data' => $inventory]);
     }

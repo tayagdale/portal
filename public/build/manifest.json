@@ -102,7 +102,7 @@
     "src": "resources/js/pages/file_maintenance/inventoryStatusDatatable.js"
   },
   "resources/js/pages/file_maintenance/itemsDatatable.js": {
-    "file": "assets/itemsDatatable-29e48745.js",
+    "file": "assets/itemsDatatable-e0b601e7.js",
     "isEntry": true,
     "src": "resources/js/pages/file_maintenance/itemsDatatable.js"
   },
@@ -131,18 +131,23 @@
     "isEntry": true,
     "src": "resources/js/pages/file_maintenance/taxesDatatable.js"
   },
+  "resources/js/pages/file_maintenance/termsDatatable.js": {
+    "file": "assets/termsDatatable-d47a444d.js",
+    "isEntry": true,
+    "src": "resources/js/pages/file_maintenance/termsDatatable.js"
+  },
   "resources/js/pages/file_maintenance/unitsDatatable.js": {
     "file": "assets/unitsDatatable-2bb50593.js",
     "isEntry": true,
     "src": "resources/js/pages/file_maintenance/unitsDatatable.js"
   },
   "resources/js/pages/file_maintenance/usersDatatable.js": {
-    "file": "assets/usersDatatable-13bca1f1.js",
+    "file": "assets/usersDatatable-00481a06.js",
     "isEntry": true,
     "src": "resources/js/pages/file_maintenance/usersDatatable.js"
   },
   "resources/js/pages/file_maintenance/warehouseDatatable.js": {
-    "file": "assets/warehouseDatatable-60a9bb1a.js",
+    "file": "assets/warehouseDatatable-59c1ea2b.js",
     "isEntry": true,
     "src": "resources/js/pages/file_maintenance/warehouseDatatable.js"
   },
@@ -157,17 +162,17 @@
     "src": "resources/js/pages/payment/outgoingPaymentDatatable.js"
   },
   "resources/js/pages/purchasing/inspectionsDatatable.js": {
-    "file": "assets/inspectionsDatatable-353ea0fa.js",
+    "file": "assets/inspectionsDatatable-3dda7c3f.js",
     "isEntry": true,
     "src": "resources/js/pages/purchasing/inspectionsDatatable.js"
   },
   "resources/js/pages/purchasing/inventoryDatatable.js": {
-    "file": "assets/inventoryDatatable-95945a4f.js",
+    "file": "assets/inventoryDatatable-650d28be.js",
     "isEntry": true,
     "src": "resources/js/pages/purchasing/inventoryDatatable.js"
   },
   "resources/js/pages/purchasing/purchaseOrdersDatatable.js": {
-    "file": "assets/purchaseOrdersDatatable-c7ad0146.js",
+    "file": "assets/purchaseOrdersDatatable-5cb32c59.js",
     "isEntry": true,
     "src": "resources/js/pages/purchasing/purchaseOrdersDatatable.js"
   },
@@ -177,7 +182,7 @@
     "src": "resources/js/pages/sales/deliveryDatatable.js"
   },
   "resources/js/pages/sales/orderSlipsDatatable.js": {
-    "file": "assets/orderSlipsDatatable-090f66e4.js",
+    "file": "assets/orderSlipsDatatable-eea79d16.js",
     "isEntry": true,
     "src": "resources/js/pages/sales/orderSlipsDatatable.js"
   },
@@ -187,7 +192,7 @@
     "src": "resources/js/pages/sales/salesInvoiceDatatable.js"
   },
   "resources/js/pages/sales/salesOrdersDatatable.js": {
-    "file": "assets/salesOrdersDatatable-c6b44909.js",
+    "file": "assets/salesOrdersDatatable-bac54d76.js",
     "isEntry": true,
     "src": "resources/js/pages/sales/salesOrdersDatatable.js"
   },

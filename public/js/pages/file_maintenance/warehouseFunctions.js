@@ -48,14 +48,16 @@ function create() {
 
 
 
-function update(id, warehouse_name) {
+function update(id, warehouse_name, warehouse_location) {
     $('#warehouse_nameError').text('');
     var warehouseId = id;
     var warehouse_name = warehouse_name;
+    var warehouse_location = warehouse_location;
     var editUrl = `/admin/warehouse/${warehouseId}`
     $("#frmWarehouse").attr('action', editUrl);
     $('#warehouse_id').val(warehouseId);
     $('#warehouse_name').val(warehouse_name);
+    $('#warehouse_location').val(warehouse_location);
     requestType = 'PUT';
     $('#mdlWarehouse').modal('show');
 

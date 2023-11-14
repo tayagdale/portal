@@ -65,7 +65,8 @@
                             <tr>
                                 <th>Lot No</th>
                                 <th>Brand Name</th>
-                                <th>QTY</th>
+                                <th>Stocks Left</th>
+                                <th>QTY to add</th>
                                 <th>Sale Price</th>
                                 <th style="width:10%;">Action</th>
                             </tr>

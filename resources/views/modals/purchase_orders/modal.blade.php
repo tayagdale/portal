@@ -52,6 +52,11 @@
                                 name="total_amount">
                             <label for="unit_price">Unit Price</label>
                         </div>
+                        <div class="form-floating mb-4">
+                            <input type="text" class="form-control" id="remarks" name="remarks"
+                                placeholder="Unit Price">
+                            <label for="remarks">Remarks</label>
+                        </div>
                     </form>
                 </div>
                 <div class="block-content block-content-full text-end bg-body">
@@ -126,8 +131,8 @@
                 <div class="block-content fs-sm">
                     <form id="frmAddPONumber" action="{{ route('purchase_order_add.create') }}">
                         <div class="form-floating mb-4">
-                            <input type="text" class="form-control" id="po_number"
-                                name="po_number" placeholder="PO Number" autofocus required>
+                            <input type="text" class="form-control" id="po_number" name="po_number"
+                                placeholder="PO Number" autofocus required>
                             <label for="po_number">PO Number</label>
                             <p class="mb-0" id="po_numberError"></p>
                         </div>

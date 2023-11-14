@@ -113,8 +113,6 @@
                                             <select class="form-select" name="terms" id="terms" style="width: 100%;"
                                                 data-placeholder="Select Terms">
                                                 <option value=""></option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
                                             </select>
                                             <p class="mb-0" id="termsError"></p>
                                         </div>

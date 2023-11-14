@@ -15,7 +15,7 @@
                         @csrf
                         <div class="form-floating mb-4">
                             <input type="hidden" class="form-control" id="customer_id" name="customer_id">
-                            <input type="text" class="form-control" id="customer_code" name="customer_code"
+                            <input readonly type="text" class="form-control" id="customer_code" name="customer_code"
                                 placeholder="customer Code" autofocus>
                             <label for="customer_code">Customer Code</label>
                             <p class="mb-0" id="customer_codeError"></p>

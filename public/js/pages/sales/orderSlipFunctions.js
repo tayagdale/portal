@@ -5,6 +5,7 @@ var base_url = window.location.origin;
 $(document).ready(function () {
     getAllCustomers()
     getAllUnits()
+    getAllTerms()
     // Open the modal for adding a new item
     var os_number = $('.os_number').val();
 
@@ -308,10 +309,10 @@ function getAllCustomers() {
         // Populate the select with options
         var select = $('.customer_id');
         select.empty(); // Clear previous options
-        select.append($('<option>', {
-            value: '',
-            text: ''
-        }));
+        // select.append($('<option>', {
+        //     value: '',
+        //     text: ''
+        // }));
         options.data.forEach(function (option) {
 
             select.append($('<option>', {
@@ -323,6 +324,24 @@ function getAllCustomers() {
 }
 
 
+function getAllTerms() {
+    $.get('/admin/terms/all', function (options) {
+        // Populate the select with options
+        var select = $('#terms');
+        select.empty(); // Clear previous options
+        // select.append($('<option>', {
+        //     value: '',
+        //     text: ''
+        // }));
+        options.data.forEach(function (option) {
+
+            select.append($('<option>', {
+                value: option.id,
+                text: option.terms + ' ' + option.calendar
+            }));
+        });
+    });
+}
 
 
 

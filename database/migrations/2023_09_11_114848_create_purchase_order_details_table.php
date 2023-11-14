@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('qty');
             $table->float('unit_price');
             $table->float('total_amount');
+            $table->string('remarks');
             $table->timestamps();
         });
     }

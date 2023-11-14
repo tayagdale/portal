@@ -38,7 +38,7 @@ class RolesController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'description' => 'required|string|min:3|max:20',
+            'description' => 'required|string|min:3|max:20|unique:roles,description',
             // Add validation rules for other attributes as needed
         ]);
 

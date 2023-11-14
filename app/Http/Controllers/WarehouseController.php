@@ -30,8 +30,8 @@ class WarehouseController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'warehouse_name' => 'required|string|min:3|max:20',
-            'warehouse_location' => 'required|string|min:3|max:20',
+            'warehouse_name' => 'required|string|min:3|max:255|unique:warehouse,warehouse_name',
+            'warehouse_location' => 'required|string|min:3|max:255',
             'encoded_by' => 'required|integer',
             // Add validation rules for other attributes as needed
         ]);
@@ -67,8 +67,8 @@ class WarehouseController extends Controller
     {
         // Validate the input data from the edit form
         $request->validate([
-            'warehouse_name' => 'required|string|min:3|max:20',
-            'warehouse_location' => 'required|string|min:3|max:20',
+            'warehouse_name' => 'required|string|min:3|max:255',
+            'warehouse_location' => 'required|string|min:3|max:255',
             'edited_by' => 'required|integer',
             // Add validation rules for other attributes as needed
         ]);

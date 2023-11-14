@@ -30,8 +30,8 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'customer_code' => 'required|string|min:3|max:255',
-            'description' => 'required|string|min:3|max:255',
+            'customer_code' => 'required|string|min:3|max:255|unique:customers,customer_code',
+            'description' => 'required|string|min:3|max:255|unique:customers,description',
             'address' => 'required|string|min:3|max:255',
             'contact_person' => 'required|string|min:3|max:255',
             'position' => 'required|string|min:3|max:255',

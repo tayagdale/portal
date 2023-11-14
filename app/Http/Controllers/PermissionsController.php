@@ -28,6 +28,7 @@ class PermissionsController extends Controller
                     ->join('permissions', 'permission_to_roles.permission_id', '=', 'permissions.id')
                     ->where('permission_to_roles.role_id', $id);
             })
+            ->orderBy('permission_name')
             ->get();
         return response()->json(['success' => true, 'data' => $unassignedPermissions]);
     }
@@ -59,7 +60,7 @@ class PermissionsController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'permission_name' => 'required|string|min:3|max:20',
+            'permission_name' => 'required|string|min:3|max:20|unique:permissions,permission_name',
             // Add validation rules for other attributes as needed
         ]);
 

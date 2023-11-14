@@ -6,6 +6,7 @@ $(document).ready(function () {
     getAllSuppliers()
     getSubtotal()
     getAllUnits();
+    getAllTerms();
     // Open the modal for adding a new item
     var po_number = $('.po_number').val();
 
@@ -319,7 +320,7 @@ function getItems() {
             let html = '';
             html += "<option value='' disabled selected>Select an item</option>";
             for (var i = 0; i < suppliers.length; i++) {
-                html += "<option value=" + suppliers[i].id + ">" + suppliers[i].brand_name + "</option>"
+                html += "<option value=" + suppliers[i].id + ">" + suppliers[i].generic_name + ' - ' + suppliers[i].brand_name + "</option>"
             }
             document.getElementById("item_id").innerHTML = html;
         })
@@ -332,10 +333,10 @@ function getAllSuppliers() {
         // Populate the select with options
         var select = $('.supplier_id');
         select.empty(); // Clear previous options
-        select.append($('<option>', {
-            value: '',
-            text: ''
-        }));
+        // select.append($('<option>', {
+        //     value: '',
+        //     text: ''
+        // }));
         options.data.forEach(function (option) {
 
             select.append($('<option>', {
@@ -348,6 +349,24 @@ function getAllSuppliers() {
 
 
 
+function getAllTerms() {
+    $.get('/admin/terms/all', function (options) {
+        // Populate the select with options
+        var select = $('#terms');
+        select.empty(); // Clear previous options
+        // select.append($('<option>', {
+        //     value: '',
+        //     text: ''
+        // }));
+        options.data.forEach(function (option) {
+
+            select.append($('<option>', {
+                value: option.id,
+                text: option.terms + ' ' + option.calendar
+            }));
+        });
+    });
+}
 
 
 function getAllCategories() {

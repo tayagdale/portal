@@ -151,8 +151,8 @@
                 /* print-color-adjust: exact !important; */
                 /* Firefox 97+, Safari 15.4+ */
                 /* background-image: url('{{ asset('media/photos/purchase_order.jpg') }}');
-                background-size: contain;
-                background-repeat: no-repeat; */
+                        background-size: contain;
+                        background-repeat: no-repeat; */
 
                 border: none !important;
             }
@@ -363,7 +363,7 @@
                                     <p class="po_number po_details">{{ $purchase_order['po_number'] }}</p>
 
                                     <p class="po_date po_details">
-                                        {{ $purchase_order['date'] }}
+                                        {{ \Carbon\Carbon::parse($purchase_order['date'])->format('m/d/Y') }}
                                     </p>
                                     <p class="po_terms po_details">
                                         {{ $purchase_order['terms'] }}
@@ -424,7 +424,7 @@
                                         </td>
                                         <td class="td_details">N/A
                                         </td>
-                                        <td class="td_details">N/A
+                                        <td class="td_details">{{ $po_detail['remarks'] }}
                                         </td>
                                     </tr>
                                 @endforeach

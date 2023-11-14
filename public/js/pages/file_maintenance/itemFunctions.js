@@ -1,6 +1,7 @@
 
 var itemId;
 var requestType;
+var categoryId;
 
 $(document).ready(function () {
 
@@ -46,19 +47,28 @@ function create() {
     $('#mdlItem').modal('show'); // Show the modal
 }
 
+function selectElement(id, valueToSelect) {
+    let element = document.getElementById(id);
+    element.value = valueToSelect;
+}
 
 
-function update(id, brand_name) {
+function update(id, brand_name, generic_name, category) {
     $('#brand_nameError, #category_idError, #unit_idError').text('');
+    // console.log(category);
     var itemId = id;
     var brand_name = brand_name;
+    var generic_name = generic_name;
     var editUrl = `/admin/items/${itemId}`
     $("#frmItem").attr('action', editUrl);
     $('#item_id').val(itemId);
     $('#brand_name').val(brand_name);
+    $('#generic_name').val(generic_name);
     requestType = 'PUT';
-    getAllCategories();
+    categoryId = category;
+    getAllCategories(categoryId);
     getAllUnits();
+    $("#category_id").val("2").trigger('change');
     $('#mdlItem').modal('show');
 
 }
@@ -112,18 +122,41 @@ function displayErrors(errors) {
 }
 
 
-function getAllCategories() {
-    $.get('/admin/categories/all', function (options) {
-        // Populate the select with options
-        var select = $('#category_id');
-        select.empty(); // Clear previous options
-        options.data.forEach(function (option) {
-            select.append($('<option>', {
-                value: option.id,
-                text: option.category_name
-            }));
+function getAllCategories(category_id) {
+    console.log(category_id);
+    if(category_id){
+        $.get('/admin/categories/all', function (options) {
+            // Populate the select with options
+            var select = $('#category_id');
+            select.empty(); // Clear previous options
+            options.data.forEach(function (option) {
+                var newOption = $('<option>', {
+                    value: option.id,
+                    text: option.category_name
+                });
+    
+                // Set 'selected' attribute if option.id is 2
+                if (option.id == category_id) {
+                    newOption.attr('selected', 'selected');
+                }
+    
+                select.append(newOption);
+            });
         });
-    });
+    } else {
+        $.get('/admin/categories/all', function (options) {
+            // Populate the select with options
+            var select = $('#category_id');
+            select.empty(); // Clear previous options
+            options.data.forEach(function (option) {
+                select.append($('<option>', {
+                    value: option.id,
+                    text: option.category_name
+                }));
+            });
+        });
+    }
+
 }
 
 function getAllUnits() {

@@ -63,23 +63,23 @@ class pgUsers {
                 {
                     data: 'created_at',
                 },
-                // {
-                //     data: 'id',
-                //     render: function (data, type, row) {
-                //         var currBrandName = row['name'];
-                //         return `
-                //                 <div class="text-center">
-                //                     <div class="btn-group">
-                //                     <button type="button" onclick="update(${data},'${currBrandName}')" class="btn btn-sm btn-alt-info " data-bs-toggle="tooltip" title="Update Brand">
-                //                         <i class="fa fa-fw fa-pencil-alt"></i>
-                //                     </button>
-                //                     <button type="button" onclick="remove(${data})" class="btn btn-sm btn-alt-warning" data-bs-toggle="tooltip" title="Delete Brand">
-                //                         <i class="fa fa-fw fa-trash"></i>
-                //                     </button>
-                //                     </div> 
-                //                 </div> `
-                //     }
-                // },
+                {
+                    data: 'id',
+                    render: function (data, type, row) {
+                        var currName = row['name'];
+                        var currEmail = row['email'];
+                        var currUsername = row['username'];
+                        var currRoleId = row['role_id'];
+                        return `
+                                <div class="text-center">
+                                    <div class="btn-group">
+                                    <button type="button" onclick="update(${data},'${currName}','${currEmail}','${currUsername}','${currRoleId}')" class="btn btn-sm btn-alt-info " data-bs-toggle="tooltip" title="Update User">
+                                        <i class="fa fa-fw fa-pencil-alt"></i>
+                                    </button>
+                                    </div> 
+                                </div> `
+                    }
+                },
             ],
             pageLength: 10,
             lengthMenu: [[5, 10, 15, 20], [5, 10, 15, 20]],

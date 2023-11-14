@@ -26,7 +26,7 @@
     <script src="{{ url('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js') }}"></script>
     <script src="{{ url('https://cdn.jsdelivr.net/npm/sweetalert2@11') }}"></script>
     <script src="{{ asset('js/pages/functions.js') }}"></script>
-    {{-- <script src="{{ asset('js/pages/purchasing/inspectionFunctions.js') }}"></script> --}}
+    <script src="{{ asset('js/pages/file_maintenance/inventoryFunctions.js') }}"></script>
 
 
 
@@ -45,6 +45,7 @@
                 </div>
                 <div class="flex-shrink-0 mt-3 mt-sm-0 ms-sm-3" a>
                     <!-- <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#mdlAddInventoryAddProd"><i class="fa fa-plus"></i> Add New Product</a> -->
+                    @include('modals/inventory/modal')
 
                 </div>
             </div>
@@ -63,13 +64,13 @@
                         <table class="table table-bordered table-striped table-vcenter js-dataTable-inventory">
                             <thead>
                                 <tr>
-                                    <th>Brand Name</th>
                                     <th>Generic Name</th>
+                                    <th>Brand Name</th>
                                     <th>QTY</th>
                                     <th>Unit of measure</th>
                                     <th>Expiry Date</th>
                                     <th>Status</th>
-                                    <!-- <th style="width: 15%;">Action</th> -->
+                                    <th style="width: 15%;">Action</th>
                                 </tr>
                             </thead>
                         </table>

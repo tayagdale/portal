@@ -96,6 +96,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
         //Inventory Details Routes
         Route::get('admin/inventory_details/data/{id}', 'InventoryDetailController@get_inventory_by_order_slip')->name('inventory_details.os');
+        Route::get('admin/inventory_details/data/item/{id}', 'InventoryDetailController@get_inventory_by_item_id')->name('inventory_details.get_by_item_id');
 
         //Sales Routes
         Route::view('/admin/order_slip', 'pages/sales/order_slip')->name('order_slip_main.show');
@@ -131,6 +132,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         //Sales Order Details Routes
         Route::get('admin/sales_order_details/{id}', 'SalesOrderDetailController@index')->name('sales_order_details.all');
         Route::post('admin/sales_order_details', 'SalesOrderDetailController@store')->name('sales_order_details.store');
+        Route::delete('admin/sales_order_details/{id}', 'SalesOrderDetailController@destroy')->name('sales_order_details.remove');
 
 
         //Delivery Routes
@@ -166,6 +168,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
         //File Maintenance Routes
         Route::view('/admin/categories', 'pages/file_maintenance/categories');
+        Route::view('/admin/terms', 'pages/file_maintenance/terms');
         Route::view('/admin/sub_categories', 'pages/file_maintenance/sub_categories');
         Route::view('/admin/items', 'pages/file_maintenance/items');
         Route::view('/admin/units', 'pages/file_maintenance/units');
@@ -180,6 +183,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
         //User Routes
         Route::get('/admin/users/all', 'UserController@index');
+        Route::put('/admin/users/{id}', 'UserController@update')->name('users.update');
 
 
         //Supplier Routes
@@ -212,6 +216,14 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::put('/admin/categories/{id}', 'CategoryController@update')->name('categories.update');
         Route::delete('/admin/categories/{id}', 'CategoryController@destroy')->name('categories.remove');
 
+        //Terms Routes
+        Route::get('/admin/terms/all', 'TermsController@index');
+        Route::post('/admin/terms', 'TermsController@store')->name('terms.store');
+        Route::put('/admin/terms/{id}', 'TermsController@update')->name('terms.update');
+        Route::delete('/admin/terms/{id}', 'TermsController@destroy')->name('terms.remove');
+
+        //Ca;endar Routes
+        Route::get('/admin/calendars/all', 'CalendarController@index');
         //Warehouse Routes
         Route::get('/admin/warehouse/all', 'WarehouseController@index');
         Route::post('/admin/warehouse', 'WarehouseController@store')->name('warehouse.store');

@@ -14,9 +14,9 @@ class UserController extends Controller
     public function index()
     {
         $users = DB::table("users")
-            ->select(array('users.*', 'roles.description'))
+            ->select(array('users.*', 'roles.description', 'roles.id as role_id'))
             ->leftJoin("user_to_roles", "users.id", "=", "user_to_roles.user_id")
-            ->leftJoin("roles", "user_to_roles.role_id", "=", "roles.id")
+            ->leftJoin("roles", "users.role", "=", "roles.id")
             ->get();
         return response()->json(['success' => true, 'data' => $users]);
     }
@@ -58,7 +58,29 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Validate the input data from the edit form
+        $request->validate([
+            'name' => 'required|string|min:3|max:55',
+            'email' => 'required|string|min:3|max:55',
+            'username' => 'required|string|min:3|max:20',
+            'role' => 'required|integer',
+            // Add validation rules for other attributes as needed
+        ]);
+
+        $user = User::find($id);
+
+        if (!$user) {
+            return response()->json(['error' => 'User not found.'], 404);
+        }
+
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->username = $request->input('username');
+        $user->role = $request->input('role');
+
+        $user->save();
+
+        return response()->json(['message' => 'User updated successfully.']);
     }
 
     /**

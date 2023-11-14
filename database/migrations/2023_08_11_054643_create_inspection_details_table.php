@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('item_id');
             $table->integer('qty');
             $table->timestamp('delivery_date');
-            $table->string('lot_no')->unique()->nullable();
+            $table->string('lot_no')->nullable();
             $table->timestamp('expiration_date')->nullable();
             $table->integer('inspect_by');
             $table->timestamps();

@@ -16,9 +16,10 @@ class InspectionController extends Controller
     public function index()
     {
         $inspections = DB::table("inspections")
-            ->select(array('inspections.*', 'warehouse_name', 'warehouse_location', 'suppliers.description as supplier', 'purchase_orders.total_amount', 'inspections.status as inspection_status'))
+            ->select(array('inspections.*', 'warehouse_name', 'warehouse_location', 'suppliers.description as supplier', 'purchase_orders.total_amount', 'inspections.status as inspection_status', 'purchase_order_details.qty as pod_qty'))
             ->leftJoin("suppliers", "suppliers.id", "=", "inspections.supplier_id")
             ->leftJoin("purchase_orders", "purchase_orders.po_number", "=", "inspections.po_number")
+            ->leftJoin("purchase_order_details", "purchase_order_details.po_number", "=", "inspections.po_number")
             ->leftJoin("warehouse", "inspections.warehouse_id", "=", "warehouse.id")
             ->orderBy('inspections.id', 'desc')
             ->get();

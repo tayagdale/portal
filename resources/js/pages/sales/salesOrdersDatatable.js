@@ -71,7 +71,20 @@ class pgSalesOrders {
                 },
                 {
                     data: 'unit_price',
-                }
+                },
+                {
+                    data: 'sodID',
+                    render: function (data, type, row) {
+                        return `
+                      <div class="text-center">
+                        <div class="btn-group">
+                          <button type="button" onclick="delete_item(${data})" class="btn btn-sm btn-alt-danger " data-bs-toggle="tooltip" title="Remove Item">
+                            <i class="fa fa-fw fa-trash-alt"></i>
+                          </button>
+                        </div> 
+                      </div> `
+                    }
+                },
             ],
             columnDefs: [{
                 "defaultContent": "-",
@@ -127,7 +140,17 @@ class pgSalesOrders {
                         var os_number = row['os_number'];
                         var customer = row['customer'];
                         var terms = row['terms'];
-                        return `
+                        if (row['sStatus'] == 2) {
+                            return `
+                            <div class="text-center">
+                              <div class="btn-group">
+                                <a href="/admin/sales_orders/print/${so_number}"   class="btn btn-sm btn-alt-success " data-bs-toggle="tooltip" title="Print Sales Order">
+                                    <i class="fa fa-fw fa-print"></i>
+                                </a>
+                              </div> 
+                            </div> `
+                        } else {
+                            return `
                             <div class="text-center">
                               <div class="btn-group">
                                 <button type="button"  onclick="updateSO('${so_number}','${os_number}','${customer}','${terms}')" class="btn btn-sm btn-alt-info " data-bs-toggle="tooltip" title="Update">
@@ -138,6 +161,8 @@ class pgSalesOrders {
                                 </a>
                               </div> 
                             </div> `
+                        }
+
                     }
                 },
             ],
@@ -170,6 +195,12 @@ class pgSalesOrders {
                 },
                 {
                     data: 'iQty',
+                },
+                {
+                    data: null, // This column doesn't have specific data
+                    render: function (data, type, row) {
+                        return `<input type="text" class="form-control qty_to_add" placeholder="Enter qty to add">`;
+                    },
                 },
                 {
                     data: null, // This column doesn't have specific data

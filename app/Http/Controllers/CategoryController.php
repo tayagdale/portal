@@ -30,7 +30,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'category_name' => 'required|string|min:3|max:20',
+            'category_name' => 'required|string|min:3|max:20|unique:categories,category_name',
             'encoded_by' => 'required|integer',
             // Add validation rules for other attributes as needed
         ]);

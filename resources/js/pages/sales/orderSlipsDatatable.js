@@ -122,14 +122,20 @@ class pgPurchaseOrders {
                 {
                     data: 'id',
                     render: function (data, type, row) {
-                        return `
-                          <div class="text-center">
-                            <div class="btn-group">
-                              <button type="submit" onclick="updateOS('${row.os_number}')" class="btn btn-sm btn-alt-info" data-bs-toggle="tooltip" title="Update">
-                                <i class="fa fa-fw fa-pencil-alt"></i>
-                              </button>
-                            </div> 
-                          </div> `
+                        if (row.status == 2) {
+                            return `No Actions Available`
+                        } else {
+                            return `
+                            <div class="text-center">
+                              <div class="btn-group">
+                                <button type="submit" onclick="updateOS('${row.os_number}')" class="btn btn-sm btn-alt-info" data-bs-toggle="tooltip" title="Update">
+                                  <i class="fa fa-fw fa-pencil-alt"></i>
+                                </button>
+                              </div> 
+                            </div> `
+
+                        }
+
                     }
                 },
             ],

@@ -15,7 +15,7 @@ class SalesOrderDetailController extends Controller
     public function index(string $id)
     {
         $sales_order_details = DB::table("sales_order_details")
-            ->select('*')
+            ->select('*', 'sales_order_details.id as sodID')
             ->leftJoin("inventory", "sales_order_details.invty_id", "=", "inventory.id")
             ->leftJoin("items", "sales_order_details.item_id", "=", "items.id")
             ->leftJoin("units", "sales_order_details.unit_id", "=", "units.id")
@@ -51,23 +51,46 @@ class SalesOrderDetailController extends Controller
             // Add validation rules for other attributes as needed
         ]);
 
+        // Check if an OrderSlipDetail with the same os_number and item_id already exists
+        $sales_order_detail = SalesOrderDetail::where('so_number', $validatedData['so_number'])
+            ->where('invty_id', $validatedData['invty_id'])
+            ->where('item_id', $validatedData['item_id'])
+            ->first();
 
-        $sales_order_detail = SalesOrderDetail::create($validatedData);
+        if ($sales_order_detail) {
+            // If it exists, update the qty
+            $sales_order_detail->qty += $validatedData['qty'];
+            $sales_order_detail->save();
 
-        $newSales_order_detail = SalesOrderDetail::find($sales_order_detail->id);
+            $inventory_detail = InventoryDetail::where([
+                'id' => $request->input('invty_id')
+            ])->first();
+            if ($inventory_detail) {
+                $inventory_detail->qty = $inventory_detail->qty - $request->input('qty');
+                $save_inventory_detail = $inventory_detail->save();
+                if ($save_inventory_detail) {
+                    return response()->json(['success' => true]);
+                }
+            }
+        } else {
+            // If it doesn't exist, create a new record
+            $sales_order_detail = SalesOrderDetail::create($validatedData);
 
-        if (!$newSales_order_detail) {
-            return response()->json(['error' => 'Sales order detail not found.'], 404);
-        }
+            $newSales_order_detail = SalesOrderDetail::find($sales_order_detail->id);
 
-        $inventory_detail = InventoryDetail::where([
-            'id' => $request->input('invty_id')
-        ])->first();
-        if ($inventory_detail) {
-            $inventory_detail->qty = 0;
-            $save_inventory_detail = $inventory_detail->save();
-            if ($save_inventory_detail) {
-                return response()->json(['success' => true, 'data' => $newSales_order_detail]);
+            if (!$newSales_order_detail) {
+                return response()->json(['error' => 'Sales order detail not found.'], 404);
+            }
+
+            $inventory_detail = InventoryDetail::where([
+                'id' => $request->input('invty_id')
+            ])->first();
+            if ($inventory_detail) {
+                $inventory_detail->qty = $inventory_detail->qty - $request->input('qty');
+                $save_inventory_detail = $inventory_detail->save();
+                if ($save_inventory_detail) {
+                    return response()->json(['success' => true, 'data' => $newSales_order_detail]);
+                }
             }
         }
     }
@@ -101,6 +124,24 @@ class SalesOrderDetailController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $salesOrderDetail = SalesOrderDetail::find($id);
+
+        if (!$salesOrderDetail) {
+            return response()->json(['error' => 'Sales Order Detail not found.'], 404);
+        }
+        $inventory_detail = InventoryDetail::where([
+            'id' => $salesOrderDetail->invty_id
+        ])->first();
+
+        if ($inventory_detail) {
+            $inventory_detail->qty = $inventory_detail->qty + $salesOrderDetail->qty;
+            $save_inventory_detail = $inventory_detail->save();
+            if ($save_inventory_detail) {
+                $salesOrderDetail->delete();
+                return response()->json(['success' => true]);
+            }
+        }
+
+        return response()->json(['message' => 'Sales Order Detail deleted successfully.']);
     }
 }
