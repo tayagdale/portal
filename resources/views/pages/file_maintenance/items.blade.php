@@ -65,7 +65,7 @@
                         <table class="table table-bordered table-striped table-vcenter js-dataTable-items">
                             <thead>
                                 <tr>
-                                    <th>Generic Name</th>
+                                    <th>Description</th>
                                     <th>Brand Name</th>
                                     <th>Category</th>
                                     <th>Created at</th>

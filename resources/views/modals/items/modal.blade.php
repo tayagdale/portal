@@ -17,7 +17,7 @@
                             <input type="hidden" class="form-control" id="item_id" name="item_id">
                             <input type="text" class="form-control" id="generic_name" name="generic_name"
                                 placeholder="Generic Name" autofocus>
-                            <label for="generic_name">Generic Name</label>
+                            <label for="generic_name">Description</label>
                             <p class="mb-0" id="generic_nameError"></p>
                         </div>
                         <div class="form-floating mb-4">
