@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\UserToRole;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,7 +17,7 @@ class UserController extends Controller
         $users = DB::table("users")
             ->select(array('users.*', 'roles.description', 'roles.id as role_id'))
             ->leftJoin("user_to_roles", "users.id", "=", "user_to_roles.user_id")
-            ->leftJoin("roles", "users.role", "=", "roles.id")
+            ->leftJoin("roles", "user_to_roles.role_id", "=", "roles.id")
             ->get();
         return response()->json(['success' => true, 'data' => $users]);
     }
@@ -79,6 +80,12 @@ class UserController extends Controller
         $user->role = $request->input('role');
 
         $user->save();
+
+
+        $userToRole =  UserToRole::where('user_id', $id)->first();
+        $userToRole->role_id = $request->input('role');
+
+        $userToRole->save();
 
         return response()->json(['message' => 'User updated successfully.']);
     }
