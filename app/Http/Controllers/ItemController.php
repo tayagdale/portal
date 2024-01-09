@@ -81,7 +81,8 @@ class ItemController extends Controller
         $request->validate([
             'category_id' => 'required|integer',
             'generic_name' => 'required|string|min:3|max:20',
-            'brand_name' => 'required|string|min:3|max:20',
+            // 'brand_name' => 'required|string|min:3|max:20',
+            'brand_name' => 'required|string|min:3|max:20|unique:items,brand_name,NULL,id,generic_name,' . $request->input('generic_name'),
             'edited_by' => 'required|integer',
             // Add validation rules for other attributes as needed
         ]);
