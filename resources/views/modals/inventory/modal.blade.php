@@ -19,6 +19,7 @@
                                 <th>Lot No</th>
                                 <th>QTY</th>
                                 <th>Expiration Date</th>
+                                <th>Inspection Date</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('qty');
             $table->string('lot_no')->nullable();
             $table->timestamp('expiration_date')->nullable();
+            $table->timestamp('inspection_date')->nullable();
             $table->integer('encoded_by');
             $table->timestamps();
         });

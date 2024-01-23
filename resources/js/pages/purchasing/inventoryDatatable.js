@@ -125,6 +125,9 @@ class pgPurchaseOrders {
                 {
                     data: 'expiration_date',
                 },
+                {
+                    data: 'inspection_date',
+                },
             ],
             pageLength: 10,
             lengthMenu: [[5, 10, 15, 20], [5, 10, 15, 20]],

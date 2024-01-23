@@ -8,6 +8,7 @@ use App\Models\InventoryDetail;
 use App\Models\Item;
 use App\Models\PurchaseOrder;
 use App\Models\PurchaseOrderDetail;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -20,7 +21,7 @@ class InspectionDetailController extends Controller
     {
         $inspectionDetails = DB::table("purchase_order_details")
 
-            ->select(array('purchase_order_details.*', 'items.*', 'units.*',   DB::raw('SUM(inspection_details.qty) AS Iqty'),'purchase_order_details.id AS id', 'purchase_order_details.qty as purchase_order_qty', 'items.id AS item_id'))
+            ->select(array('purchase_order_details.*', 'items.*', 'units.*',   DB::raw('SUM(inspection_details.qty) AS Iqty'), 'purchase_order_details.id AS id', 'purchase_order_details.qty as purchase_order_qty', 'items.id AS item_id'))
             ->leftJoin("items", "purchase_order_details.item_id", "=", "items.id")
             ->leftJoin("units", "purchase_order_details.unit_id", "=", "units.id")
             ->leftJoin("inspection_details", "purchase_order_details.po_number", "=", "inspection_details.po_number")
@@ -124,6 +125,7 @@ class InspectionDetailController extends Controller
                     $inventory_detail->qty =  $request->input('qty');
                     $inventory_detail->lot_no =  $request->input('lot_no');
                     $inventory_detail->expiration_date =  $request->input('expiration_date');
+                    $inventory_detail->inspection_date = date('Y-m-d H:i:s');
                     $inventory_detail->encoded_by = auth()->user()->id;
 
                     $save_inventory_detail = $inventory_detail->save();

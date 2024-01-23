@@ -128,10 +128,11 @@ class PurchaseOrderController extends Controller
 
 
         $purchaseOrderDetails = DB::table("purchase_order_details")
-            ->select(array('purchase_order_details.*', 'units.unit_code', 'items.brand_name'))
+            ->select(array('purchase_order_details.*', 'units.unit_code',  DB::raw('SUM(inventory_details.qty) AS avail_stock'), 'items.brand_name'))
             ->leftJoin("items", "purchase_order_details.item_id", "=", "items.id")
             ->leftJoin("units", "purchase_order_details.unit_id", "=", "units.id")
-            ->where('po_number', $po_number)
+            ->leftJoin("inventory_details", "purchase_order_details.po_number", "=", "inventory_details.po_number")
+            ->where('purchase_order_details.po_number', $po_number)
             ->get();
 
         $purchaseOrders = DB::table("purchase_orders")

@@ -35,7 +35,7 @@ class InventoryDetailController extends Controller
     public function get_inventory_by_item_id(string $id)
     {
         $inventory_details = DB::table("inventory_details")
-            ->select(array('po_number', 'lot_no', 'expiration_date', DB::raw('SUM(inventory_details.qty) AS Iqty')))
+            ->select(array('po_number', 'lot_no', 'expiration_date', 'inspection_date', DB::raw('SUM(inventory_details.qty) AS Iqty')))
             ->where('item_id', $id)
             ->groupBy('inventory_details.lot_no')
             ->get();

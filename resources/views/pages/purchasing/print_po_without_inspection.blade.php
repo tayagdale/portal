@@ -39,7 +39,7 @@
         }
 
         .po_div {
-            margin-top: 145px;
+            margin-top: 155px;
         }
 
         .po_details {
@@ -151,8 +151,8 @@
                 /* print-color-adjust: exact !important; */
                 /* Firefox 97+, Safari 15.4+ */
                 /* background-image: url('{{ asset('media/photos/purchase_order.jpg') }}');
-                        background-size: contain;
-                        background-repeat: no-repeat; */
+                    background-size: contain;
+                    background-repeat: no-repeat; */
 
                 border: none !important;
             }
@@ -167,7 +167,7 @@
             }
 
             .po_div {
-                margin-top: 125px;
+                margin-top: 135px;
             }
 
             .po_details {
@@ -420,7 +420,8 @@
                                         </td>
                                         <td class="td_details">
                                             {{ $po_detail['qty'] }}</td>
-                                        <td class="td_details">N/A
+                                        <td class="td_details">
+                                            {{ $po_detail['avail_stock'] ?? 0 }}
                                         </td>
                                         <td class="td_details">N/A
                                         </td>
