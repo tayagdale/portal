@@ -295,7 +295,7 @@ function getItems() {
             let html = '';
             html += "<option value='' disabled selected>Select an item</option>";
             for (var i = 0; i < items.length; i++) {
-                html += `<option data-generic-name=${items[i].generic_name} value=` + items[i].id + ">" + items[i].brand_name + "</option>"
+                html += `<option data-generic-name=${items[i].generic_name} value=` + items[i].id + ">" + items[i].generic_name + ' - ' + items[i].brand_name + "</option>"
             }
             document.getElementById("item_id").innerHTML = html;
         })
