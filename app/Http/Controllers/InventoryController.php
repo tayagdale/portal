@@ -13,12 +13,14 @@ class InventoryController extends Controller
     public function index()
     {
         $inventory = DB::table("inventory_details")
-            ->select(array('*', 'inventory_details.item_id as inventory_id', 'items.brand_name as item_brand_name', 'unit_code', 'items.generic_name', DB::raw('SUM(inventory_details.qty) AS Iqty'), DB::raw('     CASE
+            ->select(array('*', 'suppliers.description as supp', 'inventory_details.item_id as inventory_id', 'items.brand_name as item_brand_name', 'unit_code', 'items.generic_name', DB::raw('SUM(inventory_details.qty) AS Iqty'), DB::raw('     CASE
                 WHEN SUM(inventory_details.qty) >= (SELECT status_value FROM inventory_statuses WHERE status_name = "In-stock") OR SUM(inventory_details.qty) > (SELECT status_value FROM inventory_statuses WHERE status_name = "Warning") THEN "In Stock"
                 WHEN SUM(inventory_details.qty) <= (SELECT status_value FROM inventory_statuses WHERE status_name = "Warning") AND SUM(inventory_details.qty) > (SELECT status_value FROM inventory_statuses WHERE status_name = "Out of Stock") THEN "Warning"
                 ELSE "Out of Stock"
             END AS inventory_status'),'expiration_date'))
             ->leftJoin("items", "inventory_details.item_id", "=", "items.id")
+            ->leftJoin("purchase_orders", "purchase_orders.po_number", "=", "inventory_details.po_number")
+            ->leftJoin("suppliers", "purchase_orders.supplier_id", "=", "suppliers.id")
             ->leftJoin("purchase_order_details", "inventory_details.po_number", "=", "purchase_order_details.po_number")
             ->leftJoin("units", "units.id", "=", "purchase_order_details.unit_id")
             ->orderBy('items.brand_name', 'desc')

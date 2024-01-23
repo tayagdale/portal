@@ -66,8 +66,10 @@
                                 <tr>
                                     <th>Generic Name</th>
                                     <th>Brand Name</th>
+                                    <th>Supplier</th>
                                     <th>QTY</th>
                                     <th>Unit of measure</th>
+                                    <th>Unit Price</th>
                                     <th>Expiry Date</th>
                                     <th>Status</th>
                                     <th style="width: 15%;">Action</th>

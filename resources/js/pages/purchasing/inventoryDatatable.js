@@ -56,10 +56,16 @@ class pgPurchaseOrders {
                     data: 'item_brand_name',
                 },
                 {
+                    data: 'supp',
+                },
+                {
                     data: 'Iqty',
                 },
                 {
                     data: 'unit_code',
+                },
+                {
+                    data: 'unit_price',
                 },
                 {
                     data: 'expiration_date',
