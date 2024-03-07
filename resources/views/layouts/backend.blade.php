@@ -283,6 +283,18 @@
                                 </a>
                             </li>
                         @endcheckPermission
+
+
+                            <li class="nav-main-heading">Reservation</li>
+                            <li class="nav-main-item open">
+                                <a class="nav-main-link{{ request()->is('admin/reservation') ? ' active' : '' }}"
+                                    href="/admin/reservation">
+                                    <i class="nav-main-link-icon far fa-check-square"></i>
+                                    <span class="nav-main-link-name">Add Reservation</span>
+                                </a>
+                            </li>
+
+
                         @checkPermission('checkPermission(auth()->user()->id, 9) || checkPermission(auth()->user()->id, 10)')
                             <li class="nav-main-heading">Payment</li>
                         @endcheckPermission

@@ -255,5 +255,20 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         //Taxes Routes
         Route::get('/admin/taxes/all', 'TaxController@index');
         Route::put('/admin/taxes/{id}', 'TaxController@update')->name('tax.update');
+
+        //Reservation Routes
+        Route::get('/admin/reservation', 'ReservationController@index');
+        Route::get('/admin/reservation/all', 'ReservationController@reservation_lists')->name('reservation.reservation_lists');
+        Route::get('/admin/reservation/add', 'ReservationController@add')->name('reservation.add');
+        Route::get('/admin/reservation/{id}', 'ReservationController@show')->name('reservation.show');
+        Route::post('/admin/reservation/{id}', 'ReservationController@add_item')->name('reservation.add_item');
+        Route::get('/admin/reservation/details/{id}', 'ReservationController@view_reservation_item')->name('reservation.view_reservation_item');
+        Route::put('/admin/reservation/{id}', 'ReservationController@update')->name('ReservationController.update');
+        Route::delete('/admin/reservation/{id}', 'ReservationController@destroy')->name('ReservationController.remove');
+        Route::delete('/admin/reservation/details/{id}', 'ReservationController@destroy_details')->name('ReservationController.destroy_details');
+        Route::delete('/admin/reservation/clear/{id}', 'ReservationController@clear')->name('ReservationController.clear');
+        Route::get('/admin/reservation/update/{id}', 'ReservationController@update_page')->name('reservation.update_page');
+        Route::post('/admin/reservation/add/os', 'ReservationController@add_to_os')->name('reservation.add_to_os');
+
     });
 });

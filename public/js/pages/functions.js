@@ -11,6 +11,17 @@ function getStatus(id) {
 }
 
 
+function getResStatus(id) {
+    if (id == 1) {
+        return '<span class="badge bg-success">RESERVED</span>';
+    } else if (id == -1) {
+        return '<span class="badge bg-black">CANCELLED</span>';
+    } else {
+        return '<span class="badge bg-info">ADDED TO ORDER</span>';
+    }
+}
+
+
 function reloadDatatable(datatableClass) {
     $(`.${datatableClass}`).DataTable().ajax.reload();
 }
