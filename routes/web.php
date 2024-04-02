@@ -93,6 +93,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
         //Inventory Routes
         Route::get('admin/inventory/all', 'InventoryController@index')->name('inventory.all');
+        Route::get('admin/inventory/uom/{id}', 'InventoryController@get_uom')->name('inventory.get_uom');
 
         //Inventory Details Routes
         Route::get('admin/inventory_details/data/{id}', 'InventoryDetailController@get_inventory_by_order_slip')->name('inventory_details.os');
@@ -208,7 +209,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::get('/admin/items/all', 'ItemController@index');
         Route::post('/admin/items', 'ItemController@store')->name('items.store');
         Route::put('/admin/items/{id}', 'ItemController@update')->name('items.update');
+        Route::put('/admin/items/{id}/conversion', 'ItemController@conversion')->name('items.conversion');
         Route::delete('/admin/items/{id}', 'ItemController@destroy')->name('items.remove');
+
 
         //Category Routes
         Route::get('/admin/categories/all', 'CategoryController@index');

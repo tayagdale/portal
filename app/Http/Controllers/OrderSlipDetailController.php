@@ -26,7 +26,8 @@ class OrderSlipDetailController extends Controller
     public function get_total_qty(string $id)
     {
         $order_slip_details = DB::table("order_slip_details")
-            ->select(DB::raw('SUM(qty) AS qty'))
+            ->select(DB::raw('SUM(qty) AS qty, unit_code'))
+            ->leftJoin("units", "order_slip_details.unit_id", "=", "units.id")
             ->where("order_slip_details.os_number", $id)
             ->get();
         return response()->json(['success' => true, 'data' => $order_slip_details]);

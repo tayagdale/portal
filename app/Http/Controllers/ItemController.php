@@ -103,6 +103,25 @@ class ItemController extends Controller
         return response()->json(['message' => 'Item updated successfully.']);
     }
 
+    public function conversion(Request $request, string $id)
+    {
+
+        $item = Item::find($id);
+
+        if (!$item) {
+            return response()->json(['error' => 'Item not found.'], 404);
+        }
+
+        $item->uom_1 = $request->input('uom_1');
+        $item->qty_1 = $request->input('qty_1');
+        $item->uom_2 = $request->input('uom_2');
+        $item->qty_2 = $request->input('qty_2');
+
+        $item->save();
+
+        return response()->json(['message' => 'Item updated successfully.']);
+    }
+
     /**
      * Remove the specified resource from storage.
      */

@@ -34,6 +34,34 @@ $(document).ready(function () {
 
     });
 
+    $("#itemConversionForm").on('submit', function (e) {
+        e.preventDefault();
+        var item_id = $('#conversion_item_id').val();
+
+        $.ajax({
+            type: 'PUT',
+            url: `/admin/items/${item_id}/conversion`,
+            data: $(this).serialize(),
+            dataType: 'json',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function (response) {
+                reloadDatatable('js-dataTable-items');
+                $('#itemConversion').modal('hide')
+            },
+            error: function (xhr, status, error) {
+                // Handle the error if the Ajax request fails
+                console.log(error);
+                if (xhr.status === 422) {
+                    var errors = xhr.responseJSON.errors;
+                    displayErrors(errors);
+                }
+            }
+        });
+
+    });
+
 });
 
 
@@ -72,6 +100,14 @@ function update(id, brand_name, generic_name, category) {
     $('#mdlItem').modal('show');
 
 }
+
+
+function conversion(id) {
+    getAllUnitsConvert();
+    $('#conversion_item_id').val(id);
+    $('#itemConversion').modal('show');
+}
+
 
 
 function remove(id) {
@@ -163,6 +199,21 @@ function getAllUnits() {
     $.get('/admin/units/all', function (options) {
         // Populate the select with options
         var select = $('#unit_id');
+        select.empty(); // Clear previous options
+        options.data.forEach(function (option) {
+
+            select.append($('<option>', {
+                value: option.id,
+                text: option.unit_code
+            }));
+        });
+    });
+}
+
+function getAllUnitsConvert() {
+    $.get('/admin/units/all', function (options) {
+        // Populate the select with options
+        var select = $('.unit_id');
         select.empty(); // Clear previous options
         options.data.forEach(function (option) {
 

@@ -59,10 +59,25 @@ class pgPurchaseOrders {
                     data: 'supp',
                 },
                 {
+                    data: 'unit_code',
+                },
+                {
                     data: 'Iqty',
                 },
                 {
-                    data: 'unit_code',
+                    data: 'item_uom_1',
+                    render: function (data, type, row) {
+                        $.get(`/admin/inventory/uom/${data}`, function (options) {
+                            return options.data.unit_code;
+                        });
+                    }
+                },
+                {
+                    data: 'Iqty',
+                    render: function (data, type, row) {
+                        var qty_2 = Math.floor(data / row['item_qty_2']);
+                        return qty_2;
+                    }
                 },
                 {
                     data: 'unit_price',
@@ -154,10 +169,13 @@ class pgPurchaseOrders {
     }
 
 
-
+    
 
 }
 
+
 // Initialize when page loads
 One.onLoad(() => pgPurchaseOrders.init());
+
+
 

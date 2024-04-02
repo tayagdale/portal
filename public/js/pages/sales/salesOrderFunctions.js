@@ -58,7 +58,7 @@ function add_item() {
         processData: false,
         success: function (object) {
             console.log(object.data[0].qty);
-            $("#total_os_qty").text(object.data[0].qty);
+            $("#total_os_qty").text(object.data[0].qty + ' ' + object.data[0].unit_code);
         },
     });
 

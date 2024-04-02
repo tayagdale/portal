@@ -109,6 +109,12 @@ class InspectionDetailController extends Controller
                     return response()->json(['error' => 'Item not found.'], 404);
                 }
 
+                $qty = $request->input('qty');
+
+                if(!empty($get_current_item->uom_2)) {
+                    $qty = $request->input('qty') * $get_current_item->qty_2;
+                }
+
 
                 $inventory = new Inventory();
                 $inventory->item_id = $request->input('item_id');
@@ -122,7 +128,7 @@ class InspectionDetailController extends Controller
                     $inventory_detail = new InventoryDetail();
                     $inventory_detail->po_number = $request->input('po_number');
                     $inventory_detail->item_id =  $request->input('item_id');
-                    $inventory_detail->qty =  $request->input('qty');
+                    $inventory_detail->qty =  $qty;
                     $inventory_detail->lot_no =  $request->input('lot_no');
                     $inventory_detail->expiration_date =  $request->input('expiration_date');
                     $inventory_detail->inspection_date = date('Y-m-d H:i:s');

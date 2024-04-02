@@ -125,10 +125,8 @@ $(document).ready(function () {
         e.preventDefault();
         var qty = $("#qty_update").val();
         var unit_price = $("#unit_price_update").val();
-        console.log(unit_price);
-        console.log(qty);
+      
         $('#total_amount_update').val(unit_price * qty);
-        console.log($('#total_amount_update').val());
         $.ajax({
             type: requestType,
             url: $(this).attr('action'),

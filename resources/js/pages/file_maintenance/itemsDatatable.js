@@ -75,11 +75,18 @@ class pgItems {
                         var old_brand_name = row['brand_name'];
                         var old_generic_name = row['generic_name'];
                         var old_category = row['category_id'];
+                        var uom_1 = row['uom_1'];
+                        var qty_1 = row['qty_1'];
+                        var uom_2 = row['uom_2'];
+                        var qty_2 = row['qty_2'];
                         return `
                                 <div class="text-center">
                                     <div class="btn-group">
                                     <button type="button" onclick="update(${data},'${old_brand_name}','${old_generic_name}','${old_category}')" class="btn btn-sm btn-alt-info " data-bs-toggle="tooltip" title="Update Brand">
                                         <i class="fa fa-fw fa-pencil-alt"></i>
+                                    </button>
+                                    <button type="button" onclick="conversion(${data})" class="btn btn-sm btn-alt-success " data-bs-toggle="tooltip" title="Conversion">
+                                        <i class="fa fa-fw fa-refresh"></i>
                                     </button>
                                     <button type="button" onclick="remove(${data})" class="btn btn-sm btn-alt-warning" data-bs-toggle="tooltip" title="Delete Brand">
                                         <i class="fa fa-fw fa-trash"></i>

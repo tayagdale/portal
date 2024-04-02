@@ -47,11 +47,16 @@ function view_inventory(inventory_id) {
 
 
 
-
-
 $("#mdlViewInventory").on('shown.bs.modal', function () {
     console.log(inventoryId);
     var url = `/admin/inventory_details/data/item/${inventoryId}`;
     reloadDatatableWithUrl('item_table', url);
 
 });
+
+
+function get_uom_convert(id) {
+    $.get(`/admin/inventory/uom/${id}`, function (options) {
+        return options.data.unit_code;
+    });
+}
