@@ -102,7 +102,7 @@
     "src": "resources/js/pages/file_maintenance/inventoryStatusDatatable.js"
   },
   "resources/js/pages/file_maintenance/itemsDatatable.js": {
-    "file": "assets/itemsDatatable-e0b601e7.js",
+    "file": "assets/itemsDatatable-145013e1.js",
     "isEntry": true,
     "src": "resources/js/pages/file_maintenance/itemsDatatable.js"
   },
@@ -167,7 +167,7 @@
     "src": "resources/js/pages/purchasing/inspectionsDatatable.js"
   },
   "resources/js/pages/purchasing/inventoryDatatable.js": {
-    "file": "assets/inventoryDatatable-3e00dfd7.js",
+    "file": "assets/inventoryDatatable-bf271dcf.js",
     "isEntry": true,
     "src": "resources/js/pages/purchasing/inventoryDatatable.js"
   },
@@ -175,6 +175,11 @@
     "file": "assets/purchaseOrdersDatatable-5cb32c59.js",
     "isEntry": true,
     "src": "resources/js/pages/purchasing/purchaseOrdersDatatable.js"
+  },
+  "resources/js/pages/reservation/reservationDatatable.js": {
+    "file": "assets/reservationDatatable-106b3142.js",
+    "isEntry": true,
+    "src": "resources/js/pages/reservation/reservationDatatable.js"
   },
   "resources/js/pages/sales/deliveryDatatable.js": {
     "file": "assets/deliveryDatatable-f5c7d47a.js",

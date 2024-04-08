@@ -36,6 +36,7 @@ export default defineConfig({
                 'resources/js/pages/file_maintenance/permissionsDatatable.js',
                 'resources/js/pages/file_maintenance/taxesDatatable.js',
                 'resources/js/pages/file_maintenance/termsDatatable.js',
+                'resources/js/pages/reservation/reservationDatatable.js',
             ],
             refresh: true,
         }),
