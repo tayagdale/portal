@@ -67,10 +67,10 @@
                                     <th>Generic Name</th>
                                     <th>Brand Name</th>
                                     <th>Supplier</th>
-                                    <th>UOM 1</th>
                                     <th>QTY 1</th>
-                                    <th>UOM 2</th>
+                                    <th>UOM 1</th>
                                     <th>QTY 2</th>
+                                    <th>UOM 2</th>
                                     <th>Unit Price</th>
                                     <th>Expiry Date</th>
                                     <th>Status</th>

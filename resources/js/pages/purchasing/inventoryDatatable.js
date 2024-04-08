@@ -59,13 +59,10 @@ class pgPurchaseOrders {
                     data: 'supp',
                 },
                 {
-                    data: 'item_uom_2',
-                },
-                {
                     data: 'Iqty',
                 },
                 {
-                    data: 'unit_code',
+                    data: 'item_uom_2',
                 },
                 {
                     data: 'Iqty',
@@ -74,6 +71,10 @@ class pgPurchaseOrders {
                         return qty_2;
                     }
                 },
+                {
+                    data: 'unit_code',
+                },
+
                 {
                     data: 'unit_price',
                 },

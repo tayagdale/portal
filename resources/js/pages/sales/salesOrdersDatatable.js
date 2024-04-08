@@ -195,6 +195,11 @@ class pgSalesOrders {
                 },
                 {
                     data: 'iQty',
+                    render: function (data, type, row) {
+              
+
+                        return data / $("#total_os_qty").text().match(/\d+/g).map(Number)[0];
+                    }
                 },
                 {
                     data: null, // This column doesn't have specific data

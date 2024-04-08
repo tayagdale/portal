@@ -2,7 +2,7 @@
 var unitId;
 var requestType;
 var base_url = window.location.origin;
-
+var qtyRequired;
 $(document).ready(function () {
     getAllWarehouses();
     $("#frmAddInspection").on('submit', function (e) {
@@ -33,29 +33,42 @@ $(document).ready(function () {
 
     $("#frmVerifyInspection").on('submit', function (e) {
         e.preventDefault();
+        var qtyToDeliver = $("#txtItemQty_verify").val();
         console.log('test');
-        $("#frmVerifyInspection").attr('action', `/admin/inspection_details/create`); // Set the form action for add
-        $.ajax({
-            type: 'POST',
-            url: $(this).attr('action'),
-            data: $(this).serialize(),
-            dataType: 'json',
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function (response) {
-                $('#mdlInspectionVerify').modal('hide'); // Show the modal
-                reloadDatatable('js-dataTable-inspection_details');
-            },
-            error: function (xhr, status, error) {
-                // Handle the error if the Ajax request fails
-                console.log(error);
-                if (xhr.status === 422) {
-                    var errors = xhr.responseJSON.errors;
-                    displayErrors(errors);
+
+        if (qtyToDeliver > qtyRequired) {
+            Swal.fire(
+                'Warning!',
+                'Quantity Delivered must not be greater than the quantity from Purchase Order.',
+                'warning'
+            )
+        } else {
+            $("#frmVerifyInspection").attr('action', `/admin/inspection_details/create`); // Set the form action for add
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                data: $(this).serialize(),
+                dataType: 'json',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function (response) {
+                    $('#mdlInspectionVerify').modal('hide'); // Show the modal
+                    reloadDatatable('js-dataTable-inspection_details');
+                },
+                error: function (xhr, status, error) {
+                    // Handle the error if the Ajax request fails
+                    console.log(error);
+                    if (xhr.status === 422) {
+                        var errors = xhr.responseJSON.errors;
+                        displayErrors(errors);
+                    }
                 }
-            }
-        });
+            });
+        }
+
+
+
 
     });
 
@@ -71,11 +84,13 @@ function create() {
 }
 
 
-function verify_item(item_id, brand_name) {
+function verify_item(item_id, brand_name, qty_required) {
+    qtyRequired = qty_required;
     $("#frmVerifyInspection").trigger('reset'); // Reset the form fields
     $('#qtyError, #lot_noError, #delivery_dateError, #expiration_dateError').text('');
     $('#itemNameVerify').text(brand_name)
     $('#txtItemId_verify').val(item_id);
+    console.log(qtyRequired);
     $('#mdlInspectionVerify').modal('show'); // Show the modal
 }
 

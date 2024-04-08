@@ -162,12 +162,12 @@
     "src": "resources/js/pages/payment/outgoingPaymentDatatable.js"
   },
   "resources/js/pages/purchasing/inspectionsDatatable.js": {
-    "file": "assets/inspectionsDatatable-3dda7c3f.js",
+    "file": "assets/inspectionsDatatable-dcdb4bd6.js",
     "isEntry": true,
     "src": "resources/js/pages/purchasing/inspectionsDatatable.js"
   },
   "resources/js/pages/purchasing/inventoryDatatable.js": {
-    "file": "assets/inventoryDatatable-5fa15d5f.js",
+    "file": "assets/inventoryDatatable-e3436ea6.js",
     "isEntry": true,
     "src": "resources/js/pages/purchasing/inventoryDatatable.js"
   },
@@ -197,7 +197,7 @@
     "src": "resources/js/pages/sales/salesInvoiceDatatable.js"
   },
   "resources/js/pages/sales/salesOrdersDatatable.js": {
-    "file": "assets/salesOrdersDatatable-bac54d76.js",
+    "file": "assets/salesOrdersDatatable-bbce49bb.js",
     "isEntry": true,
     "src": "resources/js/pages/sales/salesOrdersDatatable.js"
   },

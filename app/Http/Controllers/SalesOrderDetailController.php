@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\InventoryDetail;
+use App\Models\Item;
 use App\Models\SalesOrderDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -65,8 +66,20 @@ class SalesOrderDetailController extends Controller
             $inventory_detail = InventoryDetail::where([
                 'id' => $request->input('invty_id')
             ])->first();
+
+            $get_current_item = Item::where('id', $request->input('item_id'))->first();
+
+            if (!$get_current_item) {
+                return response()->json(['error' => 'Item not found.'], 404);
+            }
+            $qty = $request->input('qty');
+
+            if (!empty($get_current_item->uom_2)) {
+                $qty = $request->input('qty') * $get_current_item->qty_2;
+            }
+
             if ($inventory_detail) {
-                $inventory_detail->qty = $inventory_detail->qty - $request->input('qty');
+                $inventory_detail->qty = $inventory_detail->qty - $qty;
                 $save_inventory_detail = $inventory_detail->save();
                 if ($save_inventory_detail) {
                     return response()->json(['success' => true]);
@@ -85,8 +98,21 @@ class SalesOrderDetailController extends Controller
             $inventory_detail = InventoryDetail::where([
                 'id' => $request->input('invty_id')
             ])->first();
+
+
+            $get_current_item = Item::where('id', $request->input('item_id'))->first();
+
+            if (!$get_current_item) {
+                return response()->json(['error' => 'Item not found.'], 404);
+            }
+            $qty = $request->input('qty');
+
+            if (!empty($get_current_item->uom_2)) {
+                $qty = $request->input('qty') * $get_current_item->qty_2;
+            }
+
             if ($inventory_detail) {
-                $inventory_detail->qty = $inventory_detail->qty - $request->input('qty');
+                $inventory_detail->qty = $inventory_detail->qty - $qty;
                 $save_inventory_detail = $inventory_detail->save();
                 if ($save_inventory_detail) {
                     return response()->json(['success' => true, 'data' => $newSales_order_detail]);
@@ -134,7 +160,20 @@ class SalesOrderDetailController extends Controller
         ])->first();
 
         if ($inventory_detail) {
-            $inventory_detail->qty = $inventory_detail->qty + $salesOrderDetail->qty;
+
+            $get_current_item = Item::where('id', $salesOrderDetail->item_id)->first();
+
+            if (!$get_current_item) {
+                return response()->json(['error' => 'Item not found.'], 404);
+            }
+            $qty = $salesOrderDetail->qty;
+
+            if (!empty($get_current_item->uom_2)) {
+                $qty = $salesOrderDetail->qty * $get_current_item->qty_2;
+            }
+
+
+            $inventory_detail->qty = $inventory_detail->qty + $qty;
             $save_inventory_detail = $inventory_detail->save();
             if ($save_inventory_detail) {
                 $salesOrderDetail->delete();

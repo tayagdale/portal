@@ -74,13 +74,14 @@ class pgPurchaseOrders {
                     render: function (data, type, row) {
                         var item_id = row.item_id;
                         var brand_name = row.brand_name;
+                        var qty_required = row.purchase_order_qty;
                         if (row.purchase_order_qty == 0) {
                             return `All items verified`
                         } else {
                             return `
                             <div class="text-center">
                             <div class="btn-group">
-                              <button onclick="verify_item('${item_id}','${brand_name}')" class="btn btn-sm btn-alt-success " data-bs-toggle="tooltip" title="Verify Items">
+                              <button onclick="verify_item('${item_id}','${brand_name}','${qty_required}')" class="btn btn-sm btn-alt-success " data-bs-toggle="tooltip" title="Verify Items">
                                 <i class="fa fa-fw fa-check"></i>
                               </button>
                             </div> 
@@ -167,7 +168,7 @@ class pgPurchaseOrders {
                               </div> 
                             </div> `
                         }
-                
+
                     }
                 },
             ],
