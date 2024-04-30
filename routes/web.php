@@ -201,6 +201,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
         //Unit Routes
         Route::get('/admin/units/all', 'UnitController@index');
+        Route::get('/admin/units/unit/{id}', 'UnitController@unit_by_item_id');
         Route::get('/admin/units/unit_1/{id}', 'UnitController@unit1_by_item_id');
         Route::get('/admin/units/unit_2/{id}', 'UnitController@unit2_by_item_id');
         Route::post('/admin/units', 'UnitController@store')->name('units.store');

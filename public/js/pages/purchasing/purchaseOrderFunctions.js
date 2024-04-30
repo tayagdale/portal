@@ -5,7 +5,7 @@ var base_url = window.location.origin;
 $(document).ready(function () {
     getAllSuppliers()
     getSubtotal()
-    getAllUnits();
+    // getAllUnits();
     getAllTerms();
     // Open the modal for adding a new item
     var po_number = $('.po_number').val();
@@ -154,8 +154,24 @@ $(document).ready(function () {
         });
 
     });
-});
 
+    $('#item_id').on('change', function () {
+        $('#unit_id').prop("disabled", false);
+        $.get(`/admin/units/unit/${this.value}`, function (options) {
+            var select = $('#unit_id');
+            select.empty();
+            $.each(options.data, function (rowIndex, row) {
+                $.each(row, function (columnName, columnValue) {
+                    var option = $('<option>', {
+                        value: columnValue.uom,
+                        text: columnValue.unit_code,
+                    });
+                    select.append(option);
+                });
+            })
+        });
+    });
+});
 
 function create() {
     $('#unit_codeError').text('');

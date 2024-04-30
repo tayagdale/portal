@@ -125,7 +125,7 @@ $(document).ready(function () {
         e.preventDefault();
         var qty = $("#qty_update").val();
         var unit_price = $("#unit_price_update").val();
-      
+
         $('#total_amount_update').val(unit_price * qty);
         $.ajax({
             type: requestType,
@@ -150,6 +150,23 @@ $(document).ready(function () {
             }
         });
 
+    });
+
+    $('#item_id').on('change', function () {
+        $('#unit_id').prop("disabled", false);
+        $.get(`/admin/units/unit/${this.value}`, function (options) {
+            var select = $('#unit_id');
+            select.empty();
+            $.each(options.data, function (rowIndex, row) {
+                $.each(row, function (columnName, columnValue) {
+                    var option = $('<option>', {
+                        value: columnValue.uom,
+                        text: columnValue.unit_code,
+                    });
+                    select.append(option);
+                });
+            })
+        });
     });
 });
 

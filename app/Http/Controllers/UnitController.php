@@ -17,6 +17,33 @@ class UnitController extends Controller
         $units = Unit::all();
         return response()->json(['success' => true, 'data' => $units]);
     }
+    public function unit_by_item_id(string $id)
+    {
+        $units = DB::table('steritex.items')
+            ->select('uom_1', DB::raw('(SELECT unit_code FROM steritex.units WHERE id = uom_1) AS unit_code_1'), 'uom_2', DB::raw('(SELECT unit_code FROM steritex.units WHERE id = uom_2) AS unit_code_2'))
+            ->where('items.id', $id)
+            ->orderBy('items.uom_1', 'asc')
+            ->get();
+        $formattedUnits = [];
+
+        foreach ($units as $unit) {
+            $formattedUnit = [
+                'uom_1' => [
+                    'uom' => $unit->uom_1,
+                    'unit_code' => $unit->unit_code_1,
+                ],
+                'uom_2' => [
+                    'uom' => $unit->uom_2,
+                    'unit_code' => $unit->unit_code_2,
+                ],
+            ];
+
+            $formattedUnits[] = $formattedUnit;
+        }
+
+        return response()->json(['success' => true, 'data' => $formattedUnits]);
+    }
+
 
     public function unit1_by_item_id(string $id)
     {

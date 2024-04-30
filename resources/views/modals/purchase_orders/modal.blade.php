@@ -40,7 +40,8 @@
                             <label for="qty">Quantity</label>
                         </div>
                         <div class="form-floating mb-4">
-                            <select class="form-select" id="unit_id" name="unit_id" data-placeholder="Select Unit">
+                            <select disabled class="form-select" id="unit_id" name="unit_id"
+                                data-placeholder="Select Unit">
                                 <option value=""></option>
                             </select>
                             <label for="unit_id">Unit</label>
