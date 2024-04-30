@@ -74,8 +74,8 @@
 
                             <div class="col-md-5">
                                 <div class="form-floating mb-4">
-                                    <select class=" form-select unit_id" id="unit_id" name="uom_1" data-container="#itemConversion"
-                                        data-placeholder="Select Item">
+                                    <select class=" form-select" id="unit_id_1" name="uom_1"
+                                        data-container="#itemConversion" data-placeholder="Select Item">
                                         <option value=""></option>
                                     </select>
                                     <label for="category_id">Unit of Measure</label>
@@ -91,8 +91,8 @@
                             </div>
                             <div class="col-md-5">
                                 <div class="form-floating mb-4">
-                                    <select class=" form-select unit_id" id="unit_id" name="uom_2" data-container="#itemConversion"
-                                        data-placeholder="Select Item">
+                                    <select class="form-select" id="unit_id_2" name="uom_2"
+                                        data-container="#itemConversion" data-placeholder="Select Item">
                                         <option value=""></option>
                                     </select>
                                     <label for="unit_id">Unit of Measure</label>
@@ -115,4 +115,3 @@
         </div>
     </div>
 </div>
-

@@ -62,6 +62,10 @@ $(document).ready(function () {
 
     });
 
+    $('#itemConversion').on('hidden.bs.modal', function () {
+        $('#qty1').val('');
+        $('#qty2').val('');
+    });
 });
 
 
@@ -103,11 +107,11 @@ function update(id, brand_name, generic_name, category) {
 
 
 function conversion(id) {
-    getAllUnitsConvert();
+    getAllUnits1Convert(id);
+    getAllUnits2Convert(id);
     $('#conversion_item_id').val(id);
     $('#itemConversion').modal('show');
 }
-
 
 
 function remove(id) {
@@ -160,7 +164,7 @@ function displayErrors(errors) {
 
 function getAllCategories(category_id) {
     console.log(category_id);
-    if(category_id){
+    if (category_id) {
         $.get('/admin/categories/all', function (options) {
             // Populate the select with options
             var select = $('#category_id');
@@ -170,12 +174,12 @@ function getAllCategories(category_id) {
                     value: option.id,
                     text: option.category_name
                 });
-    
+
                 // Set 'selected' attribute if option.id is 2
                 if (option.id == category_id) {
                     newOption.attr('selected', 'selected');
                 }
-    
+
                 select.append(newOption);
             });
         });
@@ -210,17 +214,48 @@ function getAllUnits() {
     });
 }
 
-function getAllUnitsConvert() {
-    $.get('/admin/units/all', function (options) {
+function getAllUnits1Convert() {
+    $.get(`/admin/units/all`, function (options) {
         // Populate the select with options
-        var select = $('.unit_id');
+        var select = $('#unit_id_1');
         select.empty(); // Clear previous options
         options.data.forEach(function (option) {
-
-            select.append($('<option>', {
-                value: option.id,
-                text: option.unit_code
-            }));
+            if (option.unit_code == 'PCS')
+                select.append($('<option>', {
+                    value: option.id,
+                    text: option.unit_code
+                }));
         });
     });
+}
+
+
+function getAllUnits2Convert(id) {
+    $.get(`/admin/units/all`, function (defaultOptions) {
+        // Populate the select with options
+        $.get(`/admin/units/unit_2/${id}`, function (options) {
+            // Populate the select with options
+            var select = $('#unit_id_2');
+            select.empty(); // Clear previous options
+
+            defaultOptions.data.forEach(function (defaultOption) {
+                var isSelected = options.data.some(function (option) {
+                    return option.unit_code === defaultOption.unit_code;
+                });
+
+                var option = $('<option>', {
+                    value: defaultOption.id,
+                    text: defaultOption.unit_code,
+                    selected: isSelected
+                });
+                select.append(option);
+            });
+
+            if (options.data[0].qty_1 && options.data[0].qty_2) {
+                $("#qty1").val(options.data[0].qty_1);
+                $("#qty2").val(options.data[0].qty_2);
+            }
+        });
+    });
+
 }

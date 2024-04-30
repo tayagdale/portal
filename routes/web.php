@@ -201,6 +201,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
         //Unit Routes
         Route::get('/admin/units/all', 'UnitController@index');
+        Route::get('/admin/units/unit_1/{id}', 'UnitController@unit1_by_item_id');
+        Route::get('/admin/units/unit_2/{id}', 'UnitController@unit2_by_item_id');
         Route::post('/admin/units', 'UnitController@store')->name('units.store');
         Route::put('/admin/units/{id}', 'UnitController@update')->name('units.update');
         Route::delete('/admin/units/{id}', 'UnitController@destroy')->name('units.remove');
@@ -272,6 +274,5 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::delete('/admin/reservation/clear/{id}', 'ReservationController@clear')->name('ReservationController.clear');
         Route::get('/admin/reservation/update/{id}', 'ReservationController@update_page')->name('reservation.update_page');
         Route::post('/admin/reservation/add/os', 'ReservationController@add_to_os')->name('reservation.add_to_os');
-
     });
 });

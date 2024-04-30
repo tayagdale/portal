@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Unit;
+use Dotenv\Util\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UnitController extends Controller
 {
@@ -15,6 +17,30 @@ class UnitController extends Controller
         $units = Unit::all();
         return response()->json(['success' => true, 'data' => $units]);
     }
+
+    public function unit1_by_item_id(string $id)
+    {
+        $units = DB::table("items")
+            ->select(array('*'))
+            ->leftJoin("units", "units.id", "=", "items.uom_1")
+            ->where('items.id', $id)
+            ->get();
+
+        return response()->json(['success' => true, 'data' => $units]);
+    }
+
+
+    public function unit2_by_item_id(string $id)
+    {
+        $units = DB::table("items")
+            ->select(array('*'))
+            ->leftJoin("units", "units.id", "=", "items.uom_2")
+            ->where('items.id', $id)
+            ->get();
+
+        return response()->json(['success' => true, 'data' => $units]);
+    }
+
 
     /**
      * Show the form for creating a new resource.
