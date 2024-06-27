@@ -56,7 +56,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
          * Logout Routes
          */
         Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
-        Route::view('/admin/dashboard', 'dashboard');
+        Route::get('/admin/dashboard', 'HomeController@show_dashboard')->name('dashboard.show');
+        // Route::view('/admin/dashboard', 'dashboard');
 
         //Purchasing Routes
         Route::view('/admin/purchase_order', 'pages/purchasing/purchase_order');
