@@ -138,6 +138,7 @@
                                     <tr>
                                         <th>Product No.</th>
                                         <th>Name</th>
+                                        <th>Description</th>
                                         <th>UOM</th>
                                         <th>Quantity</th>
                                         <th>Unit Price</th>

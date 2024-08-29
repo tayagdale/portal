@@ -98,7 +98,7 @@ $(document).ready(function () {
         var qty = $("#qty").val();
         $.ajax({
             type: requestType,
-            url: '/admin/reservation/'+reservation_item_id,
+            url: '/admin/reservation/' + reservation_item_id,
             data: $(this).serialize(),
             dataType: 'json',
             headers: {
@@ -120,7 +120,23 @@ $(document).ready(function () {
         });
 
     });
-    
+
+    $('#item_id').on('change', function () {
+        $('#unit_id').prop("disabled", false);
+        $.get(`/admin/units/unit/${this.value}`, function (options) {
+            var select = $('#unit_id');
+            select.empty();
+            $.each(options.data, function (rowIndex, row) {
+                $.each(row, function (columnName, columnValue) {
+                    var option = $('<option>', {
+                        value: columnValue.uom,
+                        text: columnValue.unit_code,
+                    });
+                    select.append(option);
+                });
+            })
+        });
+    });
 });
 
 
@@ -132,6 +148,15 @@ function updateRes(id) {
 function createDraft() {
     $('#mdlAddReservation').modal('show'); // Show the modal
     getAllCustomers();
+}
+
+function viewDetails(reservation_id) {
+    console.log(reservation_id);
+    $("#reservation_id").text(reservation_id);
+
+    reloadDatatableWithUrl("js-dataTable-reservation-details-view", `/admin/reservation_details/view_detail/${reservation_id}`);
+
+    $("#mdlReservationDetails").modal('show');
 }
 
 function addToOrder(id) {

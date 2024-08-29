@@ -9,6 +9,6 @@ class InventoryDetail extends Model
 {
     protected $table = 'inventory_details';
     protected $primaryKey = 'id';
-    protected $fillable = ['po_number', 'item_id', 'qty',  'lot_no', 'expiration_date', 'encoded_by'];
+    protected $fillable = ['po_number', 'item_id', 'qty', 'unit_price', 'lot_no', 'expiration_date', 'encoded_by'];
     use HasFactory;
 }

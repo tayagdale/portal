@@ -11,6 +11,9 @@ class s{static initDataTables(){jQuery.extend(jQuery.fn.DataTable.ext.classes,{s
                                 <button type="submit" onclick="updateRes('${t.id}')" class="btn btn-sm btn-alt-info" data-bs-toggle="tooltip" title="Update">
                                   <i class="fa fa-fw fa-pencil-alt"></i>
                                 </button>
+                                <button type="submit" onclick="viewDetails('${t.id}')" class="btn btn-sm btn-alt-info" data-bs-toggle="tooltip" title="View Reservation Details">
+                                  <i class="fa fa-fw fa-eye"></i>
+                                </button>
                                 <button type="submit" onclick="addToOrder('${t.id}')" class="btn btn-sm btn-alt-success" data-bs-toggle="tooltip" title="Add to Order">
                                     <i class="fa fa-fw fa-check"></i>
                                 </button>
@@ -18,4 +21,4 @@ class s{static initDataTables(){jQuery.extend(jQuery.fn.DataTable.ext.classes,{s
                                     <i class="fa fa-fw fa-times"></i>
                                 </button>
                               </div> 
-                            </div> `}}],pageLength:10,lengthMenu:[[5,10,15,20],[5,10,15,20]],autoWidth:!1,responsive:!0,order:[[1,"desc"]],columnDefs:[{defaultContent:"-",targets:"_all",orderable:!1}]})}static init(){this.initDataTables()}}One.onLoad(()=>s.init());
+                            </div> `}}],pageLength:10,lengthMenu:[[5,10,15,20],[5,10,15,20]],autoWidth:!1,responsive:!0,order:[[1,"desc"]],columnDefs:[{defaultContent:"-",targets:"_all",orderable:!1}]}),jQuery(".js-dataTable-reservation-details-view").DataTable({columns:[{data:"reservation_id"},{data:"generic_name"},{data:"brand_name"},{data:"qty"},{data:"created_at"}],pageLength:10,lengthMenu:[[5,10,15,20],[5,10,15,20]],autoWidth:!1,responsive:!0,columnDefs:[{defaultContent:"-",targets:"_all"}]})}static init(){this.initDataTables()}}One.onLoad(()=>s.init());

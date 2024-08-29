@@ -122,6 +122,9 @@ class pgReservation {
                                 <button type="submit" onclick="updateRes('${row.id}')" class="btn btn-sm btn-alt-info" data-bs-toggle="tooltip" title="Update">
                                   <i class="fa fa-fw fa-pencil-alt"></i>
                                 </button>
+                                <button type="submit" onclick="viewDetails('${row.id}')" class="btn btn-sm btn-alt-info" data-bs-toggle="tooltip" title="View Reservation Details">
+                                  <i class="fa fa-fw fa-eye"></i>
+                                </button>
                                 <button type="submit" onclick="addToOrder('${row.id}')" class="btn btn-sm btn-alt-success" data-bs-toggle="tooltip" title="Add to Order">
                                     <i class="fa fa-fw fa-check"></i>
                                 </button>
@@ -147,6 +150,36 @@ class pgReservation {
                 "orderable": false
             },
             ]
+        });
+
+
+        jQuery('.js-dataTable-reservation-details-view').DataTable({
+            columns: [
+                {
+                    data: 'reservation_id',
+                },
+                {
+                    data: 'generic_name',
+                },
+                {
+                    data: 'brand_name',
+                },
+                {
+                    data: 'qty',
+                },
+                {
+                    data: 'created_at',
+                }
+            ],
+            pageLength: 10,
+            lengthMenu: [[5, 10, 15, 20], [5, 10, 15, 20]],
+            autoWidth: false,
+            responsive: true,
+            columnDefs: [{
+                "defaultContent": "-",
+                "targets": "_all"
+            }]
+
         });
 
     }

@@ -61,18 +61,17 @@
                 <div class="block block-rounded">
                     <div class="block-content block-content-full">
                         <!-- DataTables init on table by adding .js-dataTable-responsive class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _js/pages/be_tables_datatables.js -->
-                        <table class="table table-bordered table-striped table-vcenter js-dataTable-inventory">
+                        <table class="table table-bordered table-striped table-vcenter table-sm js-dataTable-inventory">
                             <thead>
                                 <tr>
                                     <th>Generic Name</th>
                                     <th>Brand Name</th>
                                     <th>Supplier</th>
-                                    <th>QTY 1</th>
-                                    <th>UOM 1</th>
-                                    <th>QTY 2</th>
-                                    <th>UOM 2</th>
+                                    <th>Qty</th>
+                                    <th>Unit</th>
                                     <th>Unit Price</th>
-                                    <th>Expiry Date</th>
+                                    <th>Conv. Qty</th>
+                                    <th>Conv. Unit</th>
                                     <th>Status</th>
                                     <th style="width: 15%;">Action</th>
                                 </tr>

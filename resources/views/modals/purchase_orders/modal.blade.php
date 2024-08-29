@@ -33,18 +33,31 @@
                                 <option value=""></option>
                             </select>
                         </div> -->
-                        <div class="form-floating mb-4">
-                            <input type="number" class="form-control" id="qty" name="qty"
-                                placeholder="Quantity">
-                            <input type="hidden" class="form-control po_number_add" id="po_number" name="po_number">
-                            <label for="qty">Quantity</label>
-                        </div>
+
                         <div class="form-floating mb-4">
                             <select disabled class="form-select" id="unit_id" name="unit_id"
                                 data-placeholder="Select Unit">
                                 <option value=""></option>
                             </select>
                             <label for="unit_id">Unit</label>
+                        </div>
+                        <div class="form-floating mb-4">
+                            <div class="row">
+
+                                <div class="col-sm-2">
+                                    <a class="btn btn-sm btn-outline-info" id="minus" style="margin-top: 2px;"
+                                        data-bs-toggle="tooltip" title="Minus"><i class="fa fa-minus"></i></a>
+                                </div>
+                                <div class="col-sm-8 po_add_item">
+                                    <input readonly type="number" class="form-control" id="qty" name="qty">
+                                    <input type="hidden" class="form-control po_number_add" id="po_number"
+                                        name="po_number">
+                                </div>
+                                <div class="col-sm-2">
+                                    <a class="btn btn-sm btn-outline-info" id="plus" style="margin-top: 2px;"
+                                        data-bs-toggle="tooltip" title="Add"><i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-floating mb-4">
                             <input type="number" class="form-control" id="unit_price" name="unit_price"

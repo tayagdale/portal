@@ -47,10 +47,10 @@ class DeliveryController extends Controller
      */
     public function store(Request $request, string $id)
     {
-        $request->validate([
-            'dr_number' => 'required|string|min:3|max:20',
-            // Add validation rules for other attributes as needed
-        ]);
+        // $request->validate([
+        //     'dr_number' => 'required|string|min:3|max:20',
+        //     // Add validation rules for other attributes as needed
+        // ]);
 
 
 
@@ -61,7 +61,7 @@ class DeliveryController extends Controller
         }
 
         $delivery = new Delivery();
-        $delivery->dr_number = $request->input('dr_number');
+        // $delivery->dr_number = $request->input('dr_number');
         $delivery->so_number = $sales_order->so_number;
         $delivery->os_number = $sales_order->os_number;
         $delivery->customer_id = $sales_order->customer_id;

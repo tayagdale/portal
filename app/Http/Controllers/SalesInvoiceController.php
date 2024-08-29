@@ -50,7 +50,7 @@ class SalesInvoiceController extends Controller
 
 
         $request->validate([
-            'si_number' => 'required|string|min:3|max:20',
+            // 'si_number' => 'required|string|min:3|max:20',
             'tax_id' => 'required|integer',
             // Add validation rules for other attributes as needed
         ]);
@@ -63,7 +63,7 @@ class SalesInvoiceController extends Controller
         }
 
         $sales_invoice = new SalesInvoice();
-        $sales_invoice->si_number = $request->input('si_number');
+        // $sales_invoice->si_number = $request->input('si_number');
         $sales_invoice->tax = $request->input('tax_id');
         $sales_invoice->dr_number = $delivery->dr_number;
         $sales_invoice->so_number = $delivery->so_number;

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('po_number');
             $table->integer('item_id');
             $table->integer('qty');
+            $table->float('unit_price');
             $table->string('lot_no')->nullable();
             $table->timestamp('expiration_date')->nullable();
             $table->timestamp('inspection_date')->nullable();

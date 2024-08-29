@@ -60,14 +60,11 @@ class OrderSlipController extends Controller
 
     public function createDraft(Request $request)
     {
-        $request->validate([
-            'os_number' => 'required|string|min:3|max:20',
-        ]);
 
 
 
         $order_slips = new OrderSlip();
-        $order_slips->os_number = $request->input('os_number'); // Set encoded_by
+        // $order_slips->os_number = $request->input('os_number'); // Set encoded_by
         $order_slips->encoded_by = auth()->user()->id; // Set encoded_by
         $order_slips->status = 4; // Set status
         // Set other fields...

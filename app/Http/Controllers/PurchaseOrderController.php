@@ -69,15 +69,9 @@ class PurchaseOrderController extends Controller
         return view('pages/purchasing/purchase_order_add')->with($data);
     }
 
-    public function createDraft(Request $request)
+    public function createDraft()
     {
-
-        $request->validate([
-            'po_number' => 'required|string|min:3|max:20',
-        ]);
-
         $purchaseOrder = new PurchaseOrder();
-        $purchaseOrder->po_number = $request->input('po_number'); // Set encoded_by
         $purchaseOrder->encoded_by = auth()->user()->id; // Set encoded_by
         $purchaseOrder->status = 4; // Set status
         // Set other fields...

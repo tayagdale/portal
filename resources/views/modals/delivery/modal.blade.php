@@ -12,12 +12,12 @@
                 </div>
                 <div class="block-content fs-sm">
                     <form id="frmAddDelivery">
-                        <div class="form-floating mb-4">
+                        {{-- <div class="form-floating mb-4">
                             <input type="text" class="form-control" id="dr_number" name="dr_number"
                                 placeholder="Delivery Number" autofocus>
                             <label for="dr_number">Delivery Number</label>
                             <p class="mb-0" id="dr_numberError"></p>
-                        </div>
+                        </div> --}}
                         <div class="form-floating mb-4">
                             <select class="form-select" id="so_number" name="so_number"
                                 aria-label="Floating label select example">

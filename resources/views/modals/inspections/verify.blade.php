@@ -18,6 +18,7 @@
                             value="{{ $inspection_number }}">
                         <input type="hidden" id="txtItemPONo_verify" name="po_number" value="{{ $po_number }}">
                         <input type="hidden" id="txtItemId_verify" name="item_id">
+                        <input type="hidden" id="txt_unit_price" name="unit_price">
                         <h3 id="itemNameVerify"></h3>
                         <div class="form-floating mb-4">
                             <input type="number" class="form-control" id="txtItemQty_verify" name="qty"

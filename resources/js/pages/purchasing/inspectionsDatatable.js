@@ -60,9 +60,9 @@ class pgPurchaseOrders {
                 {
                     data: 'purchase_order_qty',
                 },
-                {
-                    data: 'Iqty',
-                },
+                // {
+                //     data: 'Iqty',
+                // },
                 {
                     data: 'unit_price',
                 },
@@ -72,16 +72,25 @@ class pgPurchaseOrders {
                 {
                     data: 'inspection_number',
                     render: function (data, type, row) {
+                        var po_number = row.po_number;
                         var item_id = row.item_id;
                         var brand_name = row.brand_name;
+                        var unit_price = row.unit_price;
                         var qty_required = row.purchase_order_qty;
                         if (row.purchase_order_qty == 0) {
-                            return `All items verified`
+                            return `
+                            <div class="text-center">
+                            <div class="btn-group">
+                              <button onclick="view_details('${po_number}','${item_id}')" class="btn btn-sm btn-alt-info " data-bs-toggle="tooltip" title="View Details">
+                                <i class="fa fa-fw fa-eye"></i>
+                              </button>
+                            </div> 
+                          </div> `
                         } else {
                             return `
                             <div class="text-center">
                             <div class="btn-group">
-                              <button onclick="verify_item('${item_id}','${brand_name}','${qty_required}')" class="btn btn-sm btn-alt-success " data-bs-toggle="tooltip" title="Verify Items">
+                              <button onclick="verify_item('${item_id}','${brand_name}','${qty_required}','${unit_price}')" class="btn btn-sm btn-alt-success " data-bs-toggle="tooltip" title="Verify Items">
                                 <i class="fa fa-fw fa-check"></i>
                               </button>
                             </div> 
@@ -113,6 +122,97 @@ class pgPurchaseOrders {
             "ordering": false,
             searching: false
         });
+
+
+        jQuery('.js-dataTable-inspection-details-view').DataTable({
+            columns: [
+                {
+                    data: 'po_number',
+                },
+                {
+                    data: 'generic_name',
+                },
+                {
+                    data: 'brand_name',
+                },
+                {
+                    data: 'qty',
+                },
+                {
+                    data: 'lot_no',
+                },
+                {
+                    data: 'delivery_date',
+                },
+                {
+                    data: 'expiration_date',
+                },
+                {
+                    data: 'user_name',
+                },
+            ],
+            pageLength: 10,
+            lengthMenu: [[5, 10, 15, 20], [5, 10, 15, 20]],
+            autoWidth: false,
+            responsive: true,
+            columnDefs: [{
+                "defaultContent": "-",
+                "targets": "_all"
+            }]
+
+        });
+
+        // jQuery('.js-dataTable-inspection_details-view').DataTable({
+        //     ajax: `/admin/inspection_details/view_detail/`,
+        //     columns: [
+        //         {
+        //             data: 'po_number',
+        //         },
+        //         {
+        //             data: 'generic_name',
+        //         },
+        //         {
+        //             data: 'brand_name',
+        //         },
+        //         {
+        //             data: 'qty',
+        //         },
+        //         {
+        //             data: 'lot_no',
+        //         },
+        //         {
+        //             data: 'delivery_date',
+        //         },
+        //         {
+        //             data: 'expiration_date',
+        //         },
+        //         {
+        //             data: 'user_name',
+        //         },
+        //     ],
+        //     columnDefs: [{
+        //         "defaultContent": "-",
+        //         "targets": "_all",
+        //         "orderable": false
+        //     },
+        //     {
+        //         targets: 5,
+        //         render: $.fn.dataTable.render.number(',', '.', 2, 'P')
+        //     },
+        //     {
+        //         targets: 6,
+        //         render: $.fn.dataTable.render.number(',', '.', 2, 'P')
+        //     },
+        //     ],
+        //     // pageLength: 10,
+        //     "bPaginate": false,
+        //     "bInfo": false,
+        //     autoWidth: false,
+        //     responsive: true,
+        //     "ordering": false,
+        //     searching: false
+        // });
+
 
 
         jQuery('.js-dataTable-inspections').DataTable({

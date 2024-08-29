@@ -59,6 +59,7 @@
     </div>
     <!-- END Hero -->
     @include('modals/reservation/addtoorder')
+    @include('modals/reservation/view')
     <!-- Page Content -->
     <div class="content">
         <div class="block block-rounded">

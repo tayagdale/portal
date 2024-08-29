@@ -44,9 +44,11 @@
                     </h1>
                 </div>
                 <div class="flex-shrink-0 mt-3 mt-sm-0 ms-sm-3" a>
-                    <button  class="btn btn-sm btn-primary" onclick="createDraft()"><i
+                    {{-- <button class="btn btn-sm btn-primary" onclick="createDraft()"><i class="fa fa-plus"></i>
+                        Add New Order Slip</button> --}}
+                    <a class="btn btn-sm btn-primary" href="{{ route('order_slip_add.create') }}"><i
                             class="fa fa-plus"></i>
-                        Add New Order Slip</button>
+                        Add New Order Slip</a>
                 </div>
             </div>
         </div>
@@ -62,7 +64,7 @@
                 <div class="block block-rounded">
                     <div class="block-content block-content-full">
                         <!-- DataTables init on table by adding .js-dataTable-responsive class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _js/pages/be_tables_datatables.js -->
-                        <table class="table table-bordered table-striped table-vcenter js-dataTable-os">
+                        <table class="table table-bordered table-sm table-striped table-vcenter js-dataTable-os">
                             <thead>
                                 <tr>
                                     <th>Date</th>

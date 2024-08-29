@@ -55,6 +55,9 @@ class pgPurchaseOrders {
                     data: 'brand_name',
                 },
                 {
+                    data: 'generic_name',
+                },
+                {
                     data: 'unit_code',
                 },
                 {
@@ -92,11 +95,11 @@ class pgPurchaseOrders {
                 "orderable": false
             },
             {
-                targets: 4,
+                targets: 5,
                 render: $.fn.dataTable.render.number(',', '.', 2, 'P')
             },
             {
-                targets: 5,
+                targets: 6,
                 render: $.fn.dataTable.render.number(',', '.', 2, 'P')
             },
             ],

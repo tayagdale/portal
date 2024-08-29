@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('lot_no')->nullable();
             $table->date('expiration_date')->nullable();
             $table->float('unit_price');
+            $table->float('remarks')->nullable();
             $table->timestamps();
         });
     }

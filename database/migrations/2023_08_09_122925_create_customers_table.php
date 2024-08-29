@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('contact_person');
             $table->string('position');
+            $table->string('msr');
             $table->string('contact_no');
             $table->integer('encoded_by');
             $table->integer('edited_by')->nullable();

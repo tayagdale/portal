@@ -48,10 +48,10 @@ class SalesOrderController extends Controller
     public function store(Request $request, string $id)
     {
 
-        $request->validate([
-            'so_number' => 'required|string|min:3|max:20',
-            // Add validation rules for other attributes as needed
-        ]);
+        // $request->validate([
+        //     'so_number' => 'required|string|min:3|max:20',
+        //     // Add validation rules for other attributes as needed
+        // ]);
 
 
         $order_slip = OrderSlip::where('id', $id)->first();
@@ -61,7 +61,7 @@ class SalesOrderController extends Controller
         }
 
         $salesOrder = new SalesOrder();
-        $salesOrder->so_number = $request->input('so_number');
+        // $salesOrder->so_number = $request->input('so_number');
         $salesOrder->os_number = $order_slip->os_number;
         $salesOrder->customer_id = $order_slip->customer_id;
         $salesOrder->date = $request->input('date');

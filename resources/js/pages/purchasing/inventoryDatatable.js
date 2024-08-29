@@ -4,6 +4,7 @@
  *  Description: Custom JS code used in DataTables Page
  */
 
+
 // DataTables, for more examples you can check out https://www.datatables.net/
 class pgPurchaseOrders {
     /*
@@ -62,27 +63,23 @@ class pgPurchaseOrders {
                     data: 'Iqty',
                 },
                 {
-                    data: 'item_uom_2',
-                },
-                {
-                    data: 'Iqty',
-                    render: function (data, type, row) {
-                        var qty_2 = Math.floor(data / row['item_qty_2']);
-                        return qty_2;
-                    }
-                },
-                {
-                    data: 'unit_code',
+                    data: 'unicode',
                 },
 
                 {
                     data: 'unit_price',
                 },
                 {
-                    data: 'expiration_date',
+                    data: 'converted_qty',
                     render: function (data, type, row) {
-                        return moment(data).format("MM-DD-YYYY");
+
+                        // console.log(parseInt(data));
+                        return parseInt(data);
                     }
+                },
+
+                {
+                    data: 'converted_uom',
                 },
                 {
                     data: 'inventory_status',
@@ -141,6 +138,38 @@ class pgPurchaseOrders {
                 },
                 {
                     data: 'expiration_date',
+                    render: function (data, type, row) {
+                        if (data == '0000-00-00 00:00:00') {
+                            return `<span class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill bg-info-light text-info">Not Available</span>`;
+                        } else {
+                            var parts = data.split(' ')[0].split('-'); // Split date part from the datetime string
+                            var expDate = new Date(parts[0], parts[1] - 1, parts[2]);
+
+                            // Get the current date
+                            var currentDate = new Date();
+
+                            // Calculate the date 18 months before the expiration date
+                            var warningYear = expDate.getFullYear();
+                            var warningMonth = expDate.getMonth() - 18;
+
+                            // Adjust the year and month correctly
+                            if (warningMonth < 0) {
+                                warningYear -= 1;
+                                warningMonth += 12;
+                            }
+
+                            var warningDate = new Date(warningYear, warningMonth, expDate.getDate());
+                            console.log(warningDate);
+                            // Check if the current date is after the warning date
+                            if (currentDate >= warningDate) {
+                                // Change the class to 'warning'
+                                return `<span class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill bg-warning-light text-warning">${moment(data).format("MM-DD-YYYY")}</span>`;
+                            } else {
+                                return `<span class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill bg-success-light text-success">${moment(data).format("MM-DD-YYYY")}</span>`
+                            }
+                        }
+
+                    }
                 },
                 {
                     data: 'inspection_date',

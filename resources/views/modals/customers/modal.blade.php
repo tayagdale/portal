@@ -56,6 +56,13 @@
                             <p class="mb-0" id="positionError"></p>
                         </div>
                         <div class="form-floating mb-4">
+                            <input type="text" class="form-control" id="position" name="msr"
+                                placeholder="Sales Representative">
+
+                            <label for="msr">Sales Representative</label>
+                            <p class="mb-0" id="msrError"></p>
+                        </div>
+                        <div class="form-floating mb-4">
                             <input type="hidden" value="{{ Auth::user()->id }}" class="form-control" id="encoded_by"
                                 name="encoded_by" placeholder="Encoded By">
 

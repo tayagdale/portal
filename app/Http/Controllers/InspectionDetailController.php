@@ -21,15 +21,32 @@ class InspectionDetailController extends Controller
     {
         $inspectionDetails = DB::table("purchase_order_details")
 
-            ->select(array('purchase_order_details.*', 'items.*', 'units.*',   DB::raw('SUM(inspection_details.qty) AS Iqty'), 'purchase_order_details.id AS id', 'purchase_order_details.qty as purchase_order_qty', 'items.id AS item_id'))
+            ->select(array('purchase_order_details.*', 'items.*', 'units.*', 'purchase_order_details.id AS id', 'purchase_order_details.qty as purchase_order_qty', 'items.id AS item_id'))
             ->leftJoin("items", "purchase_order_details.item_id", "=", "items.id")
             ->leftJoin("units", "purchase_order_details.unit_id", "=", "units.id")
-            ->leftJoin("inspection_details", "purchase_order_details.po_number", "=", "inspection_details.po_number")
             ->where('purchase_order_details.po_number', $id)
-            ->groupBy('inspection_details.po_number')
             ->get();
         return response()->json(['success' => true, 'data' => $inspectionDetails]);
     }
+
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function view_inspection_detail(string $id, int $item_id)
+    {
+        $inspectionDetails = DB::table("inspection_details")
+            ->select('*', 'users.name as user_name')
+            ->leftJoin("items", "inspection_details.item_id", "=", "items.id")
+            ->leftJoin("users", "inspection_details.inspect_by", "=", "users.id")
+            ->where('inspection_details.po_number', $id)
+            ->where('inspection_details.item_id', $item_id)
+            ->get();
+
+        // dd($inspectionDetails);
+        return response()->json(['success' => true, 'data' => $inspectionDetails]);
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -49,6 +66,7 @@ class InspectionDetailController extends Controller
             'po_number' => 'required|string|min:3|max:20',
             'item_id' => 'required|integer',
             'qty' => 'required|integer',
+            'unit_price' => 'required',
             'delivery_date' => 'required|date',
             'lot_no' => 'required|string|min:3|max:255',
             'expiration_date' => 'required|date',
@@ -111,7 +129,7 @@ class InspectionDetailController extends Controller
 
                 $qty = $request->input('qty');
 
-                if(!empty($get_current_item->uom_2)) {
+                if (!empty($get_current_item->uom_2)) {
                     $qty = $request->input('qty') * $get_current_item->qty_2;
                 }
 
@@ -129,6 +147,7 @@ class InspectionDetailController extends Controller
                     $inventory_detail->po_number = $request->input('po_number');
                     $inventory_detail->item_id =  $request->input('item_id');
                     $inventory_detail->qty =  $qty;
+                    $inventory_detail->unit_price = $request->input('unit_price');
                     $inventory_detail->lot_no =  $request->input('lot_no');
                     $inventory_detail->expiration_date =  $request->input('expiration_date');
                     $inventory_detail->inspection_date = date('Y-m-d H:i:s');

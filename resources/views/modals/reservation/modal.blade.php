@@ -17,8 +17,9 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <label class="mb-2">Select Customer</label>
-                                    <select class="custom-js-select2 form-select" style="width: 100% !important" id="customer_id"
-                                        name="customer_id" data-container="#frmAddReservation" data-placeholder="Select Item">
+                                    <select class="custom-js-select2 form-select" style="width: 100% !important"
+                                        id="customer_id" name="customer_id" data-container="#frmAddReservation"
+                                        data-placeholder="Select Item">
                                         <option value=""></option>
                                     </select>
                                 </div>
@@ -51,19 +52,22 @@
                 </div>
                 <div class="block-content fs-sm">
                     <form id="frmAddResItem">
-                        <input type="hidden" name="reservation_id" value="{{ $reservation_id }}" id="reservation_item_id">
+                        <input type="hidden" name="reservation_id" value="{{ $reservation_id }}"
+                            id="reservation_item_id">
                         <div class="form-floating mb-4">
                             <div class="row">
                                 <div class="col-md-12 os_add_item">
-                                    <select class="custom-js-select2 form-select" style="width: 100% !important" id="item_id"
-                                        name="item_id" data-container="#mdlAddResItem" data-placeholder="Select Item">
+                                    <select class="custom-js-select2 form-select" style="width: 100% !important"
+                                        id="item_id" name="item_id" data-container="#mdlAddResItem"
+                                        data-placeholder="Select Item">
                                         <option value=""></option>
                                     </select>
                                 </div>
                             </div>
                         </div>
                         <div class="form-floating mb-4">
-                            <select class="form-select" id="unit_id" name="unit_id" data-placeholder="Select Unit">
+                            <select class="form-select" id="unit_id" name="unit_id" data-placeholder="Select Unit"
+                                disabled>
                                 <option value=""></option>
                             </select>
                             <label for="unit_id">Unit</label>

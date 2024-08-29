@@ -20,7 +20,7 @@ class UnitController extends Controller
     public function unit_by_item_id(string $id)
     {
         $units = DB::table('steritex.items')
-            ->select('uom_1', DB::raw('(SELECT unit_code FROM steritex.units WHERE id = uom_1) AS unit_code_1'), 'uom_2', DB::raw('(SELECT unit_code FROM steritex.units WHERE id = uom_2) AS unit_code_2'))
+            ->select('uom_1', 'qty_1', 'qty_2', DB::raw('(SELECT unit_code FROM steritex.units WHERE id = uom_1) AS unit_code_1'), 'uom_2', DB::raw('(SELECT unit_code FROM steritex.units WHERE id = uom_2) AS unit_code_2'))
             ->where('items.id', $id)
             ->orderBy('items.uom_1', 'asc')
             ->get();
@@ -30,10 +30,12 @@ class UnitController extends Controller
             $formattedUnit = [
                 'uom_1' => [
                     'uom' => $unit->uom_1,
+                    'qty' => $unit->qty_1,
                     'unit_code' => $unit->unit_code_1,
                 ],
                 'uom_2' => [
                     'uom' => $unit->uom_2,
+                    'qty' => $unit->qty_2,
                     'unit_code' => $unit->unit_code_2,
                 ],
             ];
@@ -44,7 +46,23 @@ class UnitController extends Controller
         return response()->json(['success' => true, 'data' => $formattedUnits]);
     }
 
+    public function qty_by_unit_id(string $id, string $item_id)
+    {
+        $units = DB::table('steritex.items')
+            ->select(
+                DB::raw("CASE
+            WHEN '$id' = items.uom_1 THEN items.qty_1
+            WHEN '$id' = items.uom_2 THEN items.qty_2
+            END AS qty")
+            )
+            ->where('items.id', $item_id)
+            ->first();
 
+
+
+
+        return response()->json(['success' => true, 'data' => $units]);
+    }
     public function unit1_by_item_id(string $id)
     {
         $units = DB::table("items")

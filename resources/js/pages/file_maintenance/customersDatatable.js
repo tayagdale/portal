@@ -58,6 +58,9 @@ class pgCustomers {
                     data: 'contact_no',
                 },
                 {
+                    data: 'msr',
+                },
+                {
                     data: 'created_at',
                     render: function (data, type, row) {
                         return moment(data).format("MM-DD-YYYY");

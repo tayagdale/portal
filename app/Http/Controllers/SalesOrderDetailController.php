@@ -38,7 +38,6 @@ class SalesOrderDetailController extends Controller
      */
     public function store(Request $request)
     {
-
         $validatedData = $request->validate([
             'so_number' => 'required|string|min:3|max:20',
             'os_number' => 'required|string|min:3|max:20',
@@ -49,6 +48,7 @@ class SalesOrderDetailController extends Controller
             'expiration_date' => 'required|date',
             'lot_no' => 'required|string|min:3|max:255',
             'unit_price' => 'required|numeric',
+            'remarks' => 'nullable|string'
             // Add validation rules for other attributes as needed
         ]);
 

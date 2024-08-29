@@ -2,6 +2,9 @@
 var unitId;
 var requestType;
 var base_url = window.location.origin;
+var initialValue = 0; // The initial value you want tostart with
+var currentValue = 0; // The initial value you want tostart with
+
 $(document).ready(function () {
     getAllSuppliers()
     getSubtotal()
@@ -160,6 +163,16 @@ $(document).ready(function () {
         $.get(`/admin/units/unit/${this.value}`, function (options) {
             var select = $('#unit_id');
             select.empty();
+
+            // Add placeholder
+            var placeholder = $('<option>', {
+                value: '',
+                text: 'Select Unit',
+                disabled: true,
+                selected: true
+            });
+            select.append(placeholder);
+
             $.each(options.data, function (rowIndex, row) {
                 $.each(row, function (columnName, columnValue) {
                     var option = $('<option>', {
@@ -168,9 +181,44 @@ $(document).ready(function () {
                     });
                     select.append(option);
                 });
-            })
+            });
         });
     });
+
+    $('#unit_id').on('change', function () {
+        $.get(`/admin/units/qty/${this.value}/${$('#item_id').val()}`, function (options) {
+            initialValue = options.data.qty;
+            currentValue = initialValue;
+            console.log(initialValue);
+            $('#qty').val(options.data.qty);
+        });
+    });
+
+
+    function updateButtonStates() {
+        console.log(currentValue);
+        $('#minus').prop('disabled', currentValue === initialValue);
+    }
+
+    // Plus button functionality
+    $('#plus').on('click', function () {
+        currentValue += initialValue; // Add the initial value to the current value
+        $('#qty').val(currentValue); // Update the input field with the new value
+        updateButtonStates(); // Update button states
+    });
+
+    // Minus button functionality
+    $('#minus').on('click', function () {
+        if (currentValue > initialValue) {
+            currentValue -= initialValue; // Subtract the initial value from the current value
+            $('#qty').val(currentValue); // Update the input field with the new value
+        }
+        updateButtonStates(); // Update button states
+    });
+
+    // Initial call to set the correct state of the minus button
+    updateButtonStates();
+
 });
 
 function create() {

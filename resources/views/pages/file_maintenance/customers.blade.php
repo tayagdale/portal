@@ -68,6 +68,7 @@
                                     <th>Customer Code</th>
                                     <th>Description</th>
                                     <th>Contact No.</th>
+                                    <th>Sales Representative</th>
                                     <th>Created at</th>
                                     <th>Status</th>
                                     <th style="width: 15%;">Action</th>

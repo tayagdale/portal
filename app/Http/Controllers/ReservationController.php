@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 
 class ReservationController extends Controller
 {
-   
+
     public function index()
     {
         return view('pages/reservation/reservation_list');
@@ -28,6 +28,23 @@ class ReservationController extends Controller
             ->get();
         return response()->json(['success' => true, 'data' => $reservation]);
     }
+
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function view_reservation_detail(string $id)
+    {
+        $reservationDetails = DB::table("reservation_details")
+            ->select('*')
+            ->leftJoin("items", "reservation_details.item_id", "=", "items.id")
+            ->where('reservation_details.reservation_id', $id)
+            ->get();
+
+        // dd($reservationDetails);
+        return response()->json(['success' => true, 'data' => $reservationDetails]);
+    }
+
 
 
     public function add()
@@ -49,8 +66,8 @@ class ReservationController extends Controller
 
         $reservation_id = $id;
 
-     
-        return view('pages/reservation/add_reservation')->with(compact('customers','reservation_id'));
+
+        return view('pages/reservation/add_reservation')->with(compact('customers', 'reservation_id'));
     }
 
     public function update_page(string $id)
@@ -67,7 +84,7 @@ class ReservationController extends Controller
 
         $customer_id = $reservation[0]->customer_id;
 
-        return view('pages/reservation/update_reservation')->with('id', $id)->with(compact('customers','reservation_id', 'customer_id'));
+        return view('pages/reservation/update_reservation')->with('id', $id)->with(compact('customers', 'reservation_id', 'customer_id'));
     }
 
     public function view_reservation_item($id)
@@ -80,7 +97,6 @@ class ReservationController extends Controller
             ->get();
 
         return response()->json(['success' => true, 'data' => $reservation_items]);
-
     }
 
 
@@ -91,9 +107,8 @@ class ReservationController extends Controller
         $input['reservation_id'] = $id;
 
         $reservationOrderDetails = ReservationDetails::create($input);
-        
-        return response()->json(['success' => true]);
 
+        return response()->json(['success' => true]);
     }
 
     public function update(Request $request, $id)
@@ -113,10 +128,10 @@ class ReservationController extends Controller
         $reservation->save();
 
         return response()->json(['message' => 'Order slip updated successfully.']);
-
     }
 
-    public function add_to_os(Request $request) {
+    public function add_to_os(Request $request)
+    {
 
         $os_number =  $request->input('os_number');
         $id =  $request->input('res_id');
@@ -140,12 +155,12 @@ class ReservationController extends Controller
         $order_slips->status = 4;
         $order_slips->save();
 
-        if($order_slips) {
+        if ($order_slips) {
             $order_slip_id = $order_slips->id;
 
             $reservation_details = ReservationDetails::where('reservation_id', $id)->get();
-    
-            foreach($reservation_details AS $details) {
+
+            foreach ($reservation_details as $details) {
                 $item_id = $details->item_id;
                 $unit_id = $details->unit_id;
                 $qty = $details->qty;
@@ -160,8 +175,6 @@ class ReservationController extends Controller
 
             return redirect()->route('order_slip_add.show', ['id' => $os_number]);
         }
-       
-
     }
 
     public function destroy_details(string $id)

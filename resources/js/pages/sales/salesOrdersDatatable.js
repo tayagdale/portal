@@ -73,6 +73,9 @@ class pgSalesOrders {
                     data: 'unit_price',
                 },
                 {
+                    data: 'remarks',
+                },
+                {
                     data: 'sodID',
                     render: function (data, type, row) {
                         return `
@@ -196,7 +199,7 @@ class pgSalesOrders {
                 {
                     data: 'iQty',
                     render: function (data, type, row) {
-              
+
 
                         return data / $("#total_os_qty").text().match(/\d+/g).map(Number)[0];
                     }
@@ -211,6 +214,12 @@ class pgSalesOrders {
                     data: null, // This column doesn't have specific data
                     render: function (data, type, row) {
                         return `<input type="text" class="form-control custom-input" placeholder="Enter sale price">`;
+                    },
+                },
+                {
+                    data: null, // This column doesn't have specific data
+                    render: function (data, type, row) {
+                        return `<input type="text" class="form-control add_remarks" placeholder="Enter Remarks">`;
                     },
                 },
                 {

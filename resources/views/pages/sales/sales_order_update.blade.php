@@ -116,6 +116,7 @@
                                         <th>Expiration Date</th>
                                         <th>Quantity</th>
                                         <th>Unit Price</th>
+                                        <th>Remarks</th>
                                         <th>Action</th>
                                         <!-- <th style="width:10%;"></th> -->
                                     </tr>

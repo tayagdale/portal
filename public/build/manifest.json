@@ -92,7 +92,7 @@
     "src": "resources/js/pages/file_maintenance/categoriesDatatable.js"
   },
   "resources/js/pages/file_maintenance/customersDatatable.js": {
-    "file": "assets/customersDatatable-cc9a0e3b.js",
+    "file": "assets/customersDatatable-8d5b19a0.js",
     "isEntry": true,
     "src": "resources/js/pages/file_maintenance/customersDatatable.js"
   },
@@ -162,22 +162,22 @@
     "src": "resources/js/pages/payment/outgoingPaymentDatatable.js"
   },
   "resources/js/pages/purchasing/inspectionsDatatable.js": {
-    "file": "assets/inspectionsDatatable-dcdb4bd6.js",
+    "file": "assets/inspectionsDatatable-63019efa.js",
     "isEntry": true,
     "src": "resources/js/pages/purchasing/inspectionsDatatable.js"
   },
   "resources/js/pages/purchasing/inventoryDatatable.js": {
-    "file": "assets/inventoryDatatable-e3436ea6.js",
+    "file": "assets/inventoryDatatable-bdd6327a.js",
     "isEntry": true,
     "src": "resources/js/pages/purchasing/inventoryDatatable.js"
   },
   "resources/js/pages/purchasing/purchaseOrdersDatatable.js": {
-    "file": "assets/purchaseOrdersDatatable-5cb32c59.js",
+    "file": "assets/purchaseOrdersDatatable-381404bf.js",
     "isEntry": true,
     "src": "resources/js/pages/purchasing/purchaseOrdersDatatable.js"
   },
   "resources/js/pages/reservation/reservationDatatable.js": {
-    "file": "assets/reservationDatatable-106b3142.js",
+    "file": "assets/reservationDatatable-948fb80a.js",
     "isEntry": true,
     "src": "resources/js/pages/reservation/reservationDatatable.js"
   },
@@ -197,7 +197,7 @@
     "src": "resources/js/pages/sales/salesInvoiceDatatable.js"
   },
   "resources/js/pages/sales/salesOrdersDatatable.js": {
-    "file": "assets/salesOrdersDatatable-bbce49bb.js",
+    "file": "assets/salesOrdersDatatable-1c3b3748.js",
     "isEntry": true,
     "src": "resources/js/pages/sales/salesOrdersDatatable.js"
   },

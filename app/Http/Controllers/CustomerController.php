@@ -35,6 +35,7 @@ class CustomerController extends Controller
             'address' => 'required|string|min:3|max:255',
             'contact_person' => 'required|string|min:3|max:255',
             'position' => 'required|string|min:3|max:255',
+            'msr' => 'required|string|min:3|max:255',
             'contact_no' => 'required|string|min:3|max:255',
             'encoded_by' => 'required|integer',
             // Add validation rules for other attributes as needed

@@ -68,7 +68,7 @@
                                     <th>Brand Name</th>
                                     <th>UOM</th>
                                     <th>Remaining QTY</th>
-                                    <th>Delivered QTY</th>
+                                    {{-- <th>Delivered QTY</th> --}}
                                     <th>Unit Price</th>
                                     <th>Total Amount</th>
                                     <th style="width: 15%;">Action</th>
@@ -76,6 +76,7 @@
                             </thead>
                         </table>
                         @include('modals/inspections/verify')
+                        @include('modals/inspections/modal')
                     </div>
                 </div>
             </div>

@@ -13,12 +13,6 @@
                 <div class="block-content fs-sm">
                     <form id="frmAddSO">
                         <div class="form-floating mb-4">
-                            <input type="text" class="form-control" id="so_number" name="so_number"
-                                placeholder="Sales Order Number" autofocus>
-                            <label for="so_number">Sales Order Number</label>
-                            <p class="mb-0" id="so_numberError"></p>
-                        </div>
-                        <div class="form-floating mb-4">
                             <select class="form-select" id="os_number" name="os_number"
                                 aria-label="Floating label select example">
                             </select>
@@ -42,7 +36,7 @@
 </div>
 <div class="modal fade" id="mdlAddSOItems" tabindex="-1" role="dialog" aria-labelledby="modal-block-select2"
     aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="block block-rounded block-transparent mb-0">
                 <div class="block-header block-header-default">
@@ -68,6 +62,7 @@
                                 <th>Stocks Left</th>
                                 <th>QTY to add</th>
                                 <th>Sale Price</th>
+                                <th>Remarks</th>
                                 <th style="width:10%;">Action</th>
                             </tr>
                         </thead>

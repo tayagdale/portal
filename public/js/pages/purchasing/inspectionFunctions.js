@@ -3,6 +3,7 @@ var unitId;
 var requestType;
 var base_url = window.location.origin;
 var qtyRequired;
+var unitPrice;
 $(document).ready(function () {
     getAllWarehouses();
     $("#frmAddInspection").on('submit', function (e) {
@@ -33,9 +34,7 @@ $(document).ready(function () {
 
     $("#frmVerifyInspection").on('submit', function (e) {
         e.preventDefault();
-        var qtyToDeliver = $("#txtItemQty_verify").val();
-        console.log('test');
-
+        var qtyToDeliver = parseInt($("#txtItemQty_verify").val());
         if (qtyToDeliver > qtyRequired) {
             Swal.fire(
                 'Warning!',
@@ -84,17 +83,26 @@ function create() {
 }
 
 
-function verify_item(item_id, brand_name, qty_required) {
-    qtyRequired = qty_required;
+function verify_item(item_id, brand_name, qty_required, unit_price) {
+    unitPrice = unit_price;
+    console.log(unitPrice);
+    qtyRequired = parseInt(qty_required);
     $("#frmVerifyInspection").trigger('reset'); // Reset the form fields
     $('#qtyError, #lot_noError, #delivery_dateError, #expiration_dateError').text('');
     $('#itemNameVerify').text(brand_name)
     $('#txtItemId_verify').val(item_id);
-    console.log(qtyRequired);
+    $('#txt_unit_price').val(unitPrice);
     $('#mdlInspectionVerify').modal('show'); // Show the modal
 }
 
+function view_details(po_number, item_id) {
+    console.log(po_number);
+    $("#purchase_no").text(po_number);
 
+    reloadDatatableWithUrl("js-dataTable-inspection-details-view", `/admin/inspection_details/view_detail/${po_number}/${item_id}`);
+
+    $("#mdlInspectionDetails").modal('show');
+}
 function displayErrors(errors) {
     // Loop through the errors and display them in the corresponding divs
     $.each(errors, function (key, value) {

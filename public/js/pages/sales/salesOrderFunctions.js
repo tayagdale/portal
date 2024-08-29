@@ -118,7 +118,8 @@ function addToSalesOrder(buttonElement, INVTYID, ITEM_ID, ITEM_BRAND_NAME, ITEM_
     var requiredQTY = parseInt($("#total_os_qty").text());
     var qtyToAdd = parseInt($(buttonElement).closest('tr').find('td').eq(3).find('input.qty_to_add').val()); // Change the index (0) as needed
     var salePriceValue = $(buttonElement).closest('tr').find('td').eq(4).find('input.custom-input').val(); // Change the index (0) as needed
-
+    var remarks = $(buttonElement).closest('tr').find('td').eq(5).find('input.add_remarks').val(); // Change the index (0) as needed
+console.log(remarks);
     var dateOnly = new Date(EXP_DATE).toISOString().slice(0, 10);
     // console.log(INVTYID);
     // console.log(ITEM_ID);
@@ -170,7 +171,7 @@ function addToSalesOrder(buttonElement, INVTYID, ITEM_ID, ITEM_BRAND_NAME, ITEM_
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                data: $.param({ 'so_number': $("#so_number").val(), 'os_number': $("#os_number").val(), 'invty_id': INVTYID, 'item_id': ITEM_ID, 'qty': qtyToAdd, 'unit_id': ITEM_UOM, 'lot_no': LOTNo, 'expiration_date': dateOnly, 'unit_price': salePriceValue }),
+                data: $.param({ 'so_number': $("#so_number").val(), 'os_number': $("#os_number").val(), 'invty_id': INVTYID, 'item_id': ITEM_ID, 'qty': qtyToAdd, 'unit_id': ITEM_UOM, 'lot_no': LOTNo, 'expiration_date': dateOnly, 'unit_price': salePriceValue, 'remarks': remarks }),
                 cache: false,
                 processData: false,
                 success: function (data) {

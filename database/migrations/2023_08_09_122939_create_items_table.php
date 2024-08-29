@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('category_id');
             $table->string('generic_name');
-            $table->string('brand_name');
+            $table->string('brand_name')->nullable();
             $table->integer('encoded_by');
             $table->integer('edited_by')->nullable();
             $table->timestamps();
